@@ -1,20 +1,33 @@
 <?php
 include_once('include/functions.php');
 $commonFunction= new functions();
+$get_main_portal_detail=$commonFunction->get_main_portal_detail();
+$portal_detail=$get_main_portal_detail->data;
+if(ENV=='prod'){
+$site_url=$portal_detail->PORTAL_URL;
+}else{
 $site_url=LOCAL_URL;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Cafe Center</title>
+  <?php
+  if($get_main_portal_detail->status==1){
+    echo '<title>'.$portal_detail->PROJECT.'</title>';
+  }else{
+    echo '<title>Error</title>';
+
+  }
+  ?>
+  
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
+  <meta content="" name="cafe,cafe center,cyber cafe,manager,">
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="icon" type="image/x-icon" href="<?=$portal_detail->SITE_ICON?>">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
@@ -31,11 +44,26 @@ $site_url=LOCAL_URL;
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
+  <script src="lib/jquery/jquery.min.js"></script>
 
-  
+  <script>
+    <?php
+   
+    if($get_main_portal_detail->status==0){
+        $portal_error_html='<img src="'.$portal_detail->ERROR_500.'" />'; 
+        ?>
+        $(document).ready(function() {
+            $(".body-area").html('<?=$portal_error_html?>'); 
+            $(".body-area").css('text-align','center');
+        });
+    <?php
+    }
+    ?>
+  </script>
 </head>
 
-<body>
+<body class="body-area">
+    
   <!--==========================
   Header
   ============================-->
@@ -56,8 +84,8 @@ $site_url=LOCAL_URL;
 
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
-        <h1 class="text-light"><a href="#intro" class="scrollto"><span>Rapid</span></a></h1>
-        <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
+        <!-- <h1 class="text-light"><a href="#intro" class="scrollto"><span>Rapid</span></a></h1> -->
+        <a href="<?=$site_url?>" class="scrollto"><img style="width:150px" src="<?=$portal_detail->LOGO?>" alt="<?=$portal_detail->PROJECT?>" class="img-fluid"></a>
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
@@ -65,7 +93,7 @@ $site_url=LOCAL_URL;
           <li class="active"><a href="#intro">Home</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
+          <!-- <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#team">Team</a></li>
           <li class="drop-down"><a href="">Drop Down</a>
             <ul>
@@ -83,8 +111,10 @@ $site_url=LOCAL_URL;
               <li><a href="#">Drop Down 4</a></li>
               <li><a href="#">Drop Down 5</a></li>
             </ul>
-          </li>
+          </li> -->
           <li><a href="#footer">Contact Us</a></li>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Sign Up</a></li>
         </ul>
       </nav><!-- .main-nav -->
       

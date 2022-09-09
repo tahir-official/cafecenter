@@ -17,6 +17,17 @@ class Functions
         
     
     }
+
+    function get_main_portal_detail(){
+        $url=SSOAPI.'get_manager_portal_detail';
+        $data=array(
+            'api_key' => API_KEY
+        );
+        $method='POST';
+        $response=$this->curl_call($url,$data,$method);
+        return $result = json_decode($response);
+    
+    }
     function redirect($location){ 
           echo '<script>window.location.href="'.$location.'"</script>';
           die(); 
