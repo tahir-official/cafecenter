@@ -68,8 +68,8 @@ $site_url=LOCAL_URL;
         </button>
 
         <div class="navbar-collapse collapse" id="navbarContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+          <ul class="navbar-nav ml-auto" id="nav">
+            <li class="nav-item">
               <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
@@ -85,10 +85,10 @@ $site_url=LOCAL_URL;
               <a class="nav-link" href="contact.php">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-2" href="#">Login</a>
+              <a class="btn btn-primary ml-lg-2" href="login.php">Login</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-success ml-lg-2" href="#">Sign Up</a>
+              <a class="btn btn-success ml-lg-2" href="signup.php">Sign Up</a>
             </li>
           </ul>
         </div>

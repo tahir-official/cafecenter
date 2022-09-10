@@ -48,7 +48,7 @@
           <div class="card-blog">
             <div class="header">
               <div class="post-thumb">
-                <img src="../assets/img/blog/blog-1.jpg" alt="">
+                <img src="assets/img/blog/blog-1.jpg" alt="">
               </div>
             </div>
             <div class="body">
@@ -62,7 +62,7 @@
           <div class="card-blog">
             <div class="header">
               <div class="post-thumb">
-                <img src="../assets/img/blog/blog-2.jpg" alt="">
+                <img src="assets/img/blog/blog-2.jpg" alt="">
               </div>
             </div>
             <div class="body">
@@ -76,7 +76,7 @@
           <div class="card-blog">
             <div class="header">
               <div class="post-thumb">
-                <img src="../assets/img/blog/blog-3.jpg" alt="">
+                <img src="assets/img/blog/blog-3.jpg" alt="">
               </div>
             </div>
             <div class="body">
@@ -90,7 +90,7 @@
           <div class="card-blog">
             <div class="header">
               <div class="post-thumb">
-                <img src="../assets/img/blog/blog-4.jpg" alt="">
+                <img src="assets/img/blog/blog-4.jpg" alt="">
               </div>
             </div>
             <div class="body">
@@ -104,7 +104,7 @@
           <div class="card-blog">
             <div class="header">
               <div class="post-thumb">
-                <img src="../assets/img/blog/blog-5.jpg" alt="">
+                <img src="assets/img/blog/blog-5.jpg" alt="">
               </div>
             </div>
             <div class="body">
@@ -118,7 +118,7 @@
           <div class="card-blog">
             <div class="header">
               <div class="post-thumb">
-                <img src="../assets/img/blog/blog-6.jpg" alt="">
+                <img src="assets/img/blog/blog-6.jpg" alt="">
               </div>
             </div>
             <div class="body">
@@ -132,7 +132,7 @@
           <div class="card-blog">
             <div class="header">
               <div class="post-thumb">
-                <img src="../assets/img/blog/blog-1.jpg" alt="">
+                <img src="assets/img/blog/blog-1.jpg" alt="">
               </div>
             </div>
             <div class="body">
@@ -146,7 +146,7 @@
           <div class="card-blog">
             <div class="header">
               <div class="post-thumb">
-                <img src="../assets/img/blog/blog-2.jpg" alt="">
+                <img src="assets/img/blog/blog-2.jpg" alt="">
               </div>
             </div>
             <div class="body">
@@ -160,7 +160,7 @@
           <div class="card-blog">
             <div class="header">
               <div class="post-thumb">
-                <img src="../assets/img/blog/blog-3.jpg" alt="">
+                <img src="assets/img/blog/blog-3.jpg" alt="">
               </div>
             </div>
             <div class="body">
