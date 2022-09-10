@@ -85,7 +85,10 @@ $site_url=LOCAL_URL;
               <a class="nav-link" href="contact.php">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-2" href="#">Free Analytics</a>
+              <a class="btn btn-primary ml-lg-2" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-success ml-lg-2" href="#">Sign Up</a>
             </li>
           </ul>
         </div>

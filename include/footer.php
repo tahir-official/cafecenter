@@ -19,8 +19,8 @@
             <li><a href="#">About Us</a></li>
             <li><a href="#">Career</a></li>
             <li><a href="#">Advertise</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Help & Support</a></li>
+            <li><a href="terms_of_service.php">Terms of Service</a></li>
+            <li><a href="privacy_policy.php">Privacy Policy</a></li>
           </ul>
         </div>
         <div class="col-lg-3 py-3">
