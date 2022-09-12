@@ -6,6 +6,12 @@ jQuery(function ($) {
         }
     });
 });
+$(".toggle-password").click(function () {
+    $(this).children().toggleClass("mai-lock-closed mai-lock-open");
+    let input = $(this).prev();
+    console.log(input);
+    input.attr("type", input.attr("type") === "password" ? "text" : "password");
+  });
 
 /*contact form start*/
 $(document).ready(function () {
@@ -69,3 +75,41 @@ $(document).ready(function () {
   });
   
   /*contact form end*/
+
+  
+/*login script start*/
+$("#alert").hide();
+$("#loginFrom").submit(function (e) {
+  e.preventDefault();
+  let formData = $("#loginFrom").serialize();
+  $.ajax({
+    method: "POST",
+    url: baseUrl + "include/process.php?action=login",
+    data: formData,
+    dataType: "JSON",
+    beforeSend: function () {
+      $(".btnLogin").html('Login <i class="fa fa-spinner"></i>');
+      $(".btnLogin").prop("disabled", true);
+      $("#alert").hide();
+    },
+  })
+
+    .fail(function (response) {
+      alert("Try again later.");
+    })
+
+    .done(function (response) {
+      if (response.status == 0) {
+        $("#alert").html(response.message);
+        $("#alert").show();
+      } else {
+        location.href = response.url;
+      }
+    })
+    .always(function () {
+      $(".btnLogin").html("Login");
+      $(".btnLogin").prop("disabled", false);
+    });
+  return false;
+});
+/*login script end*/
