@@ -329,4 +329,105 @@ function loadDistric(state_id) {
 /*load Distric list end*/
 
 
+/*signup form start*/
+$(document).ready(function () {
+  $("#signupFrom").validate({
+    rules: {
+      fname: {
+        required: true,
+      },
+      lname: {
+        required: true,
+      },
+      email: {
+        required: true,
+        email: true,
+      },
+      contact_number: {
+        required: true,
+        number: true,
+        maxlength: 10,
+        minlength: 10,
+      },
+      shopname: {
+        required: true,
+      },
+      address: {
+        required: true,
+      },
+      state: {
+        required: true,
+      },
+      district: {
+        required: true,
+      },
+      city: {
+        required: true,
+      },
+      zipcode: {
+        required: true,
+        number: true,
+      },
+      gender: {
+        required: true,
+      },
+      dob: {
+        required: true,
+      },
+      password: {
+        required: true,
+      },
+      c_password: {
+        required: true,
+        equalTo: "#password",
+      },
+    },
+    submitHandler: function (form) {
+      let formData = new FormData($("#signupFrom")[0]);
+      $.ajax({
+        method: "POST",
+        url: baseUrl + "include/process.php",
+        data: formData,
+        dataType: "JSON",
+        cache: false,
+        contentType: false,
+        processData: false,
+        beforeSend: function () {
+          $(".btnsbt").html('<i class="fa fa-spinner"></i> Processing...');
+          $(".btnsbt").prop("disabled", true);
+          $("#alert").hide();
+        },
+      })
+
+        .fail(function (response) {
+          alert("Try again later.");
+        })
+
+        .done(function (response) {
+          $(".btnsbt").html("Register");
+          $(".btnsbt").prop("disabled", false);
+          if (response.status == 0) {
+            $("#alert").show();
+            $("#alert").html(response.message);
+            $("#alert").focus();
+            $('html').animate({
+              scrollTop: 0
+            }, 1000);
+          } else {
+            location.href = response.url;
+          }
+        })
+        .always(function () {
+          $(".btnsbt").html("Register");
+          $(".btnsbt").prop("disabled", false);
+        });
+      return false;
+    },
+  });
+});
+
+/*signup form end*/
+
+
+
   

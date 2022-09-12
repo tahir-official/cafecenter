@@ -67,10 +67,109 @@ if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'login'){
 echo json_encode($output);
 }
 /*login action end*/
+
 /*signup action start*/
 else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add_user')
 { 
+	//method check statement
+	if ($_SERVER["REQUEST_METHOD"] == "POST"){
+		    if($_FILES["document"]["error"] == 0) {
+			$image_status=1;
+			$document = new CurlFile($_FILES['document']['tmp_name'], $_FILES['document']['type'], $_FILES['document']['name']);
+			} else {
+			$image_status=0;
+			$document = '';
+			}
 
+			if($_POST['page']=='signup'){
+				$password=$_POST['password'];
+				$added_by='self';
+				$added_id=1;
+				$phone_verification=0;
+				$otp=rand(100000,999999);
+			}else if($_POST['page']=='manager_page'){
+				$parts = explode('-', $_POST['dob']);
+				$password='Welcome@'.$parts[0].mt_rand(10,99);
+				if($_SESSION['manager_type']==1){
+					$added_by='district_managers';
+				}else if($_SESSION['manager_type']==2){
+					$added_by='distributor';
+				}
+				
+				$added_id=$_SESSION['manager_id'];
+				$phone_verification=1;
+				$otp='';
+			}
+
+			$url=SSOAPI.'add_user';
+			
+			$data=array(
+				'user_type' => $_POST['user_type'],
+				'fname' => $_POST['fname'],
+				'lname' => $_POST['lname'],
+				'email' => $_POST['email'],
+				'password' => $password,
+				'contact_number' => $_POST['contact_number'],
+				'address' => $_POST['address'],
+				'state' => $_POST['state'],
+				'district' => $_POST['district'],
+				'city' => $_POST['city'],
+				'zipcode' => $_POST['zipcode'],
+				'gender' => $_POST['gender'],
+				'dob' => $_POST['dob'],
+				'image_status'=> $image_status,
+				'document'=> $document,
+				'added_by' => $added_by,
+				'added_id' => $added_id,
+				'email_verification' => '1',
+				'phone_verification' => $phone_verification,
+				'status' => '1',
+				'cdate' => date('Y-m-d H:i:s'),
+				'api_key' => API_KEY,
+				'otp' => $otp
+		  );
+			if($_POST['user_type']==3){
+				$data2=array("shopname"=>$_POST['shopname']);
+				$data=array_merge($data,$data2);
+		  }
+			$method='POST';
+			$response=$commonFunction->curl_call($url,$data,$method);
+            $result = json_decode($response);
+			if($result->status != 0){
+				
+				if($_POST['page']=='signup'){
+					$_SESSION['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.', Please enter OTP and verify your number !!</div>';
+					$get_main_portal_detail=$commonFunction->get_main_portal_detail();
+					$portal_detail=$get_main_portal_detail->data;
+					if(ENV=='prod'){
+						$site_url=$portal_detail->PORTAL_URL;
+					}else{
+						$site_url=LOCAL_URL;
+					}
+					$output['url']=$site_url.'otpverification.php?number='.$_POST['contact_number'].'&page='.$_POST['page'];
+				}else if($_POST['page']=='manager_page'){
+					$output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
+					$output['fetchTableurl']= SSOAPI.'get_user_table_list';  
+                    $output['user_type']=   $_POST['user_type'];
+					$output['portal']=   'manager'; 
+					$output['show_by']=   $_SESSION['manager_id'];
+				}
+
+				
+				$output['status']=1;
+			}else{
+				//error message
+		        $output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
+		        $output['status']=0;
+			}
+
+	}else{
+			//error message
+			$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+			$output['status']=0;
+			
+	}
+	echo json_encode($output);	
 }
 /*signup action end*/
 

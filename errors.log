@@ -10,3 +10,4 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\php\cafecenter\signup.php on line 74
+[13-Sep-2022 03:11:16 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$message in C:\xampp\htdocs\php\cafecenter\signup.php on line 178
