@@ -54,7 +54,7 @@
                         <a href="login.php">Login</a>
                      </p>
                      <p class="mb-0">
-                        <a href="signup.php" class="text-center">Register a new membership</a>
+                        <a href="signup.php" class="text-center">Register as a <b>Retailer</b></a>
                      </p>
                   </div>
                   <!-- /.login-card-body -->

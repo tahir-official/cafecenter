@@ -40,6 +40,30 @@ class Functions
         return $result = json_decode($response);
     
     }
+
+    function state_list(){
+        $url=SSOAPI.'get_state_list';
+        $data=array(
+             'api_key' => API_KEY
+        );
+        $method='POST';
+        $response=$this->curl_call($url,$data,$method);
+        return $result = json_decode($response);
+    
+      }
+    
+      function distric_list($state_id){
+        $url=SSOAPI.'get_distric_list_by_state';
+        $data=array(
+            'api_key' => API_KEY,
+            'state_id' => $state_id,
+            
+        );
+        $method='POST';
+        $response=$this->curl_call($url,$data,$method);
+        return $result = json_decode($response);
+    
+      }
     function redirect($location){ 
           echo '<script>window.location.href="'.$location.'"</script>';
           die(); 

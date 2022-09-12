@@ -264,4 +264,38 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'reset_password')
   echo json_encode($output);
 } 
 /*reset password action end*/
+/*get distric action start*/
+
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'get_distric')
+{ 
+   //method check statement
+	 if ($_SERVER["REQUEST_METHOD"] == "POST"){
+			$result=$commonFunction->distric_list($_POST['state_id']);
+			if($result->status != 0){
+			 $district_data=$result->data;
+       $distric_html='<option value="">Select District</option>';
+			 foreach($district_data as $district){
+				$distric_html .='<option value="'.$district->districtid.'">'.$district->district_title.'</option>';
+			 }
+
+			  $output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
+			  $output['status']=1;
+			  $output['html']=$distric_html;
+
+			}else{
+				$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
+			  $output['status']=0;
+			  $output['html']='<option value="">Select District</option>';
+			}
+
+	 }
+	 else{
+			//error message
+			$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+			$output['status']=0;
+			$output['html']='<option value="">Select District</option>';
+	}
+	echo json_encode($output);
+}
+/*get distric action end*/
    

@@ -11,7 +11,15 @@ $(".toggle-password").click(function () {
     let input = $(this).prev();
     console.log(input);
     input.attr("type", input.attr("type") === "password" ? "text" : "password");
-  });
+});
+
+$("#agreeTerms").click(function () {
+  if ($(this).is(":checked")) {
+    $("#sdbtn").prop("disabled", false);
+  } else {
+    $("#sdbtn").prop("disabled", true);
+  }
+});
 
 /*contact form start*/
 $(document).ready(function () {
@@ -295,4 +303,30 @@ $(document).ready(function () {
   });
   
   /*reset password form end*/
+
+  
+/*load Distric list start*/
+function loadDistric(state_id) {
+  $.ajax({
+    method: "POST",
+    url: baseUrl + "include/process.php?action=get_distric",
+    data: { state_id: state_id },
+    dataType: "JSON",
+    beforeSend: function () {
+      $("#district").html("<option>Please wait</option>");
+    },
+  })
+
+    .fail(function (response) {
+      alert("Try again later.");
+    })
+
+    .done(function (response) {
+      $("#district").html(response.html);
+    });
+  return false;
+}
+/*load Distric list end*/
+
+
   

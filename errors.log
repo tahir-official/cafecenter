@@ -2,3 +2,11 @@
 [13-Sep-2022 01:13:35 Asia/Kolkata] PHP Warning:  Undefined variable $get_manager_portal_detail in C:\xampp\htdocs\php\cafecenter\reset.php on line 29
 [13-Sep-2022 01:13:35 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\reset.php on line 29
 [13-Sep-2022 01:13:35 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$message in C:\xampp\htdocs\php\cafecenter\reset.php on line 77
+[13-Sep-2022 02:02:13 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::state_list() in C:\xampp\htdocs\php\cafecenter\signup.php:78
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\php\cafecenter\signup.php on line 78
+[13-Sep-2022 02:08:31 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::state_list() in C:\xampp\htdocs\php\cafecenter\signup.php:74
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\php\cafecenter\signup.php on line 74
