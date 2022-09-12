@@ -42,7 +42,7 @@
                            <input type="text" class="form-control" placeholder="Mobile Number" name="number" id="number" maxlength="10">
                            <div class="input-group-append">
                               <div class="input-group-text">
-                                 <span class="fas fa-mobile"></span>
+                              <span class="mai-phone-portrait">
                               </div>
                            </div>
                         </div>
