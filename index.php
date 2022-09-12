@@ -61,7 +61,7 @@
   </div>
    <!-- .page-section -->
 
-  <div class="page-section">
+  <!-- <div class="page-section">
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
@@ -101,8 +101,8 @@
           </div>
         </div>
       </div>
-    </div> <!-- .container -->
-  </div> 
+    </div> 
+  </div>  -->
   <!-- .page-section -->
 
  
@@ -323,7 +323,7 @@
   </div>  -->
   
   <!-- Blog -->
-  <div class="page-section">
+  <!-- <div class="page-section">
     <div class="container">
       <div class="text-center wow fadeInUp">
         <div class="subhead">Our Blog</div>
@@ -379,7 +379,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <?php
       include_once('include/footer.php');
    ?>
