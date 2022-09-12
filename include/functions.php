@@ -28,6 +28,18 @@ class Functions
         return $result = json_decode($response);
     
     }
+
+    function user_detail($user_id){
+        $url=SSOAPI.'get_user_detail';
+        $data=array(
+            'user_id' => $user_id,
+            'api_key' => API_KEY
+        );
+        $method='POST';
+        $response=$this->curl_call($url,$data,$method);
+        return $result = json_decode($response);
+    
+    }
     function redirect($location){ 
           echo '<script>window.location.href="'.$location.'"</script>';
           die(); 

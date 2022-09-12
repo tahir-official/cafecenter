@@ -3,6 +3,12 @@ include_once('include/functions.php');
 $commonFunction= new functions();
 $get_main_portal_detail=$commonFunction->get_main_portal_detail();
 $portal_detail=$get_main_portal_detail->data;
+
+if(isset($_SESSION['is_user_logged_in'])){ 
+  $user_detail=$commonFunction->user_detail($_SESSION['user_id']);
+  $user_data=$user_detail->data;
+  $user_type=$user_data->user_type;   
+}
 if(ENV=='prod'){
 $site_url=$portal_detail->PORTAL_URL;
 }else{
@@ -84,12 +90,29 @@ $site_url=LOCAL_URL;
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact</a>
             </li>
+            <?php
+            if(isset($_SESSION['is_user_logged_in'])){ 
+            ?>
+            <li class="nav-item">
+              <a class="btn btn-primary ml-lg-2" href="dashboard.php">Hi <?=$user_data->fname.' '.$user_data->lname?></a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-success ml-lg-2" href="logout.php">Logout</a>
+            </li>
+            <?php   
+            
+            }else{
+              ?>
             <li class="nav-item">
               <a class="btn btn-primary ml-lg-2" href="login.php">Login</a>
             </li>
             <li class="nav-item">
               <a class="btn btn-success ml-lg-2" href="signup.php">Sign Up</a>
             </li>
+            <?php
+            }
+            ?>
+            
           </ul>
         </div>
 

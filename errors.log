@@ -1,0 +1,4 @@
+[13-Sep-2022 01:02:14 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$message in C:\xampp\htdocs\php\cafecenter\otpverification.php on line 72
+[13-Sep-2022 01:13:35 Asia/Kolkata] PHP Warning:  Undefined variable $get_manager_portal_detail in C:\xampp\htdocs\php\cafecenter\reset.php on line 29
+[13-Sep-2022 01:13:35 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\reset.php on line 29
+[13-Sep-2022 01:13:35 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$message in C:\xampp\htdocs\php\cafecenter\reset.php on line 77

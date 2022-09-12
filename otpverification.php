@@ -1,7 +1,7 @@
 <?php
    include_once('include/header.php');
    if(isset($_SESSION['is_user_logged_in'])){ $commonFunction->redirect('dashboard.php'); }      
-?>
+   ?>
 <div class="container">
    <div class="page-banner">
       <div class="row justify-content-center align-items-center h-100">
@@ -9,10 +9,10 @@
             <nav aria-label="Breadcrumb">
                <ul class="breadcrumb justify-content-center py-0 bg-transparent">
                   <li class="breadcrumb-item"><a href="<?=$site_url?>">Home</a></li>
-                  <li class="breadcrumb-item active">Login</li>
+                  <li class="breadcrumb-item active">OTP Verification</li>
                </ul>
             </nav>
-            <h1 class="text-center">Login</h1>
+            <h1 class="text-center">OTP Verification</h1>
          </div>
       </div>
    </div>
@@ -28,47 +28,40 @@
                <?php
                   if($get_main_portal_detail->status==1){
                     ?>
-               <!-- /.login-logo -->
                <div class="card">
                   <div class="card-body login-card-body">
-                     <p class="login-box-msg" style="text-align:center">Sign in to start your session</p>
                      <div id="alert" ></div>
                      <?php
                         if (isset($_SESSION['message'])){ echo $_SESSION['message'];  unset($_SESSION['message']);}
                         ?>
-                     <form method="post" id="loginFrom">
-                        <div class="input-group mb-3">
-                           <input type="text" name="username" id="username" class="form-control" placeholder="Username (Phone or Email)" value="<?php if(isset($_COOKIE["loginId"])) { echo $_COOKIE["loginId"]; } ?>">
-                           <div class="input-group-append input-group-text">
-                              <span class="mai-mail">
-                           </div>
+                     <form method="post" id="otpverifyFrom">
+                        <input type="hidden" name="page" value="<?php if(isset($_REQUEST['page'])){echo $_REQUEST['page'];}?>">
+                        <div class="form-group">
+                           <input type="text" class="form-control"  name="number" id="number" value="<?php if(isset($_REQUEST['number'])){echo $_REQUEST['number'];}?>" readonly>
                         </div>
-                        <div class="input-group mb-3">
-                           <input type="password" name="password" id="password" class="form-control" placeholder="Password" value="<?php if(isset($_COOKIE["loginPass"])) { echo $_COOKIE["loginPass"]; } ?>">
-                           <div class="input-group-append input-group-text toggle-password">
-                              <span class="mai-lock-closed">
-                           </div>
+                        <div class="form-group">
+                           <input type="text" class="form-control"  name="otp" id="otp"  placeholder="OTP">
                         </div>
                         <div class="row">
-                           
-                           <div class="col-4">
-                              <button type="submit" class="btn btn-primary btn-block btnLogin">Sign In</button>
+                           <div class="col-6">
+                              <a href="login.php" class="btn btn-primary btn-block">Cancel</a>
+                           </div>
+                           <!-- /.col -->
+                           <div class="col-6">
+                              <button type="submit" class="btn btn-primary btn-block btnOtpverify">Submit</button>
                            </div>
                            <!-- /.col -->
                         </div>
                      </form>
-                     <p class="mb-1">
-                        <a href="forgot-password.php">I forgot my password</a>
-                     </p>
-                     <p class="mb-0">
-                        <a href="signup.php" class="text-center">Register a new membership</a>
+                     <p class="mb-1" id="vload">
+                        <a href="javascript:void(0)" onclick="return sent_otp(<?php if(isset($_REQUEST['number'])){echo $_REQUEST['number'];}?>,'<?php if(isset($_REQUEST['page'])){echo $_REQUEST['page'];}?>')">Send again</a>
                      </p>
                   </div>
                   <!-- /.login-card-body -->
                </div>
                <?php
                   }else{
-                    ?>
+                      ?>
                
                <!-- /.login-logo -->
                <div class="card">

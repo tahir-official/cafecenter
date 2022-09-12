@@ -113,3 +113,186 @@ $("#loginFrom").submit(function (e) {
   return false;
 });
 /*login script end*/
+
+
+/*forget form start*/
+$(document).ready(function () {
+    $("#forgetpassFrom").validate({
+      rules: {
+        number: {
+          required: true,
+          number: true,
+          maxlength: 10,
+        },
+      },
+      submitHandler: function (form) {
+        var number = $("#number").val();
+        var page = $("#page").val();
+        sent_otp(number, page);
+      },
+    });
+  });
+  
+  /*forget form end*/
+  /*send otp start*/
+  function sent_otp(cnumber, page) {
+    $.ajax({
+      method: "POST",
+      url: baseUrl + "include/process.php?action=send_otp",
+      data: { cnumber: cnumber, page: page },
+      dataType: "JSON",
+      beforeSend: function () {
+        $("#alert").html(
+          '<i class="fa fa-spinner fa-spin" style="font-size:27px;margin-bottom: 15px;color: brown;"></i>'
+        );
+        $("#vload").html(
+          '<i class="fa fa-spinner fa-spin" style="font-size:27px;margin-bottom: 15px;color: brown;margin-top: 5px;"></i>'
+        );
+  
+        if (page == "forget") {
+          $(".btnForgetpass").html('Processing <i class="fa fa-spinner"></i>');
+          $(".btnForgetpass").prop("disabled", true);
+          $("#alert").hide();
+        }
+      },
+    })
+  
+      .fail(function (response) {
+        alert("Try again later.");
+      })
+  
+      .done(function (response) {
+        if (response.status == 0) {
+          $("#alert").html(response.message);
+          $("#alert").show();
+          $("#vload").html('<a href="' + baseUrl + 'login.php">Login</a>');
+          if (page == "forget") {
+            $(".btnForgetpass").html("Request OTP");
+            $(".btnForgetpass").prop("disabled", false);
+          }
+        } else {
+          location.href = response.url;
+        }
+      });
+  
+    return false;
+  }  
+
+/*send otp end*/
+  
+/*otpverify form start*/
+$(document).ready(function () {
+    $("#otpverifyFrom").validate({
+      rules: {
+        number: {
+          required: true,
+          number: true,
+          maxlength: 10,
+        },
+        otp: {
+          required: true,
+          number: true,
+        },
+      },
+      submitHandler: function (form) {
+        let formData = new FormData($("#otpverifyFrom")[0]);
+        $.ajax({
+          method: "POST",
+          url: baseUrl + "include/process.php?action=otp_verify",
+          data: formData,
+          dataType: "JSON",
+          cache: false,
+          contentType: false,
+          processData: false,
+          beforeSend: function () {
+            $(".btnOtpverify").html(
+              '<i class="fa fa-spinner"></i> Processing...'
+            );
+            $(".btnOtpverify").prop("disabled", true);
+            $("#alert").hide();
+          },
+        })
+  
+          .fail(function (response) {
+            alert("Try again later.");
+          })
+  
+          .done(function (response) {
+            $(".btnOtpverify").html("Submit");
+            $(".btnOtpverify").prop("disabled", false);
+            if (response.status == 0) {
+              $("#alert").show();
+              $("#alert").html(response.message);
+            } else {
+              location.href = response.url;
+            }
+          })
+          .always(function () {
+            $(".btnOtpverify").html("Submit");
+            $(".btnOtpverify").prop("disabled", false);
+          });
+        return false;
+      },
+    });
+  });
+  
+  /*otpverify form end*/
+
+
+  
+/*reset password form start*/
+$(document).ready(function () {
+    $("#resetFrom").validate({
+      rules: {
+        password: {
+          required: true,
+        },
+        cpassword: {
+          required: true,
+          equalTo: "#password",
+        },
+      },
+      submitHandler: function (form) {
+        let formData = new FormData($("#resetFrom")[0]);
+        $.ajax({
+          method: "POST",
+          url: baseUrl + "include/process.php?action=reset_password",
+          data: formData,
+          dataType: "JSON",
+          cache: false,
+          contentType: false,
+          processData: false,
+          beforeSend: function () {
+            $(".btnResetpass").html(
+              '<i class="fa fa-spinner"></i> Processing...'
+            );
+            $(".btnResetpass").prop("disabled", true);
+            $("#alert").hide();
+          },
+        })
+  
+          .fail(function (response) {
+            alert("Try again later.");
+          })
+  
+          .done(function (response) {
+            $(".btnResetpass").html("Submit");
+            $(".btnResetpass").prop("disabled", false);
+            if (response.status == 0) {
+              $("#alert").show();
+              $("#alert").html(response.message);
+            } else {
+              location.href = response.url;
+            }
+          })
+          .always(function () {
+            $(".btnResetpass").html("Submit");
+            $(".btnResetpass").prop("disabled", false);
+          });
+        return false;
+      },
+    });
+  });
+  
+  /*reset password form end*/
+  
