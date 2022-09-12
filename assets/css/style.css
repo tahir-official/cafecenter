@@ -1,0 +1,164 @@
+#pagelayout_area p.alert{
+	margin-bottom: 15px;
+}
+#pagelayout_area .site-maincontentarea{
+	padding-top:0px;
+}
+#pagelayout_area .site-maincontentarea{
+	margin:0px;
+}
+.left_side {
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    margin-bottom: 30px;
+}
+.profile_box2::after {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e1e1e1;
+    border-radius: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    color: #6c55f9;
+    content: "";
+    font-family: "FontAwesome";
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    right: 3px;
+    top: 0;
+    width: 30px;
+  }.profile_box2 {
+    cursor: pointer;
+    height: 100px;
+    position: relative;
+    text-align: center;
+    width: 100px;
+    margin: 0 auto;
+  }
+  .profile_box2 > img {
+    border: 1px solid #e1e1e1;
+    border-radius: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    object-fit: cover;
+    padding: 3px;
+    width: 100%;
+    background: rgba(250,250,250,0.5);
+  }
+  .profile_box1 h4 {
+    font-size: 21px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    text-align: center;
+    font-family: "DroidB";
+  }
+  .left_side {
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    margin-bottom: 30px;
+  }
+  .ul_set.sider_barr {
+    margin: 0;
+  }
+  .ul_set{
+    list-style: none;
+    padding: 0;
+    margin:0;
+}
+
+  .sider_barr li a {
+    color: #333;
+    display: inline-block;
+    padding: 10px 15px 10px 40px;
+    position: relative;
+    width: 100%;
+    border-top: 1px solid #e1e1e1;
+  }
+  .sider_barr li a i {
+    font-size: 16px;
+    left: 15px;
+    margin-right: 5px;
+    position: absolute;
+    top: 13px;
+    color: #6c55f9;
+  }
+  .rightt {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e1e1e1;
+    padding: 20px 15px;
+  }
+  .h2_hedddin {
+    background: #6c55f9;
+    color: #fff;
+    font-size: 24px;
+    margin: 0;
+    padding: 8px 15px;
+    position: relative;
+    z-index: 1;
+  }
+  .h2_hedddin::after {
+    border-bottom: 15px solid #999;
+    border-right: 15px solid transparent;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    z-index: -1;
+  }
+  .desboadd{
+    padding: 40px 0;
+    background: #f1f1f1;
+  }
+  .edittc{
+      text-align: right;
+  }
+  .edittc a {
+      display: inline-block;
+      background: #fff;
+      padding: 5px 9px;
+      border-radius: 4px;
+  }
+  .profile_box1 h4{
+      color: #fff;
+  }
+  .profile_box1{
+      padding: 15px;
+      position: relative;
+      z-index: 1;
+  }
+  .profile_box1:after{
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: -1;
+      content: "";
+      top: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.4);
+  }
+ 
+  .notification_count{
+    background: #6c55f9;
+    color: white;
+    padding: 3px;
+    border-radius: 7px;
+    }
+
+    
+.btn_theme{
+    background:#6c55f9;
+    color: #fff;
+    border-color: #6c55f9;
+    box-shadow: none !important;
+    border-radius: 20px;
+  }
+  .btn_theme:hover,
+  .btn_theme:active,
+  .btn_theme:focus{
+    background: transparent;
+    color:#6c55f9;
+  }
+  .btn_theme{
+	padding:12px 20px;
+}  
+  
