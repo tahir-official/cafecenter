@@ -1,8 +1,11 @@
 <?php
    include_once('include/header.php');
-   $get_page_detail_by_id=$commonFunction->get_page_detail_by_id(182);
-   $page_detail=$get_page_detail_by_id->data;
+   $page='182';
+   $get_page_detail_by_id=$commonFunction->get_page_detail_by_id($page);
    $page_title=$get_page_detail_by_id->title;
+   $page_detail=$get_page_detail_by_id->data;
+   
+   
 ?>
 
 

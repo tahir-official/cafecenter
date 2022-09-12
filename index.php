@@ -1,17 +1,30 @@
     <?php
       include_once('include/header.php');
+      $home_page='205';
+      $about_page='230';
+      
     ?>
+    
     <div class="container">
       <div class="page-banner home-banner">
         <div class="row align-items-center flex-wrap-reverse h-100">
           <div class="col-md-6 py-5 wow fadeInLeft">
-            <h1 class="mb-4">Let's Check and Optimize your website!</h1>
-            <p class="text-lg text-grey mb-5">Ignite the most powerfull growth engine you have ever built for your company</p>
-            <a href="#" class="btn btn-primary btn-split">Watch Video <div class="fab"><span class="mai-play"></span></div></a>
+            <?php
+            $get_page_detail_by_id=$commonFunction->get_page_detail_by_id($home_page);
+            $page_title=$get_page_detail_by_id->title;
+            $page_detail=$get_page_detail_by_id->data;
+            $meta=$get_page_detail_by_id->meta;
+            $slider_image=$commonFunction->get_attachment_image_src($meta->slider_image[0]);
+            ?>
+            <h1 class="mb-4"><?php echo $meta->slider_heading[0];?></h1>
+            
+            <p class="text-lg text-grey mb-5"><?php echo $meta->slider_detail[0];?></p>
+            
           </div>
           <div class="col-md-6 py-5 wow zoomIn">
             <div class="img-fluid text-center">
-              <img src="assets/img/banner_image_1.svg" alt="">
+              
+              <img src="<?php echo $slider_image->image_src;?>" alt="<?php echo $page_title;?>">
             </div>
           </div>
         </div>
@@ -19,6 +32,34 @@
       </div>
     </div>
   </header>
+
+  <div class="page-section" id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 py-3 wow fadeInUp">
+        <?php
+            $get_page_detail_by_id=$commonFunction->get_page_detail_by_id($about_page);
+            $page_title=$get_page_detail_by_id->title;
+            $page_detail=$get_page_detail_by_id->data;
+            $meta=$get_page_detail_by_id->meta;
+            $about_us_image=$commonFunction->get_attachment_image_src($meta->about_us_image[0]);
+            ?>
+          <span class="subhead"><?=$page_title?></span>
+          <h2 class="title-section"><?php echo $meta->about_us_heading[0];?></h2>
+          <div class="divider"></div>
+          
+          <?php echo substr(strip_tags($page_detail), 0, 215);?>
+          <a href="about.php" class="btn btn-primary mt-3">Read More</a>
+        </div>
+        <div class="col-lg-6 py-3 wow fadeInRight">
+          <div class="img-fluid py-3 text-center">
+            <img src="<?php echo $about_us_image->image_src;?>" alt="<?php echo $page_title;?>">
+          </div>
+        </div>
+      </div>
+    </div> <!-- .container -->
+  </div>
+   <!-- .page-section -->
 
   <div class="page-section">
     <div class="container">
@@ -61,30 +102,12 @@
         </div>
       </div>
     </div> <!-- .container -->
-  </div> <!-- .page-section -->
+  </div> 
+  <!-- .page-section -->
 
-  <div class="page-section" id="about">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 py-3 wow fadeInUp">
-          <span class="subhead">About us</span>
-          <h2 class="title-section">The number #1 SEO Service Company</h2>
-          <div class="divider"></div>
+ 
 
-          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-          <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.</p>
-          <a href="about.html" class="btn btn-primary mt-3">Read More</a>
-        </div>
-        <div class="col-lg-6 py-3 wow fadeInRight">
-          <div class="img-fluid py-3 text-center">
-            <img src="assets/img/about_frame.png" alt="">
-          </div>
-        </div>
-      </div>
-    </div> <!-- .container -->
-  </div> <!-- .page-section -->
-
-  <div class="page-section bg-light">
+  <!-- <div class="page-section bg-light">
     <div class="container">
       <div class="text-center wow fadeInUp">
         <div class="subhead">Our services</div>
@@ -167,10 +190,11 @@
           </div>
         </div>
 
-    </div> <!-- .container -->
-  </div> <!-- .page-section -->
+    </div> 
+  </div>  -->
+  <!-- .page-section -->
 
-  <div class="page-section banner-seo-check">
+  <!-- <div class="page-section banner-seo-check">
     <div class="wrap bg-image" style="background-image: url(assets/img/bg_pattern.svg);">
       <div class="container text-center">
         <div class="row justify-content-center wow fadeInUp">
@@ -182,11 +206,11 @@
             </form>
           </div>
         </div>
-      </div> <!-- .container -->
-    </div> <!-- .wrap -->
-  </div> <!-- .page-section -->
+      </div> 
+    </div> 
+  </div>  -->
 
-  <div class="page-section">
+  <!-- <div class="page-section">
     <div class="container">
       <div class="text-center wow fadeInUp">
         <div class="subhead">Pricing Plan</div>
@@ -264,11 +288,11 @@
         </div>
 
       </div>
-    </div> <!-- .container -->
-  </div> <!-- .page-section -->
+    </div> 
+  </div> -->
 
   <!-- Banner info -->
-  <div class="page-section banner-info">
+  <!-- <div class="page-section banner-info">
     <div class="wrap bg-image" style="background-image: url(assets/img/bg_pattern.svg);">
       <div class="container">
         <div class="row align-items-center">
@@ -295,9 +319,9 @@
           </div>
         </div>
       </div>
-    </div> <!-- .wrap -->
-  </div> <!-- .page-section -->
-
+    </div> 
+  </div>  -->
+  
   <!-- Blog -->
   <div class="page-section">
     <div class="container">

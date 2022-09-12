@@ -1,39 +1,157 @@
-[10-Sep-2022 18:59:33 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 5
-[10-Sep-2022 18:59:33 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 21
-[10-Sep-2022 18:59:33 Asia/Kolkata] PHP Warning:  Attempt to read property "SITE_ICON" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 36
-[10-Sep-2022 18:59:33 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 43
-[10-Sep-2022 18:59:33 Asia/Kolkata] PHP Warning:  Attempt to read property "ERROR_500" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 44
-[10-Sep-2022 18:59:33 Asia/Kolkata] PHP Warning:  Attempt to read property "LOGO" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
-[10-Sep-2022 18:59:33 Asia/Kolkata] PHP Warning:  Attempt to read property "PROJECT" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
-[10-Sep-2022 18:59:33 Asia/Kolkata] PHP Warning:  Attempt to read property "LOGO" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 5
-[10-Sep-2022 18:59:33 Asia/Kolkata] PHP Warning:  Attempt to read property "PROJECT" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 5
-[10-Sep-2022 18:59:33 Asia/Kolkata] PHP Warning:  Attempt to read property "FOOTER_TEXT" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 42
-[10-Sep-2022 19:00:51 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 5
-[10-Sep-2022 19:00:51 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 21
-[10-Sep-2022 19:00:51 Asia/Kolkata] PHP Warning:  Attempt to read property "SITE_ICON" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 36
-[10-Sep-2022 19:00:51 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 43
-[10-Sep-2022 19:00:51 Asia/Kolkata] PHP Warning:  Attempt to read property "ERROR_500" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 44
-[10-Sep-2022 19:00:51 Asia/Kolkata] PHP Warning:  Attempt to read property "LOGO" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
-[10-Sep-2022 19:00:51 Asia/Kolkata] PHP Warning:  Attempt to read property "PROJECT" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
-[10-Sep-2022 19:00:51 Asia/Kolkata] PHP Warning:  Attempt to read property "LOGO" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 5
-[10-Sep-2022 19:00:51 Asia/Kolkata] PHP Warning:  Attempt to read property "PROJECT" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 5
-[10-Sep-2022 19:00:51 Asia/Kolkata] PHP Warning:  Attempt to read property "FOOTER_TEXT" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 42
-[10-Sep-2022 19:04:57 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 5
-[10-Sep-2022 19:04:57 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 21
-[10-Sep-2022 19:04:57 Asia/Kolkata] PHP Warning:  Attempt to read property "SITE_ICON" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 36
-[10-Sep-2022 19:04:57 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 43
-[10-Sep-2022 19:04:57 Asia/Kolkata] PHP Warning:  Attempt to read property "ERROR_500" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 44
-[10-Sep-2022 19:04:57 Asia/Kolkata] PHP Warning:  Attempt to read property "LOGO" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
-[10-Sep-2022 19:04:57 Asia/Kolkata] PHP Warning:  Attempt to read property "PROJECT" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
-[10-Sep-2022 19:05:18 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 5
-[10-Sep-2022 19:05:18 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 21
-[10-Sep-2022 19:05:18 Asia/Kolkata] PHP Warning:  Attempt to read property "SITE_ICON" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 36
-[10-Sep-2022 19:05:18 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 43
-[10-Sep-2022 19:05:18 Asia/Kolkata] PHP Warning:  Attempt to read property "ERROR_500" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 44
-[10-Sep-2022 19:05:18 Asia/Kolkata] PHP Warning:  Attempt to read property "LOGO" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
-[10-Sep-2022 19:05:18 Asia/Kolkata] PHP Warning:  Attempt to read property "PROJECT" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
-[10-Sep-2022 19:05:18 Asia/Kolkata] PHP Warning:  Attempt to read property "LOGO" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 5
-[10-Sep-2022 19:05:18 Asia/Kolkata] PHP Warning:  Attempt to read property "PROJECT" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 5
-[10-Sep-2022 19:05:18 Asia/Kolkata] PHP Warning:  Attempt to read property "FOOTER_TEXT" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 42
-[10-Sep-2022 20:09:23 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$SUPPORT_NUMBER in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 23
-[10-Sep-2022 20:09:23 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$SUPPORT_EMAIL in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 24
+[12-Sep-2022 16:18:59 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 8
+[12-Sep-2022 16:18:59 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:04:36 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 8
+[12-Sep-2022 17:04:36 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:04:36 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:04:45 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 8
+[12-Sep-2022 17:04:45 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:04:45 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:06:27 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 8
+[12-Sep-2022 17:06:27 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:06:27 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:09:14 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 8
+[12-Sep-2022 17:09:14 Asia/Kolkata] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:09:14 Asia/Kolkata] PHP Warning:  Attempt to read property "meta" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:09:28 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 8
+[12-Sep-2022 17:09:28 Asia/Kolkata] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:09:28 Asia/Kolkata] PHP Warning:  Attempt to read property "meta" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:10:22 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 8
+[12-Sep-2022 17:10:22 Asia/Kolkata] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:10:22 Asia/Kolkata] PHP Warning:  Attempt to read property "meta" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:10:35 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\terms_of_service.php on line 4
+[12-Sep-2022 17:10:35 Asia/Kolkata] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\php\cafecenter\terms_of_service.php on line 5
+[12-Sep-2022 17:11:10 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 8
+[12-Sep-2022 17:11:10 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:11:10 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:11:42 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 8
+[12-Sep-2022 17:11:42 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:11:42 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:12:29 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 8
+[12-Sep-2022 17:12:29 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:12:29 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:21:48 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:21:48 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:21:48 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 11
+[12-Sep-2022 17:23:57 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:23:57 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:23:57 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 11
+[12-Sep-2022 17:24:39 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:24:39 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:24:39 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 11
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 5
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 21
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "SITE_ICON" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 36
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 43
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "ERROR_500" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 44
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "LOGO" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "PROJECT" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "meta" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 11
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "LOGO" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 5
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "PROJECT" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 5
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "FOOTER_ONE" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 6
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "SUPPORT_NUMBER" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 23
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "SUPPORT_EMAIL" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 24
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "FACEBOOK" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 29
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "TWITTER" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 30
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "INSTAGRAM" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 31
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "YOUTUBE" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 32
+[12-Sep-2022 17:27:23 Asia/Kolkata] PHP Warning:  Attempt to read property "FOOTER_TEXT" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 37
+[12-Sep-2022 17:28:11 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:28:11 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:28:11 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 11
+[12-Sep-2022 17:30:51 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:30:51 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:30:51 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 11
+[12-Sep-2022 17:31:43 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:31:43 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:31:43 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 11
+[12-Sep-2022 17:33:02 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:33:02 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:33:02 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 11
+[12-Sep-2022 17:40:03 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:40:03 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:40:03 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 11
+[12-Sep-2022 17:42:33 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:42:33 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:42:33 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta_data in C:\xampp\htdocs\php\cafecenter\index.php on line 11
+[12-Sep-2022 17:43:05 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:43:05 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:44:26 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:44:26 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:45:18 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 9
+[12-Sep-2022 17:45:18 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 10
+[12-Sep-2022 17:46:47 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:46:47 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:47:08 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:47:08 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:47:32 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:47:32 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:47:48 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:47:48 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:48:42 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:48:42 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:48:49 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:48:49 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:49:10 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:49:10 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:49:29 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:49:29 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:49:37 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:49:37 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:49:37 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:49:37 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:49:37 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:49:37 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:49:37 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:49:37 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:49:37 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:49:37 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:54:40 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\terms_of_service.php on line 5
+[12-Sep-2022 17:54:40 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\terms_of_service.php on line 6
+[12-Sep-2022 17:54:40 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\terms_of_service.php on line 7
+[12-Sep-2022 17:55:20 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:55:20 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:56:12 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:56:12 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 17:57:00 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 17:57:00 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 18:16:05 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 18:16:05 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$title in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 18:16:05 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$meta in C:\xampp\htdocs\php\cafecenter\index.php on line 7
+[12-Sep-2022 18:34:47 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Object of class stdClass could not be converted to string in C:\xampp\htdocs\php\cafecenter\index.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\php\cafecenter\index.php on line 26
+[12-Sep-2022 18:35:36 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Object of class stdClass could not be converted to string in C:\xampp\htdocs\php\cafecenter\index.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\php\cafecenter\index.php on line 26
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 5
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 21
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "SITE_ICON" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 36
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 43
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "ERROR_500" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 44
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "LOGO" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "PROJECT" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 64
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 5
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "title" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 6
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "meta" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 7
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "slider_heading" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 14
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\php\cafecenter\index.php on line 14
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "slider_detail" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 16
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\php\cafecenter\index.php on line 16
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "slider_image" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 25
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\php\cafecenter\index.php on line 25
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "image_src" on null in C:\xampp\htdocs\php\cafecenter\index.php on line 27
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "LOGO" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 5
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "PROJECT" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 5
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "FOOTER_ONE" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 6
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "SUPPORT_NUMBER" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 23
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "SUPPORT_EMAIL" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 24
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "FACEBOOK" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 29
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "TWITTER" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 30
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "INSTAGRAM" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 31
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "YOUTUBE" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 32
+[12-Sep-2022 18:53:19 Asia/Kolkata] PHP Warning:  Attempt to read property "FOOTER_TEXT" on null in C:\xampp\htdocs\php\cafecenter\include\footer.php on line 37

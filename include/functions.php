@@ -44,4 +44,16 @@ class Functions
             return $result = json_decode($response);
         
     }
+
+    function get_attachment_image_src($image_id){
+        $url=SSOAPI.'get_attachment_image_src';
+        $data=array(
+            'image_id' => $image_id,
+            'api_key' => API_KEY
+        );
+        $method='POST';
+        $response=$this->curl_call($url,$data,$method);
+        return $result = json_decode($response);
+    
+    }
 }
