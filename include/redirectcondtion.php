@@ -16,7 +16,7 @@ if(!isset($_SESSION['is_user_logged_in'])){
         ?>
         <script>
         $(document).ready(function() {
-       //load_paywall('<?=$_SESSION["user_id"]?>');
+         load_paywall('<?=$_SESSION["user_id"]?>');
         });
         </script>
         <?php

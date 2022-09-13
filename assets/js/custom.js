@@ -634,8 +634,8 @@ function load_paywall(user_id) {
     data: { user_id: user_id },
     dataType: "JSON",
     beforeSend: function () {
-      $(".page-section").html('<div id="loader"></div>');
-      $(".page-section").css("text-align", "center");
+      $("#pagelayout_area").html('<div id="loader"></div>');
+      $("#pagelayout_area").css("text-align", "center");
     },
   })
 
@@ -646,17 +646,17 @@ function load_paywall(user_id) {
     .done(function (response) {
       $.getScript(baseUrl + "dist/js/custom.js");
       if (response.status == 0) {
-        $(".page-section").html(response.html);
-        $(".page-section").css("text-align", "center");
+        $("#pagelayout_area").html(response.html);
+        $("#pagelayout_area").css("text-align", "center");
       } else {
-        $(".page-section").html(response.html);
-        $(".page-section").css("text-align", "center");
-        $(".page-section").css("background-image", "url(" + response.img + ")");
-        $(".page-section").css("height", "100vh");
-        $(".page-section").css("background-size", "cover");
-        $(".page-section").css("justify-content", "center");
-        $(".page-section").css("display", "flex");
-        $(".page-section").css("align-items", "center");
+        $("#pagelayout_area").html(response.html);
+        $("#pagelayout_area").css("text-align", "center");
+        $("#pagelayout_area").css("background-image", "url(" + response.img + ")");
+        $("#pagelayout_area").css("height", "100vh");
+        $("#pagelayout_area").css("background-size", "cover");
+        $("#pagelayout_area").css("justify-content", "center");
+        $("#pagelayout_area").css("display", "flex");
+        $("#pagelayout_area").css("align-items", "center");
         
       }
     });
