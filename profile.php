@@ -3,6 +3,7 @@
    include ("include/redirectcondtion.php");
          
 ?>
+<div class="paywall_r">
 <div class="container">
    <div class="page-banner">
       <div class="row justify-content-center align-items-center h-100">
@@ -208,6 +209,7 @@
          </section>
       </div>
    </div>
+</div>
 </div>
 <?php
    //print_r($_SESSION);
