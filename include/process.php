@@ -444,4 +444,90 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'edit_profile_image
 }
 /*edit profile action end*/
 
+
+
+/*edit user action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'edit_users')
+{ 
+	//method check statement
+	if ($_SERVER["REQUEST_METHOD"] == "POST"){
+			if($_FILES["document"]["error"] == 0) {
+				$image_status=1;
+				$document = new CurlFile($_FILES['document']['tmp_name'], $_FILES['document']['type'], $_FILES['document']['name']);
+			} else {
+					$image_status=0;
+					$document = '';
+					
+			}
+
+			if($_POST['page']=='edit_user'){
+				$row_id= $_SESSION['user_id'];
+				$user_type=$_SESSION['user_type'];
+				$email=$_SESSION['user_email'];
+				$contact_number=$_SESSION['user_number'];
+			}else if($_POST['page']=='manager_page'){
+				$row_id=$_POST['row_id'];
+				$user_type=$_POST['user_type'];
+				$email=$_POST['email'];
+				$contact_number=$_POST['contact_number'];
+			}
+
+
+			$url=SSOAPI.'edit_user';
+			$data=array(
+				'row_id' => $row_id,
+				'user_type' => $user_type,
+				'fname' => $_POST['fname'],
+				'lname' => $_POST['lname'],
+				'email' => $email,
+				'contact_number' => $contact_number,
+				'address' => $_POST['address'],
+				'state' => $_POST['state'],
+				'district' => $_POST['district'],
+				'city' => $_POST['city'],
+				'zipcode' => $_POST['zipcode'],
+				'gender' => $_POST['gender'],
+				'dob' => $_POST['dob'],
+				'image_status'=> $image_status,
+				'document'=> $document,
+				'api_key' => API_KEY
+			);
+			if($user_type==3){
+				$data2=array("shopname"=>$_POST['shopname']);
+				$data=array_merge($data,$data2);
+		  }
+			$method='POST';
+			$response=$commonFunction->curl_call($url,$data,$method);
+            $result = json_decode($response);
+			if($result->status != 0){
+				if($_POST['page']=='edit_user'){
+					$alert_msg='Your profile updated Successfully';
+					$output['manager_name']=ucfirst($_POST['fname']).' '.ucfirst($_POST['lname']);
+				}else if($_POST['page']=='manager_page'){
+					$alert_msg=$result->message;
+					$output['fetchTableurl']= SSOAPI.'get_user_table_list';  
+                    $output['user_type']=   $_POST['user_type'];
+					$output['portal']=   'manager'; 
+					$output['show_by']=   $_SESSION['manager_id'];
+				}
+				$output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$alert_msg.' !!</div>';
+				$output['status']=1;
+				
+
+			}else{
+				//error message
+		    $output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
+		    $output['status']=0;
+			}
+
+	}else{
+			//error message
+			$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+			$output['status']=0;
+			
+	}
+	echo json_encode($output);	
+}
+/*edit user action end*/
+
    

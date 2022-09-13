@@ -475,5 +475,89 @@ $(document).ready(function () {
 /*edit user profile form end*/
 
 
+/*edit user form start*/
+$(document).ready(function () {
+  $("#edit_form").validate({
+    rules: {
+      fname: {
+        required: true,
+      },
+      lname: {
+        required: true,
+      },
+      shopname: {
+        required: true,
+      },
+      address: {
+        required: true,
+      },
+      state: {
+        required: true,
+      },
+      district: {
+        required: true,
+      },
+      city: {
+        required: true,
+      },
+      zipcode: {
+        required: true,
+        number: true,
+      },
+      gender: {
+        required: true,
+      },
+      dob: {
+        required: true,
+      },
+    },
+    submitHandler: function (form) {
+      let formData = new FormData($("#edit_form")[0]);
+      $.ajax({
+        method: "POST",
+        url: baseUrl + "include/process.php?action=edit_users",
+        data: formData,
+        dataType: "JSON",
+        cache: false,
+        contentType: false,
+        processData: false,
+        beforeSend: function () {
+          $(".btnsbt").html('<i class="fa fa-spinner"></i> Processing...');
+          $(".btnsbt").prop("disabled", true);
+          $("#alert").hide();
+        },
+      })
+
+        .fail(function (response) {
+          alert("Try again later.");
+        })
+
+        .done(function (response) {
+          $(".btnsbt").html("Submit");
+          $(".btnsbt").prop("disabled", false);
+          $("#alert").show();
+          $("#alert").html(response.message);
+          if (response.status == 1) {
+            $("#profile_name").html(response.manager_name);
+          }
+          $("#alert").focus();
+          $('html').animate({
+              scrollTop: 0
+          }, 1000);
+
+        })
+        .always(function () {
+          $(".btnsbt").html("Submit");
+          $(".btnsbt").prop("disabled", false);
+        });
+      return false;
+    },
+  });
+});
+
+/*edit user form end*/
+
+
+
 
   

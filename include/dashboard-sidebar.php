@@ -13,10 +13,8 @@ height: 100% !important;
 max-width: 150px !important; /* any size */
 max-height: 150px !important; /* any size */
 margin: auto;
-/* background-color: #6eafd4; */
 border-radius: 100%;
 position: relative;
-/* background-image: url(<?=$manager_data->profile?>); */
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
@@ -94,19 +92,19 @@ text-align: center;
                 </svg>
             </div>
         
-        <h4><?=$user_data->fname.' '.$user_data->lname?></h4>
+        <h4 id="profile_name"><?=ucfirst($user_data->fname).' '.ucfirst($user_data->lname)?></h4>
         
     </div>
     <ul class="ul_set sider_barr">
-        <li class="active"><a href="dashboard.php"> Dashboard</a></li>
-        <li><a href="profile.php"> Profile</a></li>
-        <li><a href="dashboard.php"> Subscription Plan</a></li>
-        <li><a href=""><i class="fa fa-users" aria-hidden="true"></i> Consumer Management</a></li>
-        <li><a href=""><i class="fa fa-users" aria-hidden="true"></i> Recharge Management</a></li>
-        <li><a href=""><i class="fa fa-comments-o" aria-hidden="true"></i> Wallet Management<span class="notification_count" id="notification_count">0</span></a> </li>
-        <li><a href=""><i class="fa fa-users" aria-hidden="true"></i> Blog</a></li>
-        <li><a href=""><i class="fa fa-users" aria-hidden="true"></i> Template Management</a></li>
-        <li><a href="change-password.php"><i class="fa fa-unlock-alt" aria-hidden="true"></i>Change Password</a></li>
-        <li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a></li>
+        <li class="active"><a href="dashboard.php"><span class="mai-school-outline"></span> Dashboard</a></li>
+        <li><a href="profile.php"><span class="mai-person-circle-outline"></span> Profile</a></li>
+        <li><a href=""><span class="mai-people-circle-outline"></span> Consumer Management</a></li>
+        <li><a href="dashboard.php"><span class="mai-sync-circle-outline"></span> Subscription Plan</a></li>
+        <li><a href=""><span class="mai-card-outline"></span> Recharge Management</a></li>
+        <li><a href=""><span class="mai-wallet-outline" ></span> Wallet Management <span class="notification_count" id="notification_count"><?=$portal_detail->CURRENCY.' '.$user_data->wallet?></span></a> </li>
+        <li><a href=""><span class="mai-logo-blogger"></span> Blog</a></li>
+        <li><a href=""><span class="mai-book-outline"></span> Template Management</a></li>
+        <li><a href="change-password.php"><span class="mai-settings-outline"></span> Change Password</a></li>
+        <li><a href="logout.php"><span class="mai-power"></span> Log Out</a></li>
     </ul>
 </div>
