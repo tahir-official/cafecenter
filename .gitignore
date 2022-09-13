@@ -1,1 +1,6 @@
 include/config.php
+razorpay-php/libs/Requests-1.6.1/library/Requests/Transport/cacert.pem
+
+# System / Log files
+*.DS_Store
+*.log
