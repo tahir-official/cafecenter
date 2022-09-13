@@ -644,7 +644,7 @@ function load_paywall(user_id) {
     })
 
     .done(function (response) {
-      $.getScript(baseUrl + "dist/js/custom.js");
+      $.getScript(baseUrl + "assets/js/custom.js");
       if (response.status == 0) {
         $("#pagelayout_area").html(response.html);
         $("#pagelayout_area").css("text-align", "center");
@@ -663,6 +663,10 @@ function load_paywall(user_id) {
 
   return false;
 }
+$(".first").click(function(){
+  $(".second").click(); 
+  return false;
+});
 /*load paywall script end*/
 
 

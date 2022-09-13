@@ -14,3 +14,49 @@
 [14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_amount" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 71
 [14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_heading" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 77
 [14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_description" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 82
+[14-Sep-2022 02:58:09 Asia/Kolkata] PHP Warning:  Undefined variable $keyId in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 51
+[14-Sep-2022 02:58:09 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 02:58:09 Asia/Kolkata] PHP Warning:  Attempt to read property "fname" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 02:58:09 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 02:58:09 Asia/Kolkata] PHP Warning:  Attempt to read property "lname" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 02:58:09 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 58
+[14-Sep-2022 02:58:09 Asia/Kolkata] PHP Warning:  Attempt to read property "email" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 58
+[14-Sep-2022 02:58:09 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 59
+[14-Sep-2022 02:58:09 Asia/Kolkata] PHP Warning:  Attempt to read property "contact_number" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 59
+[14-Sep-2022 02:58:09 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 62
+[14-Sep-2022 02:58:09 Asia/Kolkata] PHP Warning:  Attempt to read property "address" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 62
+[14-Sep-2022 03:02:42 Asia/Kolkata] PHP Warning:  Undefined variable $keyId in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 51
+[14-Sep-2022 03:02:42 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 03:02:42 Asia/Kolkata] PHP Warning:  Attempt to read property "fname" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 03:02:42 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 03:02:42 Asia/Kolkata] PHP Warning:  Attempt to read property "lname" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 03:02:42 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 58
+[14-Sep-2022 03:02:42 Asia/Kolkata] PHP Warning:  Attempt to read property "email" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 58
+[14-Sep-2022 03:02:42 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 59
+[14-Sep-2022 03:02:42 Asia/Kolkata] PHP Warning:  Attempt to read property "contact_number" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 59
+[14-Sep-2022 03:02:42 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 62
+[14-Sep-2022 03:02:42 Asia/Kolkata] PHP Warning:  Attempt to read property "address" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 62
+[14-Sep-2022 03:02:48 Asia/Kolkata] PHP Warning:  Undefined variable $keyId in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 51
+[14-Sep-2022 03:02:48 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 03:02:48 Asia/Kolkata] PHP Warning:  Attempt to read property "fname" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 03:02:48 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 03:02:48 Asia/Kolkata] PHP Warning:  Attempt to read property "lname" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Sep-2022 03:02:48 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 58
+[14-Sep-2022 03:02:48 Asia/Kolkata] PHP Warning:  Attempt to read property "email" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 58
+[14-Sep-2022 03:02:48 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 59
+[14-Sep-2022 03:02:48 Asia/Kolkata] PHP Warning:  Attempt to read property "contact_number" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 59
+[14-Sep-2022 03:02:48 Asia/Kolkata] PHP Warning:  Undefined variable $manager_data in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 62
+[14-Sep-2022 03:02:48 Asia/Kolkata] PHP Warning:  Attempt to read property "address" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 62
+[14-Sep-2022 03:06:02 Asia/Kolkata] PHP Warning:  Undefined variable $keyId in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 51
+[14-Sep-2022 03:08:11 Asia/Kolkata] PHP Warning:  Undefined variable $keyId in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 51
+[14-Sep-2022 03:12:03 Asia/Kolkata] PHP Warning:  Undefined variable $keyId in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 51
+[14-Sep-2022 03:12:59 Asia/Kolkata] PHP Warning:  Undefined variable $keyId in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 51
+[14-Sep-2022 03:13:47 Asia/Kolkata] PHP Warning:  Undefined variable $plan_data in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 58
+[14-Sep-2022 03:13:47 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_title" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 58
+[14-Sep-2022 03:13:47 Asia/Kolkata] PHP Warning:  Undefined variable $plan_data in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 62
+[14-Sep-2022 03:13:47 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_amount" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 62
+[14-Sep-2022 03:13:47 Asia/Kolkata] PHP Warning:  Undefined variable $plan_data in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 68
+[14-Sep-2022 03:13:47 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_heading" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 68
+[14-Sep-2022 03:13:47 Asia/Kolkata] PHP Warning:  Undefined variable $plan_data in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 73
+[14-Sep-2022 03:13:47 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_description" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 73
+[14-Sep-2022 03:14:28 Asia/Kolkata] PHP Warning:  Undefined variable $keyId in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 51
