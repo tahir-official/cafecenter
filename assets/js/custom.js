@@ -428,6 +428,52 @@ $(document).ready(function () {
 
 /*signup form end*/
 
+/*edit user profile form start*/
+
+$(document).ready(function () {
+  $("#profile_image").on("change", function () {
+    let formData = new FormData($("#profile_form")[0]);
+    $.ajax({
+      method: "POST",
+      url: baseUrl + "include/process.php?action=edit_profile_image",
+      data: formData,
+      dataType: "JSON",
+      cache: false,
+      contentType: false,
+      processData: false,
+      beforeSend: function () {
+        $(".loader").css("display", "block");
+        $(".profile_form").prop("disabled", true);
+        $("#alert").hide();
+      },
+    })
+
+      .fail(function (response) {
+        alert("Try again later.");
+      })
+
+      .done(function (response) {
+        $(".loader").css("display", "none");
+        $(".profile_form").prop("disabled", false);
+        $("#alert").show();
+        $("#alert").html(response.message);
+        if (response.status == 1) {
+          
+          $(".outer").css(
+            "background-image",
+            "url(" + response.profile_url + ")"
+          );
+        }
+      })
+      .always(function () {
+        $(".loader").css("display", "none");
+        $(".profile_form").prop("disabled", false);
+      });
+    return false;
+  });
+});
+/*edit user profile form end*/
+
 
 
   

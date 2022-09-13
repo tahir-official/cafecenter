@@ -38,7 +38,7 @@
                         ?>
                      </div>
                      <div class="col-sm-8">
-                        <h2 class="h2_hedddin">Dashboard</h2>
+                        <h2 class="h2_hedddin">Profile</h2>
                         <div class="rightt">
 
                            <form method="post" action="http://localhost/wordpress/wedding/wp-admin/admin-post.php">

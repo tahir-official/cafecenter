@@ -397,4 +397,51 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'get_distric')
 	echo json_encode($output);
 }
 /*get distric action end*/
+
+
+/*edit profile action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'edit_profile_image')
+{ 
+	//method check statement
+	if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
+	  	if($_FILES["profile_image"]["error"] == 0) {
+			
+			    $profile = new CurlFile($_FILES['profile_image']['tmp_name'], $_FILES['profile_image']['type'], $_FILES['profile_image']['name']);
+				  $url=SSOAPI.'edit_profile_image';
+					$data=array(
+						'row_id' => $_SESSION['user_id'],
+						'user_type' => $_SESSION['user_type'],
+						'profile'=> $profile,
+						'api_key' => API_KEY
+					);
+					$method='POST';
+					$response=$commonFunction->curl_call($url,$data,$method);
+					$result = json_decode($response);
+					if($result->status != 0){
+						
+						$output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
+						$output['status']=1;
+						$output['profile_url']=$result->profile_url;
+
+					}else{
+						//error message
+						$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
+						$output['status']=0;
+					}
+			} else {
+				$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+				$output['status']=0;
+			}
+		  
+	}else{
+			//error message
+			$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+			$output['status']=0;
+			
+	}
+	echo json_encode($output);	
+}
+/*edit profile action end*/
+
    
