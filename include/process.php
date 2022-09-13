@@ -568,4 +568,135 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'changePassword')
 /*update password action end*/
 
 
+/*get paywal action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_paywall')
+{ 
+	 //method check statement
+	 if($_SERVER["REQUEST_METHOD"] == "POST"){
+		
+		        $url=SSOAPI.'get_plan_by_user_type';
+				$data=array(
+						'user_type' => $_SESSION['user_type'],
+						'api_key' => API_KEY
+				);
+				$method='POST';
+				$response=$commonFunction->curl_call($url,$data,$method);
+				$result = json_decode($response);
+				if($result->status != 0){
+					$plan_data=$result->data;
+					$get_main_portal_detail=$commonFunction->get_main_portal_detail();
+					$portal_detail=$get_main_portal_detail->data;
+					if(ENV=='prod'){
+						$site_url=$portal_detail->PORTAL_URL;
+					}else{
+						$site_url=LOCAL_URL;
+					}
+					$logout=$site_url.'logout.php';
+					$payurl=$site_url.'pay.php';
+					$content ='<div style="background: white;border: 2px solid black;border-radius: 10px;padding: 50px 30px 50px 30px;"  class="col-md-6 col-md-offset-3">
+					<hgroup>
+						<h2>
+						'.$plan_data->plan_heading.'
+						</h2>
+						<h1 class="free">Only in '.$portal_detail->CURRENCY.' '.$plan_data->plan_amount.'</h1>
+					</hgroup>
+					
+					<div class="well">
+					        <button type="button" class="btn btn-info btn-lg first"  title="'.$plan_data->plan_description.'">Subscribe</button><br>
+							
+							<br>
+							<a class="btn btn-danger btn-lg" href="'.$logout.'">Logout</a>
+							
+					</div>
+					
+					</div>';
+					$status=$result->status;
+					$output['img']=$plan_data->plan_bg;
+
+				}else{
+					//error message
+					$msg=$result->message;
+					$content ='<div style="background: white;border: 2px solid black;border-radius: 10px;padding: 50px 30px 50px 30px;"  class="col-md-6 col-md-offset-3">
+					<hgroup>
+						<h2>
+						'.$msg.'
+						</h2>
+						
+					</hgroup>
+					
+					
+					
+					</div>';
+					$status=$result->status;
+				}
+				$html='<style>
+				select.frecuency {
+					border: none;
+					font-style: italic;
+					background-color: transparent;
+					cursor: pointer;
+					-webkit-transform: translateY(0);
+					transform: translateY(0);
+					-webkit-transition: -webkit-transform .35s ease-in;
+					transition: -webkit-transform .35s ease-in;
+					border-bottom: none;
+				}
+				select.frecuency:focus {
+					outline: none;
+					border-bottom: 5px solid #39b3d7;
+					-webkit-transform: translateY(-5px);
+					transform: translateY(-5px);
+					-webkit-transition: -webkit-transform .35s ease-in;
+					transition: -webkit-transform .35s ease-in;
+				}
+				.free {
+					text-transform: uppercase;
+				}
+				.input-group {
+					margin: 20px auto;
+					width: 100%;
+				}
+				input.btn.btn-lg,
+				input.btn.btn-lg:focus {
+					outline: none;
+					width: 60%;
+					height: 60px;
+					border-top-right-radius: 0;
+					border-bottom-right-radius: 0;
+				}
+				button.btn {
+					width: 40%;
+					height: 60px;
+					border-top-left-radius: 0;
+					border-bottom-left-radius: 0;
+				}
+				.promise {
+					color: #999;
+				}</style>
+				<div class="container" style="padding-top: 100px;">
+					
+					<div class="row">
+						<div class="col-md-3 col-md-offset-3">
+						
+						</div>
+						'.$content.'
+						<div class="col-md-3 col-md-offset-3">
+						
+						</div>
+					</div>
+				</div>
+				';
+			$output['html'] =$html;
+			$output['status']=$status;
+	 }else{
+		  //error message
+	  	$output['html'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+		$output['status']=0;
+		
+   }
+echo json_encode($output);	
+}
+
+
+
    

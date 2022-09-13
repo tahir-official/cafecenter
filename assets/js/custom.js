@@ -625,6 +625,46 @@ $(document).ready(function () {
 /*update password script end*/
 
 
+/*load paywall script start*/
+function load_paywall(user_id) {
+
+  $.ajax({
+    method: "POST",
+    url: baseUrl + "include/process.php?action=load_paywall",
+    data: { user_id: user_id },
+    dataType: "JSON",
+    beforeSend: function () {
+      $(".page-section").html('<div id="loader"></div>');
+      $(".page-section").css("text-align", "center");
+    },
+  })
+
+    .fail(function (response) {
+      alert("Try again later.");
+    })
+
+    .done(function (response) {
+      $.getScript(baseUrl + "dist/js/custom.js");
+      if (response.status == 0) {
+        $(".page-section").html(response.html);
+        $(".page-section").css("text-align", "center");
+      } else {
+        $(".page-section").html(response.html);
+        $(".page-section").css("text-align", "center");
+        $(".page-section").css("background-image", "url(" + response.img + ")");
+        $(".page-section").css("height", "100vh");
+        $(".page-section").css("background-size", "cover");
+        $(".page-section").css("justify-content", "center");
+        $(".page-section").css("display", "flex");
+        $(".page-section").css("align-items", "center");
+        
+      }
+    });
+
+  return false;
+}
+/*load paywall script end*/
+
 
 
 

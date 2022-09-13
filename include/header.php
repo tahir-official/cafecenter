@@ -57,6 +57,14 @@ $site_url=LOCAL_URL;
     }
     ?>
   </script>
+  <style>
+        #loader{
+        height: 400px;
+        background: url("<?=$portal_detail->LOADER_IMG?>") no-repeat center;
+                    
+        }
+        
+  </style>
 </head>
 <body class="body-area">
 

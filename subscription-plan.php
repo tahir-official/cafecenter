@@ -1,19 +1,9 @@
 <?php
 include_once('include/header.php');
 include ("include/redirectcondtion.php");
-
-$url=SSOAPI.'get_plan_by_user_type';
-$data=array(
-    'user_type' => $_SESSION['user_type'],
-    'api_key' => API_KEY
-);
-$method='POST';
-$response=$commonFunction->curl_call($url,$data,$method);
-$result = json_decode($response);
-$plan_data=$result->data;
-         
 ?>
-<div class="paywall_r">
+
+
 <div class="container">
    <div class="page-banner">
       <div class="row justify-content-center align-items-center h-100">
@@ -31,6 +21,7 @@ $plan_data=$result->data;
 </div>
 </header>
 <!--dashboard-->
+
 <div class="page-section">
    <div class="container">
       <div id="pagelayout_area">
@@ -99,7 +90,7 @@ $plan_data=$result->data;
       </div>
    </div>
 </div>
-</div>
+
 <?php
    //print_r($_SESSION);
    include_once('include/footer.php');

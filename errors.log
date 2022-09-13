@@ -1,0 +1,16 @@
+[14-Sep-2022 01:30:29 Asia/Kolkata] PHP Warning:  Undefined array key "user_type" in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 7
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Undefined property: stdClass::$data in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 13
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Undefined variable $user_data in C:\xampp\htdocs\php\cafecenter\include\dashboard-sidebar.php on line 170
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Attempt to read property "profile" on null in C:\xampp\htdocs\php\cafecenter\include\dashboard-sidebar.php on line 170
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Undefined variable $user_data in C:\xampp\htdocs\php\cafecenter\include\dashboard-sidebar.php on line 199
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Attempt to read property "fname" on null in C:\xampp\htdocs\php\cafecenter\include\dashboard-sidebar.php on line 199
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\php\cafecenter\include\dashboard-sidebar.php on line 199
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Undefined variable $user_data in C:\xampp\htdocs\php\cafecenter\include\dashboard-sidebar.php on line 199
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Attempt to read property "lname" on null in C:\xampp\htdocs\php\cafecenter\include\dashboard-sidebar.php on line 199
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\php\cafecenter\include\dashboard-sidebar.php on line 199
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Undefined variable $user_data in C:\xampp\htdocs\php\cafecenter\include\dashboard-sidebar.php on line 208
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Attempt to read property "wallet" on null in C:\xampp\htdocs\php\cafecenter\include\dashboard-sidebar.php on line 208
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_title" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 67
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_amount" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 71
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_heading" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 77
+[14-Sep-2022 01:30:30 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_description" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 82
