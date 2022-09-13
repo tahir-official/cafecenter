@@ -48,7 +48,7 @@ if(!isset($_SESSION['is_user_logged_in'])){
             }
             $merchant_order_id= $razorpayOrderId.'_'.rand(100000,999999);
             $data = [
-                "key"               => $keyId,
+                "key"               => $portal_detail->keyId,
                 "amount"            => $amount,
                 "name"              => $portal_detail->PROJECT,
                 "description"       => $plan_data->plan_heading,
