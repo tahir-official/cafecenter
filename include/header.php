@@ -94,7 +94,7 @@ $site_url=LOCAL_URL;
             if(isset($_SESSION['is_user_logged_in'])){ 
             ?>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-2" href="dashboard.php">Hi <?=ucfirst($user_data->fname).' '.ucfirst($user_data->lname)?></a>
+              <a class="btn btn-primary ml-lg-2" href="dashboard.php" id="user_name">Hi <?=ucfirst($user_data->fname).' '.ucfirst($user_data->lname)?></a>
             </li>
             <li class="nav-item">
               <a class="btn btn-success ml-lg-2" href="logout.php">Logout</a>

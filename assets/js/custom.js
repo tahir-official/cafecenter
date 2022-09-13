@@ -539,6 +539,7 @@ $(document).ready(function () {
           $("#alert").html(response.message);
           if (response.status == 1) {
             $("#profile_name").html(response.manager_name);
+            $("#user_name").html('Hi '+response.manager_name);
           }
           $("#alert").focus();
           $('html').animate({
