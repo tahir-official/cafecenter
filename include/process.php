@@ -530,4 +530,42 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'edit_users')
 }
 /*edit user action end*/
 
+
+/*update password action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'changePassword')
+{ 
+	 //method check statement
+	 if($_SERVER["REQUEST_METHOD"] == "POST"){
+		$url=SSOAPI.'change_password';
+		$data=array(
+			'api_key' => API_KEY,
+			'current_password' => $_POST['current_password'],
+			'new_password' => $_POST['new_password'],
+			'row_id' => $_SESSION['user_id'],
+			'user_type' => $_SESSION['user_type'],
+			
+		);
+		$method='POST';
+		$response=$commonFunction->curl_call($url,$data,$method);
+		$result = json_decode($response);
+		if($result->status != 0){
+    	$output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
+			$output['status']=1;
+		}else{
+			//error message
+			$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
+			$output['status']=0;
+	  }
+
+	}else{
+			//error message
+			$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+			$output['status']=0;
+			
+	}
+	echo json_encode($output);
+}
+/*update password action end*/
+
+
    

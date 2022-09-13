@@ -558,6 +558,73 @@ $(document).ready(function () {
 
 /*edit user form end*/
 
+/*reset password form start*/
+function resetPasswordFrom() {
+  $("#updatePassword")[0].reset();
+  return false;
+}
+/*reset password form end*/
+
+
+/*update password script start*/
+$(document).ready(function () {
+  $("#updatePassword").validate({
+    rules: {
+      current_password: {
+        required: true,
+      },
+      new_password: {
+        required: true,
+      },
+      confirm_password: {
+        required: true,
+        equalTo: "#new_password",
+      },
+    },
+    submitHandler: function (form) {
+      let formData = new FormData($("#updatePassword")[0]);
+      $.ajax({
+        method: "POST",
+        url: baseUrl + "include/process.php?action=changePassword",
+        data: formData,
+        dataType: "JSON",
+        cache: false,
+        contentType: false,
+        processData: false,
+        beforeSend: function () {
+          $("#updatePassBtn").html(
+            '<i class="fa fa-spinner"></i> Processing...'
+          );
+          $("#updatePassBtn").prop("disabled", true);
+          $("#alert").hide();
+        },
+      })
+
+        .fail(function (response) {
+          alert("Try again later.");
+        })
+
+        .done(function (response) {
+          $("#updatePassBtn").prop("disabled", false);
+          $("#updatePassBtn").html("Change");
+          $("#alert").show();
+          $("#alert").html(response.message);
+          if (response.status == 1) {
+            $("#updatePassword")[0].reset();
+          }
+        })
+        .always(function () {
+          $("#updatePassBtn").html("Change");
+          $("#updatePassBtn").prop("disabled", false);
+        });
+      return false;
+    },
+  });
+});
+
+/*update password script end*/
+
+
 
 
 

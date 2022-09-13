@@ -10,10 +10,10 @@
             <nav aria-label="Breadcrumb">
                <ul class="breadcrumb justify-content-center py-0 bg-transparent">
                   <li class="breadcrumb-item"><a href="<?=$site_url?>">Home</a></li>
-                  <li class="breadcrumb-item active">Dashboard</li>
+                  <li class="breadcrumb-item active">Profile</li>
                </ul>
             </nav>
-            <h1 class="text-center">Dashboard</h1>
+            <h1 class="text-center">Profile</h1>
          </div>
       </div>
    </div>
