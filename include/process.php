@@ -464,7 +464,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'edit_users')
 				$row_id= $_SESSION['user_id'];
 				$user_type=$_SESSION['user_type'];
 				$email=$_SESSION['user_email'];
-				$contact_number=$_SESSION['user_number'];
+				$contact_number=$_SESSION['contact_number'];
 			}else if($_POST['page']=='manager_page'){
 				$row_id=$_POST['row_id'];
 				$user_type=$_POST['user_type'];
