@@ -1,6 +1,9 @@
 <?php
 include_once('../include/functions.php');
 $commonFunction= new functions();
+require('../razorpay-php/Razorpay.php');
+use Razorpay\Api\Api;
+use Razorpay\Api\Errors\SignatureVerificationError;
 /*login action start*/
 if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'login'){  
 	//method check statement
@@ -696,6 +699,200 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_paywall')
    }
 echo json_encode($output);	
 }
+
+
+/*verify payment action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'verify_payment')
+{ 
+	
+	$get_main_portal_detail=$commonFunction->get_main_portal_detail();
+	$portal_detail=$get_main_portal_detail->data;
+
+	$success = true;
+
+	$error = "Payment Failed";
+
+	if (empty($_POST['razorpay_payment_id']) === false)
+	{
+		$api = new Api($portal_detail->keyId, $portal_detail->keySecret);
+
+		try
+		{
+			// Please note that the razorpay order ID must
+			// come from a trusted source (session here, but
+			// could be database or something else)
+			$attributes = array(
+				'razorpay_order_id' => $_SESSION['razorpay_order_id'],
+				'razorpay_payment_id' => $_POST['razorpay_payment_id'],
+				'razorpay_signature' => $_POST['razorpay_signature']
+			);
+
+			$api->utility->verifyPaymentSignature($attributes);
+		}
+		catch(SignatureVerificationError $e)
+		{
+			$success = false;
+			$error = 'Razorpay Error : ' . $e->getMessage();
+		}
+	}
+
+	if ($success === true)
+	{   
+		
+		$url=SSOAPI.'get_plan_by_user_type';
+		$data=array(
+			'user_type' => $_SESSION['user_type'],
+			'api_key' => API_KEY
+		);
+		$method='POST';
+		$response=$commonFunction->curl_call($url,$data,$method);
+		$result = json_decode($response);
+		$plan_data=$result->data;
+
+		$user_detail=$commonFunction->user_detail($_SESSION['user_id']);
+        $user_data=$user_detail->data;
+
+		$district_manager_commission_percentage=0;
+		$district_manager_commission_amount=0;
+		$district_manager_id='';
+		$distributor_commission_percentage=0;
+		$distributor_commission_amount=0;
+		$distributor_id='';
+		$admin_amount= $plan_data->plan_amount;
+
+		if($_SESSION['user_type']==1){
+			
+			$district_manager_commission_percentage=0;
+			$district_manager_commission_amount=0;
+			$district_manager_id='';
+			$distributor_commission_percentage=0;
+			$distributor_commission_amount=0;
+			$distributor_id='';
+			$admin_amount= $plan_data->plan_amount;
+
+		}else if($_SESSION['user_type']==2){
+			$added_by=$user_data->added_by;
+			if($added_by=='admin' || $added_by=='self'){
+				$district_manager_commission_percentage=0;
+				$district_manager_commission_amount=0;
+				$district_manager_id='';
+				$distributor_commission_percentage=0;
+				$distributor_commission_amount=0;
+				$distributor_id='';
+				$admin_amount= $plan_data->plan_amount;
+
+			}else{
+				
+                //DM Commission for distributer
+				$district_manager_commission_percentage=$plan_data->district_manager_commission;
+				$district_manager_commission_amount = ($district_manager_commission_percentage / 100) * $plan_data->plan_amount;
+				$district_manager_id=$user_data->added_id;
+                $admin_amount= $plan_data->plan_amount - $district_manager_commission_amount;
+
+				$distributor_commission_percentage=0;
+				$distributor_commission_amount=0;
+				$distributor_id='';
+				
+
+			}
+		}else if($_SESSION['user_type']==3){
+			$added_by=$user_data->added_by;
+			if($added_by=='admin' || $added_by=='self'){
+				$district_manager_commission_percentage=0;
+				$district_manager_commission_amount=0;
+				$district_manager_id='';
+				$distributor_commission_percentage=0;
+				$distributor_commission_amount=0;
+				$distributor_id='';
+				$admin_amount= $plan_data->plan_amount;
+
+			}else{
+				//D Commission for retailer
+				$distributor_commission_percentage=$plan_data->distributor_commission;
+				$distributor_commission_amount=($distributor_commission_percentage / 100) * $plan_data->plan_amount;
+				$distributor_id=$user_data->added_id;
+                $admin_amount= $plan_data->plan_amount - $distributor_commission_amount;
+
+				$district_manager_commission_percentage=0;
+				$district_manager_commission_amount = 0;
+				$district_manager_id='';
+
+				//DM Commission for retailer
+				$d_user_detail=$commonFunction->user_detail($user_data->added_id);
+                $d_user_data=$d_user_detail->data;
+				$d_added_by=$d_user_data->added_by;
+				if($d_added_by=='admin' || $d_added_by=='self'){
+					$district_manager_commission_percentage=0;
+				    $district_manager_commission_amount = 0;
+				    $district_manager_id='';
+				}else{
+					$district_manager_commission_percentage=$plan_data->district_manager_commission;
+				    $district_manager_commission_amount = ($district_manager_commission_percentage / 100) * $plan_data->plan_amount;
+				    $district_manager_id=$d_user_data->added_id;
+					$admin_amount=$admin_amount-$district_manager_commission_amount;
+				}
+
+
+                
+                
+			}
+
+		}
+
+		$url=SSOAPI.'subscription_payment_process';
+		$data=array(
+			'api_key' => API_KEY,
+			'portal' => 'manager',
+			'razorpay_payment_id' => $_POST['razorpay_payment_id'],
+			'razorpay_order_id' => $_SESSION['razorpay_order_id'],
+			'razorpay_signature' => $_POST['razorpay_signature'],
+			'plan_amount' => $plan_data->plan_amount,
+			'currency' => 'INR',
+			'payment_date' => date('Y-m-d H:i:s'),
+			'manager_id' => $_SESSION['user_id'],
+			'manager_type' => $_SESSION['user_type'],
+			'manager_name' => $user_data->fname.' '.$user_data->lname,
+			'manager_email' => $user_data->email,
+			'manager_contact_number' => $user_data->contact_number,
+			'manager_address' => $user_data->address,
+			'subscription_date' => date('Y-m-d H:i:s'),
+			'plan_id' => $plan_data->plan_id,
+			'plan_heading' => $plan_data->plan_heading,
+            'district_manager_commission_percentage' => $district_manager_commission_percentage,
+			'district_manager_commission_amount' => $district_manager_commission_amount,
+			'district_manager_id' => $district_manager_id,
+			'distributor_commission_percentage' => $distributor_commission_percentage,
+			'distributor_commission_amount' => $distributor_commission_amount,
+			'distributor_id' => $distributor_id,
+			'admin_amount' => $admin_amount,
+			'payment_mode' => 'online'
+		);
+		$method='POST';
+		$response=$commonFunction->curl_call($url,$data,$method);
+		$result = json_decode($response);
+		
+		if($result->status != 0){
+			
+		    $_SESSION['message']='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
+		}else{
+		   
+		    $_SESSION['message']='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
+		}
+		
+		
+		
+	}
+	else
+	{
+		        
+		$_SESSION['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Your payment failed '.$error.' !!</div>';			
+	}
+	$commonFunction->redirect('../dashboard.php');
+
+	
+} 
+/*verify payment action end*/
+
 
 
 
