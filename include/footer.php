@@ -48,6 +48,9 @@
 
 <script src="assets/js/theme.js"></script>
 <script src="assets/js/jquery.validate.min.js"></script>
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
 <script type="text/javascript">
       let baseUrl = '<?=$site_url;?>';
 </script>

@@ -1,6 +1,9 @@
 <?php
    include_once('include/header.php');
    include ("include/redirectcondtion.php");
+   if($_SESSION['user_type']==4){
+      $commonFunction->redirect('dashboard.php');
+   }
 ?>
 <div class="container">
    <div class="page-banner">
@@ -58,25 +61,23 @@
                               <!-- /.card-body -->
                            </div>
                            <hr>
-                           <div class="table-responsive">
-                              <table class="table">
-                                 <thead class="thead-dark">
-                                    <tr>
-                                       <th scope="col">S.N.</th>
-                                       <th scope="col">Profile</th>
-                                       <th scope="col">Vendor</th>
-                                       <th scope="col">Action</th>
-                                    </tr>
+                           <div class="card-body table-responsive">
+                              <table id="mytable" class="table table-bordered table-striped">
+                                 <thead class="thead-light ">
+                                 <tr>
+                                       <th>S.N.</th>
+                                       <th>Payment ID</th>
+                                       <!-- <th>Retailer Name</th> -->
+                                       <!-- <th>Order ID</th> -->
+                                       <th>Recharge Amount</th>
+                                       <th>Currency</th>
+                                       <th>Recharge Date</th>
+                                       
+                                 </tr>
                                  </thead>
-                                 <tbody>
-                                    <tr>
-                                       <td scope="row">No Data Found</td>
-                                       <td scope="row">No Data Found</td>
-                                       <td scope="row">No Data Found</td>
-                                       <td scope="row">No Data Found</td>
-                                    </tr>
-                                 </tbody>
-                              </table>
+                           
+                                 
+                           </table>
                            </div>
                         </div>
                      </div>
@@ -101,6 +102,7 @@
 var options;
 
 $(document).ready(function () {
+  tableLoad_other("<?=SSOAPI?>get_recharge_table_list",'main',<?php echo $_SESSION['user_id']?>);
   $("#rechargeRequst_form").validate({
     rules: {
       request_amount: {

@@ -1,7 +1,10 @@
 <?php
    include_once('include/header.php');
    include ("include/redirectcondtion.php");
-   ?>
+   if($_SESSION['user_type']==4){
+      $commonFunction->redirect('dashboard.php');
+   }
+?>
 <div class="container">
    <div class="page-banner">
       <div class="row justify-content-center align-items-center h-100">

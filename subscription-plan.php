@@ -1,6 +1,9 @@
 <?php
 include_once('include/header.php');
 include ("include/redirectcondtion.php");
+if($_SESSION['user_type']==4){
+   $commonFunction->redirect('dashboard.php');
+}
 ?>
 
 

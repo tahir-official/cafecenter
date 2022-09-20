@@ -42,7 +42,7 @@
                         <h2 class="h2_hedddin">Dashboard</h2>
                         <div class="rightt">
 
-                           <form method="post" action="http://localhost/wordpress/wedding/wp-admin/admin-post.php">
+                           <!-- <form method="post" action="http://localhost/wordpress/wedding/wp-admin/admin-post.php">
                               <div class="form-group">
                                  <label>Name</label>
                                  <input type="text" name="username" id="username" placeholder="Your Name" class="form-control" value="admin" required="">
@@ -59,7 +59,7 @@
                                  <input type="hidden" name="action" value="user_profile_update_act">
                                  <button class="btn btn_theme btn-lg" type="submit">Update</button>
                               </div>
-                           </form>
+                           </form> -->
                         </div>
                      </div>
                   </div>
