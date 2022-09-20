@@ -12,10 +12,10 @@
             <nav aria-label="Breadcrumb">
                <ul class="breadcrumb justify-content-center py-0 bg-transparent">
                   <li class="breadcrumb-item"><a href="<?=$site_url?>">Home</a></li>
-                  <li class="breadcrumb-item active">Wallet Management</li>
+                  <li class="breadcrumb-item active">Consumers Management</li>
                </ul>
             </nav>
-            <h1 class="text-center">Wallet Management</h1>
+            <h1 class="text-center">Consumers Management</h1>
          </div>
       </div>
    </div>
@@ -40,22 +40,9 @@
                            ?>
                      </div>
                      <div class="col-sm-8">
-                        <h2 class="h2_hedddin">Wallet & Wallet History</h2>
+                        <h2 class="h2_hedddin">Consumers Management</h2>
                         <div class="rightt">
-                           <div class="card card-primary">
-                              <div class="card-body">
-                                 <div class="form-group">
-                                    <label for="inputName">Total Wallet Amount</label>
-                                    <input type="text" id="total_wallet_amount" class="form-control" disabled value="<?=$portal_detail->CURRENCY.''.$user_data->wallet?>">
-                                 </div>
-                                 <div class="form-group">
-                                   <a href="recharge.php" class="btn btn-primary" >Now Recharge</a><br>
-                                   <span class="badge badge-info">You want to recharge your wallet, Please click on this button. &#128070;</span>
-                                 </div>   
-                              </div>
-                              <!-- /.card-body -->
-                           </div>
-                           <hr>
+                           
                            <div class="card-body table-responsive">
                               <table id="mytable" class="table table-bordered table-striped">
                                  <thead class="thead-light ">
