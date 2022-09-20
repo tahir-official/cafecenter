@@ -894,6 +894,152 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'verify_payment')
 /*verify payment action end*/
 
 
+/*update password action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'recharge_request')
+{ 
+	 /*rozarpay setup start*/
+	 $get_main_portal_detail=$commonFunction->get_main_portal_detail();
+     $portal_detail=$get_main_portal_detail->data;
+
+	 $user_detail=$commonFunction->user_detail($_SESSION['user_id']);
+     $user_data=$user_detail->data;
+     $user_type=$user_data->user_type;
+
+	 $api = new Api($portal_detail->keyId, $portal_detail->keySecret);
+	 $fourRandomDigit = rand(1000,9999);
+
+	 $orderData = [
+		 'receipt'         => 'recharge_'.$fourRandomDigit,
+		 'amount'          => $_POST['request_amount'] * 100, // 2000 rupees in paise
+		 'currency'        => 'INR',
+		 'payment_capture' => 1 // auto capture
+	 ];
+
+	 $razorpayOrder = $api->order->create($orderData);
+
+	 $razorpayOrderId = $razorpayOrder['id'];
+
+	 $_SESSION['razorpay_order_id'] = $razorpayOrderId;
+	 $_SESSION['recharge_amount'] = $_POST['request_amount'];
+
+	 $displayAmount = $amount = $orderData['amount'];
+
+	 if ($portal_detail->displayCurrency !== 'INR')
+	 {
+		 $url = "https://api.fixer.io/latest?symbols=$portal_detail->displayCurrency&base=INR";
+		 $exchange = json_decode(file_get_contents($url), true);
+
+		 $displayAmount = $exchange['rates'][$portal_detail->displayCurrency] * $amount / 100;
+	 }
+	 $merchant_order_id= $razorpayOrderId.'_'.rand(100000,999999);
+	 $data = [
+		 "key"               => $portal_detail->keyId,
+		 "amount"            => $amount,
+		 "name"              => $portal_detail->PROJECT,
+		 "description"       => 'Please Recharge your wallet',
+		 "image"             => $portal_detail->LOGO,
+		 "prefill"           => [
+		 "name"              => $user_data->fname.' '.$user_data->lname,
+		 "email"             => $user_data->email,
+		 "contact"           => $user_data->contact_number,
+		 ],
+		 "notes"             => [
+		 "address"           => $user_data->address,
+		 "merchant_order_id" => $merchant_order_id,
+		 ],
+		 "theme"             => [
+		 "color"             => "#6C55F9"
+		 ],
+		 "order_id"          => $razorpayOrderId,
+	 ];
+
+	 if ($portal_detail->displayCurrency !== 'INR')
+	 {
+		 $data['display_currency']  = $portal_detail->displayCurrency;
+		 $data['display_amount']    = $displayAmount;
+	 }
+
+	 echo $json = json_encode($data);
+	
+}
+/*update password action end*/
+
+
+/*recharge payment action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'rechange_payment')
+{ 
+	$get_main_portal_detail=$commonFunction->get_main_portal_detail();
+	$portal_detail=$get_main_portal_detail->data;
+
+	$user_detail=$commonFunction->user_detail($_SESSION['user_id']);
+    $user_data=$user_detail->data;
+
+	$success = true;
+
+	$error = "Payment Failed";
+
+	if (empty($_POST['razorpay_payment_id']) === false)
+	{
+		$api = new Api($portal_detail->keyId, $portal_detail->keySecret);
+
+		try
+		{
+			// Please note that the razorpay order ID must
+			// come from a trusted source (session here, but
+			// could be database or something else)
+			$attributes = array(
+				'razorpay_order_id' => $_SESSION['razorpay_order_id'],
+				'razorpay_payment_id' => $_POST['razorpay_payment_id'],
+				'razorpay_signature' => $_POST['razorpay_signature']
+			);
+
+			$api->utility->verifyPaymentSignature($attributes);
+		}
+		catch(SignatureVerificationError $e)
+		{
+			$success = false;
+			$error = 'Razorpay Error : ' . $e->getMessage();
+		}
+	}
+
+	if ($success === true)
+	{
+		$url=SSOAPI.'recharge_payment_process';
+		$data=array(
+			'api_key' => API_KEY,
+			'portal' => 'main',
+			'razorpay_payment_id' => $_POST['razorpay_payment_id'],
+			'razorpay_order_id' => $_SESSION['razorpay_order_id'],
+			'razorpay_signature' => $_POST['razorpay_signature'],
+			'recharge_amount' => $_SESSION['recharge_amount'],
+			'currency' => 'INR',
+			'recharge_date' => date('Y-m-d H:i:s'),
+			'user_id' => $_SESSION['user_id']
+		);
+		$method='POST';
+		$response=$commonFunction->curl_call($url,$data,$method);
+		$result = json_decode($response);
+		
+		if($result->status != 0){
+			
+		    $_SESSION['message']='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
+		}else{
+		   
+		    $_SESSION['message']='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
+		}
+	}
+	else
+	{
+		        
+		$_SESSION['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Your recharge failed '.$error.' !!</div>';			
+	}
+	$commonFunction->redirect('../recharge.php');
+
+
+}
+/*recharge payment action end*/
+
+
 
 
    
