@@ -37,7 +37,13 @@
       <p class="text-center" id="copyright"> <?=$portal_detail->FOOTER_TEXT?></p>
     </div>
   </footer>
-
+  <div tabindex="-1" class="modal pmd-modal fade" id="form-dialog-other" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="popupcontent">
+            
+        </div>
+    </div>
+  </div>
 
 
 <script src="assets/js/bootstrap.bundle.min.js"></script>

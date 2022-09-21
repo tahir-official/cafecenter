@@ -50,9 +50,9 @@ class Functions
         $response=$this->curl_call($url,$data,$method);
         return $result = json_decode($response);
     
-      }
+    }
     
-      function distric_list($state_id){
+    function distric_list($state_id){
         $url=SSOAPI.'get_distric_list_by_state';
         $data=array(
             'api_key' => API_KEY,
@@ -63,7 +63,27 @@ class Functions
         $response=$this->curl_call($url,$data,$method);
         return $result = json_decode($response);
     
-      }
+    }
+    function qualification_list(){
+        $url=SSOAPI.'get_qualification_list';
+        $data=array(
+             'api_key' => API_KEY
+        );
+        $method='POST';
+        $response=$this->curl_call($url,$data,$method);
+        return $result = json_decode($response);
+    
+    }
+    function interest_list(){
+        $url=SSOAPI.'get_additional_qualification_list';
+        $data=array(
+             'api_key' => API_KEY
+        );
+        $method='POST';
+        $response=$this->curl_call($url,$data,$method);
+        return $result = json_decode($response);
+    
+    }
     function redirect($location){ 
           echo '<script>window.location.href="'.$location.'"</script>';
           die(); 

@@ -1,8 +1,0 @@
-[21-Sep-2022 04:03:37 Asia/Kolkata] PHP Warning:  Undefined variable $plan_data in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 58
-[21-Sep-2022 04:03:37 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_title" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 58
-[21-Sep-2022 04:03:37 Asia/Kolkata] PHP Warning:  Undefined variable $plan_data in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 62
-[21-Sep-2022 04:03:37 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_amount" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 62
-[21-Sep-2022 04:03:37 Asia/Kolkata] PHP Warning:  Undefined variable $plan_data in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 68
-[21-Sep-2022 04:03:37 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_heading" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 68
-[21-Sep-2022 04:03:37 Asia/Kolkata] PHP Warning:  Undefined variable $plan_data in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 73
-[21-Sep-2022 04:03:37 Asia/Kolkata] PHP Warning:  Attempt to read property "plan_description" on null in C:\xampp\htdocs\php\cafecenter\subscription-plan.php on line 73

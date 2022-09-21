@@ -40,7 +40,8 @@
                            ?>
                      </div>
                      <div class="col-sm-8">
-                        <h2 class="h2_hedddin">Consumers Management</h2>
+                        <h2 class="h2_hedddin">Consumers Management <button style="float: right;margin-top: -6px;margin-right: -15px;" type="button" class="btn btn-success" onClick="load_users_popup(0,4)"><span class="mai-add-circle-outline"></span> </button></h2>
+                        
                         <div class="rightt">
                            
                            <div class="card-body table-responsive">

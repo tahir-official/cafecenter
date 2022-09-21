@@ -694,6 +694,36 @@ function tableLoad_other(loadurl, portal, user_id) {
 }
 /*load  othertable data end*/
 
+/*Load Users Popup start*/
+function load_users_popup(row_id, user_type) {
+  $.ajax({
+    method: "POST",
+    url: baseUrl + "include/process.php?action=load_users_popup",
+    data: { row_id: row_id, user_type: user_type },
+    dataType: "JSON",
+    beforeSend: function () {
+      $("#form-dialog-other").modal("show");
+      $("#popupcontent").html('<div id="loader"></div>');
+    },
+  })
+
+    .fail(function (response) {
+      alert("Try again later.");
+    })
+
+    .done(function (response) {
+      $.getScript(baseUrl + "assets/js/custom.js");
+
+      $("#popupcontent").html(response.html);
+    })
+    .always(function () {
+      $("#form-dialog-other").modal("show");
+    });
+
+  return false;
+}
+/*Load Users Popup end*/
+
 
 
   

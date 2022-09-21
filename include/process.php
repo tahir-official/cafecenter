@@ -1039,6 +1039,327 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'rechange_payment')
 }
 /*recharge payment action end*/
 
+/*load users popup action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
+{ 
+	//method check statement
+	if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
+	if($_POST['user_type']==4){
+		$user_title='Consumer';
+		
+    }
+	$result_alert='';
+
+	if($_POST['row_id']==0){
+			$popup_title='Add '.$user_title;
+			$fname='';
+			$lname='';
+			$email='';
+			$contact_number='';
+			$address='';
+			
+
+			$state_list=$commonFunction->state_list();
+			$state_status=$state_list->status;
+			$state_message=$state_list->message;
+			$state_data=$state_list->data;
+
+			if($state_status == 0){
+				$state_option='<option value="">'.$state_message.'</option>';
+				$states_disbale='disabled';
+			}else{
+				$states_disbale='';
+				$state_option='<option value="">Select State</option>';
+				foreach($state_data as $state){
+						$state_option.= '<option value="'.$state->state_id.'">'.$state->state_title.'</option>';
+				}
+			}
+			
+            $district_disbale='';
+			$district_option='<option value="">Select District</option>';
+
+			$city='';
+			$zipcode='';
+			$gender_option='<option value="male">Male</option>
+										 <option value="female">Female</option>
+										 <option value="Other">other</option>';
+
+			$dob=''; 
+			$download_link='';
+			
+			$qualification_list=$commonFunction->qualification_list();
+			$qualification_status=$qualification_list->status;
+			$qualification_message=$qualification_list->message;
+			$qualification_data=$qualification_list->data;
+
+			if($qualification_status == 0){
+				$qualification_option='<option value="">'.$qualification_message.'</option>';
+				$qualification_disbale='disabled';
+			}else{
+				$qualification_disbale='';
+				$qualification_option='<option value="">Select Qualification</option>';
+				foreach($qualification_data  as $qualification){
+						
+						$qualification_option.= '<option value="'.$qualification->term_id.'">'.$qualification->name.'</option>';
+				}
+			}
+
+			$interest_list=$commonFunction->interest_list();
+			$interest_status=$interest_list->status;
+			$interest_message=$interest_list->message;
+			$interest_data=$interest_list->data;
+
+			if($interest_status == 0){
+				$interest_with_option='<option value="">'.$qualification_message.'</option>';
+				$interest_with_disbale='disabled';
+			}else{
+				$interest_with_disbale='';
+				$interest_with_option='<option value="">Select Interest with</option>';
+				foreach($interest_data  as $interest){
+					
+						$interest_with_option.= '<option value="'.$interest->term_id.'">'.$interest->name.'</option>';
+				}
+			}
+			$action='add_user';            
+			
+	}else{
+			$popup_title='Edit '.$user_title;
+			
+			$url=SSOAPI.'get_user_detail';
+			$data=array(
+					'user_id' => $_POST['row_id'],
+					'api_key' => API_KEY
+			);
+			$method='POST';
+			$response=$commonFunction->curl_call($url,$data,$method);
+			$result = json_decode($response);
+			if($result->status==0){
+					$result_alert='<div class="alert alert-danger alert-dismissible fade show" role="alert">
+												<strong>Error!</strong>  '.$result->message.' !!
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>';
+			}else{
+				   $action='edit_users';
+					$result_alert='';
+					$response_result=$result->data;
+					$fname=$response_result->fname;
+					$lname=$response_result->lname;
+					$email=$response_result->email;
+					$contact_number=$response_result->contact_number;
+					$address=$response_result->address;
+					$shopname=$response_result->shopname;
+
+					
+					$state_list=$commonFunction->state_list();
+					$state_status=$state_list->status;
+					$state_message=$state_list->message;
+					$state_data=$state_list->data;
+
+					if($state_status == 0){
+						$states_disbale='disabled';
+						$state_option='<option value="">'.$state_message.'</option>';
+						
+					}else{
+						$states_disbale='';
+						$state_option='<option value="">Select State</option>';
+						foreach($state_data as $state){
+						$state_selected='';
+						if($response_result->state == $state->state_id){
+						$state_selected='selected';    
+						}
+						$state_option .= '<option value="'.$state->state_id.'" '.$state_selected.'>'.$state->state_title.'</option>';
+					  }
+					}
+
+					
+
+					$district_list=$commonFunction->distric_list($response_result->state);
+					$district_status=$district_list->status;
+					$district_message=$district_list->message;
+					$district_data=$district_list->data;
+					
+
+					if($district_status == 0){
+						$district_disbale='disabled';
+						$district_option='<option value="">'.$district_message.'</option>';
+					}else{
+						$district_disbale='';
+						$district_option ='<option value="">Select District</option>';
+						foreach($district_data as $district){
+								$district_selected='';
+								if($response_result->district==$district->districtid){
+								$district_selected='selected';    
+								}
+								$district_option .= '<option value="'.$district->districtid.'" '.$district_selected.'>'.$district->district_title.'</option>';
+						}
+					}
+
+
+
+					
+
+					$city=$response_result->city;
+					$zipcode=$response_result->zipcode;
+					$gender=$response_result->gender;
+					$male_selected='';
+					$female_selected='';
+					$other_selected='';
+					if($gender=='male'){
+							$male_selected='selected';
+					}
+					if($gender=='female'){
+							$female_selected='selected';
+					}
+					if($gender=='other'){
+							$other_selected='selected';
+					}
+					$gender_option='<option value="male" '.$male_selected.'>Male</option>
+												 <option value="female" '.$female_selected.'>Female</option>
+												 <option value="other" '.$other_selected.'>Other</option>';
+					$dob=$response_result->dob;
+					$download_link='<a href="'.$response_result->document.'" target="_blank">Download</a>';
+
+			}
+			
+	}
+
+	$output['html']='<div class="modal-header pmd-modal-border">
+							<h3 class="modal-title">'.$popup_title.'</h3>
+							<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+					</div>
+					
+					<form name="users_form" id="users_form" method="post">
+          <input type="hidden" name="page" value="manager_page">
+          <input type="hidden" name="action" value="'.$action.'">
+					<div class="modal-body">
+							        <div id="popupalert">'.$result_alert.'</div>
+									<input type="hidden" name="user_type" value="'.$_POST['user_type'].'">
+									<input type="hidden" name="row_id" value="'.$_POST['row_id'].'">
+									<div class="row">
+											<div class="form-group col-md-6">
+													<label for="fname">First Name</label>
+													<input id="fname" name="fname" class="form-control" type="text" value="'.$fname.'">
+											</div>
+											<div class="form-group col-md-6">
+													<label for="lname">Last Name</label>
+													<input id="lname" name="lname" class="form-control" type="text" value="'.$lname.'">
+											</div>
+
+									</div>
+									<div class="row">
+											<div class="form-group col-md-6">
+													<label for="email">Email Address</label>
+													<input type="email" class="mat-input form-control" id="email" name="email" value="'.$email.'">
+											</div>
+											<div class="form-group col-md-6">
+													<label for="contact_number">Mobile No.</label>
+													<input type="Text" class="form-control" id="contact_number" name="contact_number" maxlength="10" value="'.$contact_number.'">
+											</div>
+
+									</div>
+									<div class="row">
+											<div class="form-group col-md-12">
+													<label for="address">Address</label>
+													<input id="address" name="address" class="form-control" type="text" value="'.$address.'">
+											</div>
+											
+									</div>
+									
+									<div class="row">
+											<div class="form-group col-md-6">
+													<label for="state">Select State</label>
+													<select '.$states_disbale.' id="state" name="state" class="form-control" onchange="return loadDistric(this.value)">
+															
+															'.$state_option.'
+														 
+													</select>
+											</div>
+											<div class="form-group col-md-6">
+													<label for="district">Select District</label>
+													<select id="district" name="district" class="form-control" '.$district_disbale.'>
+															'.$district_option.'
+														 
+													</select>
+											</div>
+
+									</div>
+									
+									<div class="row">
+											<div class="form-group col-md-6">
+													<label for="city">City</label>
+													<input id="city" name="city" class="form-control" type="text" value="'.$city.'">
+											</div>
+											<div class="form-group col-md-6">
+													<label for="zipcode">Zipcode</label>
+													<input id="zipcode" name="zipcode" class="form-control" type="text" value="'.$zipcode.'">
+											</div>
+
+									</div>
+
+
+									<div class="row">
+											<div class="form-group col-md-6">
+													<label for="gender">Gender</label>
+													<select id="gender" name="gender" class="form-control" >
+															<option value="">Select Gender</option>
+															'.$gender_option.'
+														 
+													</select>
+											</div>
+
+										 <div class="form-group col-md-4">
+										 <label for="dob">Dob</label>
+											<input type="date" class="form-control" id="dob" name="dob" max="'.date('Y-m-d').'" value="'.$dob.'"> 
+										 </div>
+
+										<div class="form-group col-md-2">
+											<label for="document">Resume</label>
+											<input type="file" class="form-control" id="document" name="document" accept=".jpg, .jpeg, .pdf">
+											'.$download_link.'
+										</div>
+									</div>
+
+									<div class="row">
+											<div class="form-group col-md-6">
+													<label for="state">Select Qualification</label>
+													<select '.$qualification_disbale.' id="qualification" name="qualification" class="form-control" >
+															
+															'.$qualification_option.'
+														 
+													</select>
+											</div>
+											<div class="form-group col-md-6">
+													<label for="state">Select Interest with</label>
+													<select '.$interest_with_disbale.' id="interest_with" name="interest_with" class="form-control" >
+															
+															'.$interest_with_option.'
+														
+													</select>
+											</div>
+
+									</div>
+									
+								 
+							
+					</div>
+					<div class="modal-footer">
+							<button data-dismiss="modal" class="btn pmd-ripple-effect btn-dark pmd-btn-flat" type="button">Cancel</button>
+							<button  class="btn btnsbt pmd-ripple-effect btn-primary pmd-btn-flat" type="submit">Submit</button>
+					</div>
+					</form>'; 
+	}else{
+		//error message
+		$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+		$output['status']=0;
+		
+}
+echo json_encode($output);	
+}
+/*load users popup action end*/
+
 
 
 
