@@ -725,5 +725,110 @@ function load_users_popup(row_id, user_type) {
 /*Load Users Popup end*/
 
 
+/*add edit user form start*/
+$(document).ready(function () {
+  $("#users_form").validate({
+    rules: {
+      consumer_plan: {
+        required: true,
+      },
+      fname: {
+        required: true,
+      },
+      lname: {
+        required: true,
+      },
+      email: {
+        required: true,
+        email: true,
+      },
+      contact_number: {
+        required: true,
+        number: true,
+      },
+      address: {
+        required: true,
+      },
+      state: {
+        required: true,
+      },
+      district: {
+        required: true,
+      },
+      city: {
+        required: true,
+      },
+      zipcode: {
+        required: true,
+        number: true,
+      },
+      gender: {
+        required: true,
+      },
+      dob: {
+        required: true,
+      },
+      qualification: {
+        required: true,
+      },
+      interest_with: {
+        required: true,
+      },
+    },
+    submitHandler: function (form) {
+      let formData = new FormData($("#users_form")[0]);
+      $.ajax({
+        method: "POST",
+        url: baseUrl + "include/process.php",
+        data: formData,
+        dataType: "JSON",
+        cache: false,
+        contentType: false,
+        processData: false,
+        beforeSend: function () {
+          $(".btnsbt").html('<i class="fa fa-spinner"></i> Processing...');
+          $(".btnsbt").prop("disabled", true);
+          $("#alert").hide();
+          $("#popupalert").hide();
+        },
+      })
+
+        .fail(function (response) {
+          alert("Try again later.");
+        })
+
+        .done(function (response) {
+          $(".btnsbt").html("Submit");
+          $(".btnsbt").prop("disabled", false);
+          if (response.status == 0) {
+            $("#popupalert").show();
+            $("#popupalert").html(response.message);
+          } else {
+            $("#form-dialog-other").trigger("click");
+            $("#mytable").DataTable().destroy();
+            tableLoad(
+              response.fetchTableurl,
+              response.user_type,
+              response.portal,
+              response.show_by
+            );
+            $("#alert").show();
+            $("#alert").html(response.message);
+            $("#users_form")[0].reset();
+          }
+        })
+        .always(function () {
+          $(".btnsbt").html("Submit");
+          $(".btnsbt").prop("disabled", false);
+        });
+      return false;
+    },
+  });
+});
+
+/*add edit district_manager_form form end*/
+
+
+
 
   

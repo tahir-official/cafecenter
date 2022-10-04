@@ -84,6 +84,18 @@ class Functions
         return $result = json_decode($response);
     
     }
+
+    function consumer_plan($plan_id){
+        $url=SSOAPI.'get_consumer_plan';
+        $data=array(
+             'api_key' => API_KEY,
+             'plan_id' => $plan_id
+        );
+        $method='POST';
+        $response=$this->curl_call($url,$data,$method);
+        return $result = json_decode($response);
+    
+    }
     function redirect($location){ 
           echo '<script>window.location.href="'.$location.'"</script>';
           die(); 

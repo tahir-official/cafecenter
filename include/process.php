@@ -93,15 +93,18 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add_user')
 			}else if($_POST['page']=='manager_page'){
 				$parts = explode('-', $_POST['dob']);
 				$password='Welcome@'.$parts[0].mt_rand(10,99);
-				if($_SESSION['manager_type']==1){
+				if($_SESSION['user_type']==1){
 					$added_by='district_managers';
-				}else if($_SESSION['manager_type']==2){
+				}else if($_SESSION['user_type']==2){
 					$added_by='distributor';
+				}else if($_SESSION['user_type']==3){
+					$added_by='retailer';
 				}
 				
-				$added_id=$_SESSION['manager_id'];
+				$added_id=$_SESSION['user_id'];
 				$phone_verification=1;
 				$otp='';
+				$subscription_status=1;
 			}
 
 			$url=SSOAPI.'add_user';
@@ -134,7 +137,10 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add_user')
 			if($_POST['user_type']==3){
 				$data2=array("shopname"=>$_POST['shopname']);
 				$data=array_merge($data,$data2);
-		  }
+		    }else if($_POST['user_type']==4){
+				$data2=array("consumer_plan"=>$_POST['consumer_plan'],"qualification"=>$_POST['qualification'],"interest_with"=>$_POST['interest_with'],"subscription_status"=>$subscription_status);
+				$data=array_merge($data,$data2);
+		    } 
 			$method='POST';
 			$response=$commonFunction->curl_call($url,$data,$method);
             $result = json_decode($response);
@@ -154,8 +160,8 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add_user')
 					$output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
 					$output['fetchTableurl']= SSOAPI.'get_user_table_list';  
                     $output['user_type']=   $_POST['user_type'];
-					$output['portal']=   'manager'; 
-					$output['show_by']=   $_SESSION['manager_id'];
+					$output['portal']=   'main'; 
+					$output['show_by']=   $_SESSION['user_id'];
 				}
 
 				
@@ -1050,6 +1056,8 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 		
     }
 	$result_alert='';
+	$get_main_portal_detail=$commonFunction->get_main_portal_detail();
+	$portal_detail=$get_main_portal_detail->data;
 
 	if($_POST['row_id']==0){
 			$popup_title='Add '.$user_title;
@@ -1121,6 +1129,24 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 						$interest_with_option.= '<option value="'.$interest->term_id.'">'.$interest->name.'</option>';
 				}
 			}
+
+			$consumer_plan=$commonFunction->consumer_plan(0);
+			$consumer_plan_status=$consumer_plan->status;
+			$consumer_plan_message=$consumer_plan->message;
+			$consumer_plan_data=$consumer_plan->data;
+
+			if($consumer_plan_status == 0){
+				$consumer_plan_option='<option value="">'.$consumer_plan_message.'</option>';
+				$consumer_plan_disbale='disabled';
+			}else{
+				$consumer_plan_disbale='';
+				$consumer_plan_option='<option value="">Select Plan</option>';
+				foreach($consumer_plan_data  as $consumer_plan){
+						
+						$consumer_plan_option.= '<option value="'.$consumer_plan->id.'">'.$consumer_plan->post_title.' for '.$consumer_plan->plan_days.' Days only in '.$portal_detail->CURRENCY.$consumer_plan->plan_amount.', Retailer Commission '.$portal_detail->CURRENCY.$consumer_plan->retailer_commissions.'</option>';
+				}
+			}
+
 			$action='add_user';            
 			
 	}else{
@@ -1238,6 +1264,17 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 							        <div id="popupalert">'.$result_alert.'</div>
 									<input type="hidden" name="user_type" value="'.$_POST['user_type'].'">
 									<input type="hidden" name="row_id" value="'.$_POST['row_id'].'">
+									<div class="row">
+											<div class="form-group col-md-12">
+													<label for="consumer_plan">Select Consumer Plan</label>
+													<select '.$consumer_plan_disbale.' id="consumer_plan" name="consumer_plan" class="form-control" >
+															
+															'.$consumer_plan_option.'
+														 
+													</select>
+											</div>
+											
+									</div>
 									<div class="row">
 											<div class="form-group col-md-6">
 													<label for="fname">First Name</label>
