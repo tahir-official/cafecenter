@@ -668,7 +668,31 @@ $(".first").click(function(){
   return false;
 });
 /*load paywall script end*/
+/*load table data start*/
+function tableLoad(loadurl, user_type, portal, show_by) {
+  var dataTable = $("#mytable").DataTable({
+    processing: true,
+    serverSide: true,
+    order: [],
+    ajax: {
+      url: loadurl,
+      type: "POST",
+      data: {
+        user_type: user_type,
+        portal: portal,
+        show_by: show_by,
+      },
+    },
+    columnDefs: [
+      {
+        targets: "_all" /* column index */,
 
+        orderable: false /* true or false */,
+      },
+    ],
+  });
+}
+/*load table data end*/
 /*load other table data start*/
 function tableLoad_other(loadurl, portal, user_id) {
   var dataTable = $("#mytable").DataTable({
@@ -814,6 +838,7 @@ $(document).ready(function () {
             );
             $("#alert").show();
             $("#alert").html(response.message);
+            
             $("#users_form")[0].reset();
           }
         })
@@ -828,7 +853,107 @@ $(document).ready(function () {
 
 /*add edit district_manager_form form end*/
 
+$(function() { 
+  $("#qualification").multipleSelect({
+    placeholder: 'Select Qualification',
+  });
+  $("#interest_with").multipleSelect({
+    placeholder: 'Select Interest with',
+  });
+});
 
+
+/*change user status start*/
+function changeUserStatus(user_id, status, user_type) {
+  if (status == 1) {
+    var alert = "active";
+  } else {
+    var alert = "deactive";
+  }
+  if (user_type == 1) {
+    alertmessage =
+      "Are you sure you want to " + alert + " this District Manager?";
+  } else if (user_type == 2) {
+    alertmessage = "Are you sure you want to " + alert + " this Distributor?";
+  } else if (user_type == 3) {
+    alertmessage = "Are you sure you want to " + alert + " this Retailer?";
+  } else if (user_type == 4) {
+    alertmessage = "Are you sure you want to " + alert + " this Consumer?";
+  }
+  if (confirm(alertmessage)) {
+    $.ajax({
+      method: "POST",
+      url: baseUrl + "include/process.php?action=change_user_status",
+      data: { user_id: user_id, status: status, user_type: user_type },
+      dataType: "JSON",
+      beforeSend: function () {
+        $(".stbtn").attr("disabled", true);
+        $("#alert").hide();
+      },
+    })
+
+      .fail(function (response) {
+        alert("Try again later.");
+      })
+
+      .done(function (response) {
+        if (response.status == 0) {
+          $(".stbtn").attr("disabled", false);
+        } else {
+          $("#mytable").DataTable().destroy();
+          tableLoad(
+            response.fetchTableurl,
+            response.user_type,
+            response.portal,
+            response.show_by
+          );
+        }
+        $("#alert").html(response.message);
+        $("#alert").show();
+      })
+
+      .always(function () {
+        $(".stbtn").attr("disabled", false);
+      });
+  } else {
+    return false;
+  }
+}
+/*change user status end*/
+
+
+/*load user detail model script start*/
+function detailPopupUser(user_id) {
+  $.ajax({
+    method: "POST",
+    url: baseUrl + "include/process.php?action=detail_popup_user",
+    data: { user_id: user_id },
+    dataType: "JSON",
+    beforeSend: function () {
+      $("#form-dialog-other").modal("show");
+      $("#popupcontent").html('<div id="loader"></div>');
+    },
+  })
+
+    .fail(function (response) {
+      alert("Try again later.");
+    })
+
+    .done(function (response) {
+      $.getScript(baseUrl + "assets/js/custom.js");
+
+      $("#popupcontent").html(response.html);
+    })
+    .always(function () {
+      $("#form-dialog-other").modal("show");
+    });
+
+  return false;
+}
+/*load user model script end*/
+function showAlert() {
+  alert ("Coming Soon!");
+}
 
 
   

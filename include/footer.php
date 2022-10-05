@@ -4,7 +4,7 @@
         <div class="col-lg-3 py-3">
         <a href="<?=$site_url?>" class="scrollto"><img style="width:150px" src="<?=$portal_detail->LOGO?>" alt="<?=$portal_detail->PROJECT?>" class="img-fluid"></a>
           <p><?=$portal_detail->FOOTER_ONE?></p>
-
+          
           
         </div>
         <div class="col-lg-3 py-3">
@@ -44,6 +44,9 @@
         </div>
     </div>
   </div>
+
+  
+											
 
 
 <script src="assets/js/bootstrap.bundle.min.js"></script>

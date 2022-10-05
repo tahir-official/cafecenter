@@ -47,16 +47,23 @@
                            <div class="card-body table-responsive">
                               <table id="mytable" class="table table-bordered table-striped">
                                  <thead class="thead-light ">
+                                 
                                  <tr>
                                        <th>S.N.</th>
-                                       <!-- <th>Retailer Name</th> -->
-                                       <th>Transaction ID</th>
-                                       <th>Amount</th>
-                                       <th>Pay For</th>
-                                       <th>Pay Reason</th>
+                                       <th>Profile</th>
+                                       <th>First Name</th>
+                                       <th>Last Name</th>
+                                       <th>Email</th>
+                                       <th>Contact Number</th>
                                        <th>Created Date</th>
+                                       <th>Subscription End Date</th>
+                                       <th>Subscription Status</th>
+                                       <th>Status</th>
+                                       <th>Action</th>
                                        
                                  </tr>
+                                       
+                                 
                                  </thead>
                            
                                  
@@ -77,6 +84,6 @@
 ?>
 <script>
     $(document).ready(function(){
-        tableLoad_other("<?=SSOAPI?>get_retailer_wallet_transaction_table_list",'main',<?php echo $_SESSION['user_id']?>);
+      tableLoad("<?=SSOAPI?>get_user_table_list",4,'main',<?php echo $_SESSION['user_id']?>);
     });
 </script>

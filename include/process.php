@@ -90,6 +90,8 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add_user')
 				$added_id=1;
 				$phone_verification=0;
 				$otp=rand(100000,999999);
+				$qualification_status='ok';
+				$interest_with_status='ok';
 			}else if($_POST['page']=='manager_page'){
 				$parts = explode('-', $_POST['dob']);
 				$password='Welcome@'.$parts[0].mt_rand(10,99);
@@ -105,72 +107,106 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'add_user')
 				$phone_verification=1;
 				$otp='';
 				$subscription_status=1;
-			}
 
-			$url=SSOAPI.'add_user';
-			
-			$data=array(
-				'user_type' => $_POST['user_type'],
-				'fname' => $_POST['fname'],
-				'lname' => $_POST['lname'],
-				'email' => $_POST['email'],
-				'password' => $password,
-				'contact_number' => $_POST['contact_number'],
-				'address' => $_POST['address'],
-				'state' => $_POST['state'],
-				'district' => $_POST['district'],
-				'city' => $_POST['city'],
-				'zipcode' => $_POST['zipcode'],
-				'gender' => $_POST['gender'],
-				'dob' => $_POST['dob'],
-				'image_status'=> $image_status,
-				'document'=> $document,
-				'added_by' => $added_by,
-				'added_id' => $added_id,
-				'email_verification' => '1',
-				'phone_verification' => $phone_verification,
-				'status' => '1',
-				'cdate' => date('Y-m-d H:i:s'),
-				'api_key' => API_KEY,
-				'otp' => $otp
-		  );
-			if($_POST['user_type']==3){
-				$data2=array("shopname"=>$_POST['shopname']);
-				$data=array_merge($data,$data2);
-		    }else if($_POST['user_type']==4){
-				$data2=array("consumer_plan"=>$_POST['consumer_plan'],"qualification"=>$_POST['qualification'],"interest_with"=>$_POST['interest_with'],"subscription_status"=>$subscription_status);
-				$data=array_merge($data,$data2);
-		    } 
-			$method='POST';
-			$response=$commonFunction->curl_call($url,$data,$method);
-            $result = json_decode($response);
-			if($result->status != 0){
-				
-				if($_POST['page']=='signup'){
-					$_SESSION['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.', Please enter OTP and verify your number !!</div>';
-					$get_main_portal_detail=$commonFunction->get_main_portal_detail();
-					$portal_detail=$get_main_portal_detail->data;
-					if(ENV=='prod'){
-						$site_url=$portal_detail->PORTAL_URL;
-					}else{
-						$site_url=LOCAL_URL;
-					}
-					$output['url']=$site_url.'otpverification.php?number='.$_POST['contact_number'].'&page='.$_POST['page'];
-				}else if($_POST['page']=='manager_page'){
-					$output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
-					$output['fetchTableurl']= SSOAPI.'get_user_table_list';  
-                    $output['user_type']=   $_POST['user_type'];
-					$output['portal']=   'main'; 
-					$output['show_by']=   $_SESSION['user_id'];
+				if(!empty($_POST['qualification'])){
+					$qualification = implode(',', $_POST['qualification']);
+					$qualification_status='ok';
+				}else{
+					$qualification_status='notok';
 				}
 
+				if(!empty($_POST['interest_with'])){
+					$interest_with = implode(',', $_POST['interest_with']);
+					$interest_with_status='ok';
+				}else{
+					$interest_with_status='notok';
+				}
+			}
+			
+			
+			
+			if($qualification_status=='ok'){
 				
-				$output['status']=1;
+				if($interest_with_status=='ok'){
+					
+					$url=SSOAPI.'add_user';
+			
+					$data=array(
+						'user_type' => $_POST['user_type'],
+						'fname' => $_POST['fname'],
+						'lname' => $_POST['lname'],
+						'email' => $_POST['email'],
+						'password' => $password,
+						'contact_number' => $_POST['contact_number'],
+						'address' => $_POST['address'],
+						'state' => $_POST['state'],
+						'district' => $_POST['district'],
+						'city' => $_POST['city'],
+						'zipcode' => $_POST['zipcode'],
+						'gender' => $_POST['gender'],
+						'dob' => $_POST['dob'],
+						'image_status'=> $image_status,
+						'document'=> $document,
+						'added_by' => $added_by,
+						'added_id' => $added_id,
+						'email_verification' => '1',
+						'phone_verification' => $phone_verification,
+						'status' => '1',
+						'cdate' => date('Y-m-d H:i:s'),
+						'api_key' => API_KEY,
+						'otp' => $otp
+					);
+					if($_POST['user_type']==3){
+						$data2=array("shopname"=>$_POST['shopname']);
+						$data=array_merge($data,$data2);
+					}else if($_POST['user_type']==4){
+						$data2=array("consumer_plan"=>$_POST['consumer_plan'],"qualification"=>$qualification,"interest_with"=>$interest_with,"subscription_status"=>$subscription_status);
+						$data=array_merge($data,$data2);
+					} 
+					$method='POST';
+					$response=$commonFunction->curl_call($url,$data,$method);
+					$result = json_decode($response);
+					if($result->status != 0){
+						
+						if($_POST['page']=='signup'){
+							$_SESSION['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.', Please enter OTP and verify your number !!</div>';
+							$get_main_portal_detail=$commonFunction->get_main_portal_detail();
+							$portal_detail=$get_main_portal_detail->data;
+							if(ENV=='prod'){
+								$site_url=$portal_detail->PORTAL_URL;
+							}else{
+								$site_url=LOCAL_URL;
+							}
+							$output['url']=$site_url.'otpverification.php?number='.$_POST['contact_number'].'&page='.$_POST['page'];
+						}else if($_POST['page']=='manager_page'){
+							$output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
+							$output['fetchTableurl']= SSOAPI.'get_user_table_list';  
+							$output['user_type']=   $_POST['user_type'];
+							$output['portal']=   'main'; 
+							$output['show_by']=   $_SESSION['user_id'];
+						}
+		
+						
+						$output['status']=1;
+					}else{
+						
+						$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
+						$output['status']=0;
+					}
+
+				}else{
+				//error message
+			    $output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Please select at least one Interest !!</div>';
+			    $output['status']=0;
+			    }
+
 			}else{
 				//error message
-		        $output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
-		        $output['status']=0;
+			    $output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Please select at least one qualification !!</div>';
+			    $output['status']=0;
 			}
+
+			
 
 	}else{
 			//error message
@@ -1106,7 +1142,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 				$qualification_disbale='disabled';
 			}else{
 				$qualification_disbale='';
-				$qualification_option='<option value="">Select Qualification</option>';
+				
 				foreach($qualification_data  as $qualification){
 						
 						$qualification_option.= '<option value="'.$qualification->term_id.'">'.$qualification->name.'</option>';
@@ -1123,7 +1159,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 				$interest_with_disbale='disabled';
 			}else{
 				$interest_with_disbale='';
-				$interest_with_option='<option value="">Select Interest with</option>';
+				
 				foreach($interest_data  as $interest){
 					
 						$interest_with_option.= '<option value="'.$interest->term_id.'">'.$interest->name.'</option>';
@@ -1362,7 +1398,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 									<div class="row">
 											<div class="form-group col-md-6">
 													<label for="state">Select Qualification</label>
-													<select '.$qualification_disbale.' id="qualification" name="qualification" class="form-control" >
+													<select '.$qualification_disbale.' id="qualification" name="qualification[]" class="form-control" multiple required>
 															
 															'.$qualification_option.'
 														 
@@ -1370,7 +1406,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 											</div>
 											<div class="form-group col-md-6">
 													<label for="state">Select Interest with</label>
-													<select '.$interest_with_disbale.' id="interest_with" name="interest_with" class="form-control" >
+													<select '.$interest_with_disbale.' id="interest_with" name="interest_with[]" class="form-control" multiple required>
 															
 															'.$interest_with_option.'
 														
@@ -1396,6 +1432,322 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 echo json_encode($output);	
 }
 /*load users popup action end*/
+
+
+/*update password action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'change_user_status')
+{ 
+	 //method check statement
+	 if($_SERVER["REQUEST_METHOD"] == "POST"){
+      $url=SSOAPI.'change_user_status';
+			$data=array(
+					'user_id' => $_POST['user_id'],
+					'status' => $_POST['status'],
+					'user_type' => $_POST['user_type'],
+					'api_key' => API_KEY
+			);
+			$method='POST';
+			$response=$commonFunction->curl_call($url,$data,$method);
+			$result = json_decode($response);
+			if($result->status != 0){
+				
+				$output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
+				$output['status']=1;
+				$output['fetchTableurl']= SSOAPI.'get_user_table_list';  
+                $output['user_type']=   $_POST['user_type']; 
+				$output['portal']=   'main'; 
+				$output['show_by']=   $_SESSION['user_id'];
+
+			}else{
+				//error message
+				$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
+				$output['status']=0;
+			}
+	 }else{
+		  //error message
+	  	$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+		  $output['status']=0;
+		
+}
+echo json_encode($output);	
+}
+
+/*update password action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'detail_popup_user')
+{ 
+	 //method check statement
+	 if($_SERVER["REQUEST_METHOD"] == "POST"){
+				$url=SSOAPI.'get_user_detail';
+				$data=array(
+						'user_id' => $_POST['user_id'],
+						'api_key' => API_KEY
+				);
+				$method='POST';
+				$response=$commonFunction->curl_call($url,$data,$method);
+				$result = json_decode($response);
+				
+				
+				
+				
+				if($result->status==0){
+						$title='Error';
+						$html='<div class="alert alert-danger" role="alert">
+																	'.$result->message.'
+																</div>';
+						$output['status']=0;										
+
+				}else{
+					  $output['status']=1;
+						$response_result=$result->data;
+						if($response_result->user_type==1){
+								$title='District Manager Detail';
+								$shopname='';
+						}else if($response_result->user_type==2){
+								$title='Distributor Detail';
+								$shopname='';
+						}else if($response_result->user_type==3){
+								$title='Retailer Detail';
+								$shopname=$response_result->shopname;
+						}else if($response_result->user_type==4){
+								$title='Consumer Detail';
+								$shopname='';
+						}
+						
+						if($response_result->status==1){
+								$status='<button class="btn btn-success" disabled>Active</button>';
+						}else{
+								$status='<button class="btn btn-danger" disabled>Deactive</button>';
+						}
+				
+						if($response_result->email_verification==1){
+								$email_verification='<label style="color: white;cursor: pointer;" class="badge badge-success">Completed</label>';
+						}else{
+								$email_verification='<label style="color: white;cursor: pointer;" class="badge badge-warning">Pending</label>';
+						}
+						if($response_result->phone_verification==1){
+								$phone_verification='<label style="color: white;cursor: pointer;" class="badge badge-success">Completed</label>';
+						}else{
+								$phone_verification='<label style="color: white;cursor: pointer;" class="badge badge-warning">Pending</label>';
+						}
+				
+						if($response_result->subscription_status==1){
+								$subscription_status='<label style="color: white;cursor: pointer;" class="badge badge-success">Completed</label>';
+						}else{
+								$subscription_status='<label style="color: white;cursor: pointer;" class="badge badge-warning">Pending</label>';
+						}
+				
+						if($response_result->user_type!=4){
+								$download_text = '<div class="card mt-3">
+												<ul class="list-group list-group-flush">
+													<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+														<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>ID Proof</h6>
+															<span class="text-secondary"><a href="'.$response_result->document.'" download>Download</a></span>
+													</li>
+													
+												</ul>
+											</div>';  
+								$other_status='<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Other Status</i></h6>
+															<small style="font-style: italic;font-weight: bold;">Email Verification</small><br>
+															'.$email_verification.'<br>
+															<small style="font-style: italic;font-weight: bold;">Phone verification</small><br>
+															'.$phone_verification.'<br>
+															<small style="font-style: italic;font-weight: bold;">Subscription Status</small><br>
+															'.$subscription_status.'<br>';  
+				        
+								$manager_portal_detail=$commonFunction->get_main_portal_detail();
+					      $portal_detail=$manager_portal_detail->data;
+								$other_information='<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Other Information</i></h6>
+															<small style="font-style: italic;font-weight: bold;">Wallet</small><br>
+															'.$portal_detail->CURRENCY.$response_result->wallet.'<br>
+															<small style="font-style: italic;font-weight: bold;">Added By</small><br>
+															'.$response_result->added_name.'<br>
+															<small style="font-style: italic;font-weight: bold;">Created Date</small><br>
+															'.$response_result->cdate.'<br>';                  
+						}else{
+								$download_text = '';
+				
+								$url_qualification=SSOAPI.'get_qualification_list';
+								$data_qualification=array(
+										'api_key' => API_KEY
+								);
+								$response_qualification=$commonFunction->curl_call($url_qualification,$data_qualification,$method);
+								$result_qualification = json_decode($response_qualification);
+								$array_qualification = json_decode(json_encode($result_qualification->data), true);
+								$qualification=array_search($response_result->qualification, $array_qualification);
+				
+								$url_additional_qualification=SSOAPI.'get_additional_qualification_list';
+								$data_additional_qualification=array(
+										'api_key' => API_KEY
+								);
+								$response_additional_qualification=$commonFunction->curl_call($url_additional_qualification,$data_additional_qualification,$method);
+								$result_additional_qualification = json_decode($response_additional_qualification);
+								$array_additional_qualification = json_decode(json_encode($result_additional_qualification->data), true);
+								$additional_qualification=array_search($response_result->additional_qualification, $array_additional_qualification);
+				
+								
+				
+								$other_status='<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Other Detail</i></h6>
+															<small style="font-style: italic;font-weight: bold;">Phone verification</small><br>
+															'.$phone_verification.'<br>
+															<small style="font-style: italic;font-weight: bold;">Qualification</small><br>
+															<small>'.$qualification.'</small><br>
+															<small style="font-style: italic;font-weight: bold;">Additional Qualification</small><br>
+															<small>'.$additional_qualification.'</small><br>';
+				
+								$other_information='<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Other Information</i></h6>
+															
+															<small style="font-style: italic;font-weight: bold;">Added By</small><br>
+															'.$response_result->added_name.'<br>
+															<small style="font-style: italic;font-weight: bold;">Created Date</small><br>
+															'.$response_result->cdate.'<br>';               
+						}
+						
+						$html='<nav aria-label="breadcrumb" class="main-breadcrumb">
+									<div class="row gutters-sm">
+										<div class="col-md-4 mb-3">
+											<div class="card">
+												<div class="card-body">
+													<div class="d-flex flex-column align-items-center text-center">
+														<img src="'.$response_result->profile.'" alt="Admin" class="rounded-circle" width="150">
+														<div class="mt-3">
+															<h4>'.ucfirst($response_result->fname).' '.ucfirst($response_result->lname).'</h4>
+															<p class="text-secondary mb-1">'.$response_result->email.'</p>
+															<p class="text-muted font-size-sm" style="font-weight: bold;font-style: italic;">'.ucfirst($shopname).'</p>
+															'.$status.'
+														</div>
+													</div>
+												</div>
+											</div>
+											'.$download_text.'
+										</div>
+										<div class="col-md-8">
+											<div class="card mb-3">
+												<div class="card-body">
+													<div class="row">
+														<div class="col-sm-3">
+															<h6 class="mb-0">Contact Number</h6>
+														</div>
+														<div class="col-sm-9 text-secondary">
+															'.$response_result->contact_number.'
+														</div>
+													</div>
+													<hr>
+													<div class="row">
+														<div class="col-sm-3">
+															<h6 class="mb-0">City</h6>
+														</div>
+														<div class="col-sm-9 text-secondary">
+															'.$response_result->city.'
+														</div>
+													</div>
+													<hr>
+													<div class="row">
+														<div class="col-sm-3">
+															<h6 class="mb-0">District</h6>
+														</div>
+														<div class="col-sm-9 text-secondary">
+															'.$response_result->district_title.'
+														</div>
+													</div>
+													<hr>
+													<div class="row">
+														<div class="col-sm-3">
+															<h6 class="mb-0">State</h6>
+														</div>
+														<div class="col-sm-9 text-secondary">
+															'.$response_result->state_title.'
+														</div>
+													</div>
+													<hr>
+													<div class="row">
+														<div class="col-sm-3">
+															<h6 class="mb-0">Address</h6>
+														</div>
+														<div class="col-sm-9 text-secondary">
+														'.$response_result->address.'
+														</div>
+													</div>
+													<hr>
+													<div class="row">
+														<div class="col-sm-3">
+															<h6 class="mb-0">Zipcode</h6>
+														</div>
+														<div class="col-sm-9 text-secondary">
+														'.$response_result->zipcode.'
+														</div>
+													</div>
+													<hr>
+													<div class="row">
+														<div class="col-sm-3">
+															<h6 class="mb-0">DOB</h6>
+														</div>
+														<div class="col-sm-9 text-secondary">
+														'.$response_result->dob.'
+														</div>
+													</div>
+													<hr>
+													<div class="row">
+														<div class="col-sm-3">
+															<h6 class="mb-0">Gender</h6>
+														</div>
+														<div class="col-sm-9 text-secondary">
+														'.ucfirst($response_result->gender).'
+														</div>
+													</div>
+													
+												</div>
+											</div>
+				
+											<div class="row gutters-sm">
+												<div class="col-sm-6 mb-3">
+													<div class="card h-100">
+														<div class="card-body">
+															'.$other_status.'
+															
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6 mb-3">
+													<div class="card h-100">
+														<div class="card-body">
+															'.$other_information.'
+															
+														</div>
+													</div>
+												</div>
+											</div>
+				
+				
+				
+										</div>
+									</div>
+				
+				';
+						
+				}
+				
+				$output['html']=   '<div class="modal-header">
+																<h5 class="modal-title">'.$title.'</h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-body">
+																'.$html.'
+															</div>
+															<div class="modal-footer">
+																
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+															</div>';
+	 }else{
+		  //error message
+	  	$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+		$output['status']=0;
+		
+}
+echo json_encode($output);	
+}
+
 
 
 

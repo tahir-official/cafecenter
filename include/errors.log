@@ -1,0 +1,52 @@
+[06-Oct-2022 00:37:04 Asia/Kolkata] PHP Warning:  Undefined array key "qualification" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 110
+[06-Oct-2022 00:38:53 Asia/Kolkata] PHP Warning:  Undefined variable $output in C:\xampp\htdocs\php\cafecenter\include\process.php on line 184
+[06-Oct-2022 00:39:07 Asia/Kolkata] PHP Warning:  Undefined variable $output in C:\xampp\htdocs\php\cafecenter\include\process.php on line 184
+[06-Oct-2022 00:39:27 Asia/Kolkata] PHP Warning:  Undefined variable $output in C:\xampp\htdocs\php\cafecenter\include\process.php on line 184
+[06-Oct-2022 00:42:00 Asia/Kolkata] PHP Warning:  Undefined variable $output in C:\xampp\htdocs\php\cafecenter\include\process.php on line 184
+[06-Oct-2022 00:42:38 Asia/Kolkata] PHP Warning:  Undefined variable $output in C:\xampp\htdocs\php\cafecenter\include\process.php on line 184
+[06-Oct-2022 00:43:55 Asia/Kolkata] PHP Warning:  Undefined variable $qualification_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1115
+[06-Oct-2022 00:43:55 Asia/Kolkata] PHP Warning:  Undefined variable $interest_with_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1132
+[06-Oct-2022 00:45:17 Asia/Kolkata] PHP Warning:  Undefined array key "qualification" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 110
+[06-Oct-2022 00:45:17 Asia/Kolkata] PHP Warning:  Undefined variable $output in C:\xampp\htdocs\php\cafecenter\include\process.php on line 184
+[06-Oct-2022 00:45:24 Asia/Kolkata] PHP Warning:  Undefined variable $output in C:\xampp\htdocs\php\cafecenter\include\process.php on line 184
+[06-Oct-2022 00:48:43 Asia/Kolkata] PHP Warning:  Undefined variable $output in C:\xampp\htdocs\php\cafecenter\include\process.php on line 184
+[06-Oct-2022 00:48:56 Asia/Kolkata] PHP Warning:  Undefined variable $output in C:\xampp\htdocs\php\cafecenter\include\process.php on line 184
+[06-Oct-2022 00:49:19 Asia/Kolkata] PHP Warning:  Undefined variable $output in C:\xampp\htdocs\php\cafecenter\include\process.php on line 184
+[06-Oct-2022 00:57:46 Asia/Kolkata] PHP Warning:  Undefined variable $qualification_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1116
+[06-Oct-2022 00:57:46 Asia/Kolkata] PHP Warning:  Undefined variable $interest_with_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1133
+[06-Oct-2022 03:17:57 Asia/Kolkata] PHP Warning:  Undefined variable $consumer_plan_disbale in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1274
+[06-Oct-2022 03:17:57 Asia/Kolkata] PHP Warning:  Undefined variable $consumer_plan_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1276
+[06-Oct-2022 03:17:57 Asia/Kolkata] PHP Warning:  Undefined variable $qualification_disbale in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1369
+[06-Oct-2022 03:17:57 Asia/Kolkata] PHP Warning:  Undefined variable $qualification_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1371
+[06-Oct-2022 03:17:57 Asia/Kolkata] PHP Warning:  Undefined variable $interest_with_disbale in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1377
+[06-Oct-2022 03:17:57 Asia/Kolkata] PHP Warning:  Undefined variable $interest_with_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1379
+[06-Oct-2022 03:36:46 Asia/Kolkata] PHP Warning:  Undefined variable $qualification_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1116
+[06-Oct-2022 03:36:46 Asia/Kolkata] PHP Warning:  Undefined variable $interest_with_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1133
+[06-Oct-2022 03:44:34 Asia/Kolkata] PHP Warning:  Undefined variable $qualification_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1116
+[06-Oct-2022 03:44:34 Asia/Kolkata] PHP Warning:  Undefined variable $interest_with_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1133
+[06-Oct-2022 03:45:18 Asia/Kolkata] PHP Warning:  Undefined array key "qualification" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 109
+[06-Oct-2022 03:45:18 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: implode(): Argument #1 ($pieces) must be of type array, string given in C:\xampp\htdocs\php\cafecenter\include\process.php:109
+Stack trace:
+#0 C:\xampp\htdocs\php\cafecenter\include\process.php(109): implode(',', NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\php\cafecenter\include\process.php on line 109
+[06-Oct-2022 03:53:14 Asia/Kolkata] PHP Warning:  Undefined array key "qualification" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 109
+[06-Oct-2022 03:53:14 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: implode(): Argument #1 ($pieces) must be of type array, string given in C:\xampp\htdocs\php\cafecenter\include\process.php:109
+Stack trace:
+#0 C:\xampp\htdocs\php\cafecenter\include\process.php(109): implode(',', NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\php\cafecenter\include\process.php on line 109
+[06-Oct-2022 03:53:19 Asia/Kolkata] PHP Warning:  Undefined array key "qualification" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 109
+[06-Oct-2022 03:53:19 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: implode(): Argument #1 ($pieces) must be of type array, string given in C:\xampp\htdocs\php\cafecenter\include\process.php:109
+Stack trace:
+#0 C:\xampp\htdocs\php\cafecenter\include\process.php(109): implode(',', NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\php\cafecenter\include\process.php on line 109
+[06-Oct-2022 03:53:29 Asia/Kolkata] PHP Warning:  Undefined array key "qualification" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 109
+[06-Oct-2022 03:53:29 Asia/Kolkata] PHP Fatal error:  Uncaught TypeError: implode(): Argument #1 ($pieces) must be of type array, string given in C:\xampp\htdocs\php\cafecenter\include\process.php:109
+Stack trace:
+#0 C:\xampp\htdocs\php\cafecenter\include\process.php(109): implode(',', NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\php\cafecenter\include\process.php on line 109
+[06-Oct-2022 04:03:44 Asia/Kolkata] PHP Warning:  Undefined variable $qualification_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1148
+[06-Oct-2022 04:03:45 Asia/Kolkata] PHP Warning:  Undefined variable $interest_with_option in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1165
