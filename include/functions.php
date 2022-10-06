@@ -64,20 +64,22 @@ class Functions
         return $result = json_decode($response);
     
     }
-    function qualification_list(){
+    function qualification_list($qualification_id){
         $url=SSOAPI.'get_qualification_list';
         $data=array(
-             'api_key' => API_KEY
+             'api_key' => API_KEY,
+             'qualification_id' => $qualification_id
         );
         $method='POST';
         $response=$this->curl_call($url,$data,$method);
         return $result = json_decode($response);
     
     }
-    function interest_list(){
+    function interest_list($interest_id){
         $url=SSOAPI.'get_additional_qualification_list';
         $data=array(
-             'api_key' => API_KEY
+             'api_key' => API_KEY,
+             'interest_id' => $interest_id
         );
         $method='POST';
         $response=$this->curl_call($url,$data,$method);

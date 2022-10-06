@@ -1132,7 +1132,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 			$dob=''; 
 			$download_link='';
 			
-			$qualification_list=$commonFunction->qualification_list();
+			$qualification_list=$commonFunction->qualification_list(0);
 			$qualification_status=$qualification_list->status;
 			$qualification_message=$qualification_list->message;
 			$qualification_data=$qualification_list->data;
@@ -1149,7 +1149,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 				}
 			}
 
-			$interest_list=$commonFunction->interest_list();
+			$interest_list=$commonFunction->interest_list(0);
 			$interest_status=$interest_list->status;
 			$interest_message=$interest_list->message;
 			$interest_data=$interest_list->data;
@@ -1555,7 +1555,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'detail_popup_user'
 															'.$subscription_status.'<br>';  
 				        
 								$manager_portal_detail=$commonFunction->get_main_portal_detail();
-					      $portal_detail=$manager_portal_detail->data;
+					            $portal_detail=$manager_portal_detail->data;
 								$other_information='<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Other Information</i></h6>
 															<small style="font-style: italic;font-weight: bold;">Wallet</small><br>
 															'.$portal_detail->CURRENCY.$response_result->wallet.'<br>
@@ -1564,42 +1564,78 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'detail_popup_user'
 															<small style="font-style: italic;font-weight: bold;">Created Date</small><br>
 															'.$response_result->cdate.'<br>';                  
 						}else{
-								$download_text = '';
-				
-								$url_qualification=SSOAPI.'get_qualification_list';
-								$data_qualification=array(
-										'api_key' => API_KEY
-								);
-								$response_qualification=$commonFunction->curl_call($url_qualification,$data_qualification,$method);
-								$result_qualification = json_decode($response_qualification);
-								$array_qualification = json_decode(json_encode($result_qualification->data), true);
-								$qualification=array_search($response_result->qualification, $array_qualification);
-				
-								$url_additional_qualification=SSOAPI.'get_additional_qualification_list';
+							    $plan_detail_json=json_decode($response_result->consumer_plan_json);
+							    
+								$download_text = '<div class="card mt-3">
+													<ul class="list-group list-group-flush">
+														<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+															<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Resume</h6>
+																<span class="text-secondary"><a href="'.$response_result->document.'" download>Download</a></span>
+														</li>
+														<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+															<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+															<path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+															<path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+														    </svg> Current Plan</h6>
+																<span class="text-secondary">'.$plan_detail_json->post_title.'</span>
+														</li>
+														
+													</ul>
+												</div>';
+
+								$user_qualifications=explode (",", $response_result->qualification);	
+								$qualification='';
+								foreach($user_qualifications as $user_qualification)
+                                {
+									$qualification_list=$commonFunction->qualification_list($user_qualification);
+								    $qualification_data=$qualification_list->data;
+									$qualification .= ", $qualification_data->name";
+								}
+								$qualification = substr($qualification, 1);	
+								
+								$user_intrest_withs=explode (",", $response_result->additional_qualification);	
+								$intrest_with='';
+								foreach($user_intrest_withs as $user_intrest_with)
+                                {
+									$interest_with_list=$commonFunction->interest_list($user_intrest_with);
+								    $interest_with_data=$interest_with_list->data;
+									$intrest_with .= ", $interest_with_data->name";
+								}
+								$intrest_with = substr($intrest_with, 1);
+
+                                $url_additional_qualification=SSOAPI.'get_additional_qualification_list';
 								$data_additional_qualification=array(
 										'api_key' => API_KEY
 								);
-								$response_additional_qualification=$commonFunction->curl_call($url_additional_qualification,$data_additional_qualification,$method);
-								$result_additional_qualification = json_decode($response_additional_qualification);
-								$array_additional_qualification = json_decode(json_encode($result_additional_qualification->data), true);
-								$additional_qualification=array_search($response_result->additional_qualification, $array_additional_qualification);
-				
 								
+				
+								$subscription_end=date("Y-m-d", strtotime($response_result->subscription_end));
+								if(date('Y-m-d') > $subscription_end){
+									$subscription_status='<label style="color: white;cursor: pointer;" class="badge badge-danger">Need to renew</label>'; 
+								}else{
+									$subscription_status='<label style="color: white;cursor: pointer;" class="badge badge-success">Completed</label>'; 
+								}
 				
 								$other_status='<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Other Detail</i></h6>
 															<small style="font-style: italic;font-weight: bold;">Phone verification</small><br>
 															'.$phone_verification.'<br>
+															<small style="font-style: italic;font-weight: bold;">Subscription Status</small><br>
+															'.$subscription_status.'<br>
 															<small style="font-style: italic;font-weight: bold;">Qualification</small><br>
 															<small>'.$qualification.'</small><br>
-															<small style="font-style: italic;font-weight: bold;">Additional Qualification</small><br>
-															<small>'.$additional_qualification.'</small><br>';
+															<small style="font-style: italic;font-weight: bold;">Intrest With</small><br>
+															<small>'.$intrest_with.'</small><br>';
 				
 								$other_information='<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Other Information</i></h6>
 															
 															<small style="font-style: italic;font-weight: bold;">Added By</small><br>
 															'.$response_result->added_name.'<br>
 															<small style="font-style: italic;font-weight: bold;">Created Date</small><br>
-															'.$response_result->cdate.'<br>';               
+															'.$response_result->cdate.'<br>
+															<small style="font-style: italic;font-weight: bold;">Subscription Start Date</small><br>
+															'.$response_result->subscription_start.'<br>
+															<small style="font-style: italic;font-weight: bold;">Subscription End Date</small><br>
+															'.$response_result->subscription_end.'<br>';               
 						}
 						
 						$html='<nav aria-label="breadcrumb" class="main-breadcrumb">
