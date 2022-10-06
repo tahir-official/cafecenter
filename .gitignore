@@ -1,6 +1,8 @@
 include/config.php
+include/errors.log
 razorpay-php/libs/Requests-1.6.1/library/Requests/Transport/cacert.pem
 launch.json
+errors.log
 # System / Log files
 *.DS_Store
 *.log
