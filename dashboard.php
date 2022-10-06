@@ -41,25 +41,58 @@
                      <div class="col-sm-8">
                         <h2 class="h2_hedddin">Dashboard</h2>
                         <div class="rightt">
+                       
+                        <div class="row gx-5">
+                        <?php
+                        if($_SESSION['user_type']==3){
+                           ?>
+                              <div class="col">
+                                 <div class="card text-white p-3 border bg-success">
+                                    <div class="card-header">Wallet</div>
+                                    <div class="card-body">
+                                          <h5 class="card-title"><?=$portal_detail->CURRENCY.' '.$user_data->wallet?></h5>
+                                          <a href="wallet.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col">
+                                 <div class="card text-white p-3 border bg-danger">
+                                    <div class="card-header">Consumer</div>
+                                    <div class="card-body">
+                                          <h5 class="card-title"><?=$user_data->added_by_you?></h5>
+                                          <a href="consumer-management.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                 </div>
+                              </div>
+                           <?php
+                        }else{
+                           $plan_detail_json=json_decode($user_data->consumer_plan_json);
+                           if(date('Y-m-d') > $user_data->subscription_end){
+                              $plan_text='<h5 class="card-title">Your plan is expired on <span style="color: red;">'.$user_data->subscription_end.'</span>, Please connect with retailers to renew your plan.</h5>';
+                           }else{
+                              $plan_text='<h5 class="card-title">'.$portal_detail->CURRENCY.' '.$plan_detail_json->plan_amount.'</h5><small>For '.$plan_detail_json->plan_days.' Days</small><br>';
+                           }
+                           ?>
+                              <div class="col">
+                                 <div class="card text-white p-3 border bg-success">
+                                    <div class="card-header">Subscription Plan</div>
+                                    <div class="card-body">
+                                          <?=$plan_text;?>
 
-                           <!-- <form method="post" action="http://localhost/wordpress/wedding/wp-admin/admin-post.php">
-                              <div class="form-group">
-                                 <label>Name</label>
-                                 <input type="text" name="username" id="username" placeholder="Your Name" class="form-control" value="admin" required="">
+                                          <a href="subscription-plan.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                 </div>
                               </div>
-                              <div class="form-group">
-                                 <label>Phone</label>
-                                 <input name="phone" id="phone" placeholder="Phone" class="form-control" type="text" required="" value="">
-                              </div>
-                              <div class="form-group">
-                                 <label>Email</label>
-                                 <input name="email" id="email" placeholder="Email" class="form-control" type="email" readonly="" value="tahirk.official@gmail.com">
-                              </div>
-                              <div class="form-group">
-                                 <input type="hidden" name="action" value="user_profile_update_act">
-                                 <button class="btn btn_theme btn-lg" type="submit">Update</button>
-                              </div>
-                           </form> -->
+                              
+                           <?php
+                        }
+                        ?>
+                           
+                        </div>
+                        
+
+                            
+
                         </div>
                      </div>
                   </div>

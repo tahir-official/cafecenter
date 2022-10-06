@@ -1,9 +1,7 @@
 <?php
 include_once('include/header.php');
 include ("include/redirectcondtion.php");
-if($_SESSION['user_type']==4){
-   $commonFunction->redirect('dashboard.php');
-}
+
 ?>
 
 
@@ -48,37 +46,99 @@ if($_SESSION['user_type']==4){
                         <div class="row">
                           <div class="col-xs-12 col-md-12">
                               <div class="panel panel-success">
-                                  <div class="cnrflash">
-                                      <div class="cnrflash-inner">
-                                          <span class="cnrflash-label">CURRENT
-                                              <br>
-                                              PLAN</span>
-                                      </div>
-                                  </div>
+                                  <?php
+                                  if($_SESSION['user_type']==3){
+                                    ?>
+                                           <div class="cnrflash">
+                                                <div class="cnrflash-inner">
+                                                      <span class="cnrflash-label">CURRENT
+                                                         <br>
+                                                         PLAN</span>
+                                                </div>
+                                             </div>
+                                             
+                                             <div class="panel-heading">
+                                                <h3 class="panel-title">
+                                                      <?=$plan_data->plan_title?></h3>
+                                             </div>
+                                             <div class="panel-body">
+                                                <div class="the-price">
+                                                      <h1><?php echo $portal_detail->CURRENCY.' '.$plan_data->plan_amount?></h1>
+                                                      <small>For lifetime</small>
+                                                </div>
+                                                <table class="table">
+                                                      <tr>
+                                                         <td>
+                                                         <?=$plan_data->plan_heading?>
+                                                         </td>
+                                                      </tr>
+                                                      <tr class="active">
+                                                         <td>
+                                                         <?=$plan_data->plan_description?>
+                                                         </td>
+                                                      </tr>
+                                                      
+                                                </table>
+                                             </div>
+                                    <?php
+                                  }else{
+                                    $plan_detail_json=json_decode($user_data->consumer_plan_json);
+                                    if(date('Y-m-d') > $user_data->subscription_end){
+                                       ?>
+                                       <div class="panel-heading">
+                                             <h3 class="panel-title">Your plan is expired on <span style="color: red;"><?=$user_data->subscription_end?></span>, Please connect with retailers to renew your plan.</h3>
+                                       </div>
+                                       <?php
+                                    }else{
+                                       ?>
+                                            <div class="cnrflash">
+                                                <div class="cnrflash-inner">
+                                                      <span class="cnrflash-label">CURRENT
+                                                         <br>
+                                                         PLAN</span>
+                                                </div>
+                                             </div>
+                                             
+                                             <div class="panel-heading">
+                                                <h3 class="panel-title">
+                                                      <?=$plan_detail_json->post_title?></h3>
+                                             </div>
+                                             <div class="panel-body">
+                                                <div class="the-price">
+                                                      <h1><?php echo $portal_detail->CURRENCY.' '.$plan_detail_json->plan_amount?></h1>
+                                                      <small>For <?=$plan_detail_json->plan_days?> Days</small>
+                                                </div>
+                                                <table class="table">
+                                                      <tr>
+                                                         <td>
+                                                         <?=$plan_detail_json->post_title?>
+                                                         </td>
+                                                      </tr>
+                                                      <tr class="active">
+                                                         <td>
+                                                         <?=$plan_detail_json->post_content?>
+                                                         </td>
+                                                      </tr>
+                                                      <tr class="active">
+                                                         <td style="color: green;">
+                                                         Subscription Start Date: <?=$user_data->subscription_start?>
+                                                         </td>
+                                                      </tr>
+                                                      <tr class="active">
+                                                         <td style="color: red;">
+                                                         Subscription End Date: <?=$user_data->subscription_end?>
+                                                         </td>
+                                                      </tr>
+                                                      
+                                                </table>
+                                             </div>
+                                    <?php
+                                    }
+                                    
+                                    
+                                  }
+                                  ?>
                                   
-                                  <div class="panel-heading">
-                                      <h3 class="panel-title">
-                                          <?=$plan_data->plan_title?></h3>
-                                  </div>
-                                  <div class="panel-body">
-                                      <div class="the-price">
-                                          <h1><?php echo $portal_detail->CURRENCY.' '.$plan_data->plan_amount?></h1>
-                                          <small>For lifetime</small>
-                                      </div>
-                                      <table class="table">
-                                          <tr>
-                                              <td>
-                                              <?=$plan_data->plan_heading?>
-                                              </td>
-                                          </tr>
-                                          <tr class="active">
-                                              <td>
-                                              <?=$plan_data->plan_description?>
-                                              </td>
-                                          </tr>
-                                          
-                                      </table>
-                                  </div>
                                   
                               </div>
                           </div>

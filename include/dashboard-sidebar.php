@@ -202,10 +202,11 @@ text-align: center;
     <ul class="ul_set sider_barr">
         <li><a href="dashboard.php"><span class="mai-school-outline"></span> Dashboard</a></li>
         <li><a href="profile.php"><span class="mai-person-circle-outline"></span> Profile</a></li>
+        <li><a href="subscription-plan.php"><span class="mai-sync-circle-outline"></span> Subscription Plan</a></li>
         <?php
         if($_SESSION['user_type']==3){
         ?>
-        <li><a href="subscription-plan.php"><span class="mai-sync-circle-outline"></span> Subscription Plan</a></li>
+        
         <li><a href="wallet.php"><span class="mai-wallet-outline" ></span> Wallet Management <span class="notification_count" id="notification_count"><?=$portal_detail->CURRENCY.' '.$user_data->wallet?></span></a> </li>
         <li><a href="recharge.php"><span class="mai-card-outline"></span> Recharge Management</a></li>
         <li><a href="consumer-management.php"><span class="mai-people-circle-outline"></span> Consumer Management</a></li>
