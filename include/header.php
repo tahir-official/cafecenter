@@ -96,10 +96,10 @@ $site_url=LOCAL_URL;
             <li class="nav-item">
               <a class="nav-link" href="about.php">About</a>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="service.php">Services</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="blog.php">Blog</a>
             </li> -->
             <li class="nav-item">

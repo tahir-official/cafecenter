@@ -22,131 +22,73 @@
   <div class="page-section">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4">
-          <div class="card-service">
-            <div class="header">
-              <img src="../assets/img/services/service-1.svg" alt="">
-            </div>
-            <div class="body">
-              <h5 class="text-secondary">SEO Consultancy</h5>
-              <p>We help you define your SEO objective & develop a realistic strategy with you</p>
-              <a href="service.html" class="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card-service">
-            <div class="header">
-              <img src="../assets/img/services/service-2.svg" alt="">
-            </div>
-            <div class="body">
-              <h5 class="text-secondary">Content Marketing</h5>
-              <p>We help you define your SEO objective & develop a realistic strategy with you</p>
-              <a href="service.html" class="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card-service">
-            <div class="header">
-              <img src="../assets/img/services/service-3.svg" alt="">
-            </div>
-            <div class="body">
-              <h5 class="text-secondary">Keyword Research</h5>
-              <p>We help you define your SEO objective & develop a realistic strategy with you</p>
-              <a href="service.html" class="btn btn-primary">Read More</a>
-            </div>
-          </div>
-        </div>
+          <?php
+  
+          $services_list=$commonFunction->services_list(0);
+          $services_list_status=$services_list->status;
+          $services_list_message=$services_list->message;
+          $services_list_data=$services_list->data;
+          if($services_list_status == 0){
+            ?>
+            <div class="col-lg-12">
+                <div class="card-service wow fadeInUp">
+                  <div class="header">
+                    <img src="assets/img/services/service-1.svg" alt="">
+                  </div>
+                  <div class="body">
+                    <h5 class="text-secondary">Error</h5>
+                    <?=$services_list_message?>
+                  </div>
+                </div>
+              </div>
+            <?php
+          }else{
+            
+            foreach($services_list_data  as $services){
+                ?>
+                <div class="col-lg-4">
+                    <div class="card-service wow fadeInUp">
+                      <div class="header">
+                        <img src="<?=$services->service_image?>" alt="">
+                      </div>
+                      <div class="body">
+                        <h5 class="text-secondary"><?=$services->post_title?></h5>
+                        
+                        <?=$services->post_content?>
+                        <?php
+                        if(isset($_SESSION['is_user_logged_in'])){ 
+                          if($_SESSION['user_type']==3){
+                             ?>
+                             <a href="<?=$services->page_url?>" class="btn btn-primary">Read More</a>
+                             <?php
+                          }else{
+                               ?>
+                              <a href="javascript:void(0)" onclick="showServiceAlert()" class="btn btn-primary">Read More</a>
+                              <?php
+                          }
+                             
+                        }else{
+                              ?>
+                              <a href="javascript:void(0)" onclick="showServiceAlert()" class="btn btn-primary">Read More</a>
+                              <?php
+                        }
+                        ?>
+                        
+                      </div>
+                    </div>
+                  </div>
+                <?php
+                
+            }
+          }
+          ?>
+        
+        
       </div>
-    </div> <!-- .container -->
-  </div> <!-- .page-section -->
+    </div> 
+  </div>
 
-  <div class="page-section bg-light">
-    <div class="container">
-      <div class="text-center">
-        <div class="subhead">Our services</div>
-        <h2 class="title-section">How SEO Team Can Help</h2>
-        <div class="divider mx-auto"></div>
-
-        <div class="row">
-          <div class="col-sm-6 col-lg-4 col-xl-3 py-3">
-            <div class="features">
-              <div class="header mb-3">
-                <span class="mai-business"></span>
-              </div>
-              <h5>OnSite SEO</h5>
-              <p>We analyse your website's structure, internal architecture & other key</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 py-3">
-            <div class="features">
-              <div class="header mb-3">
-                <span class="mai-business"></span>
-              </div>
-              <h5>OnSite SEO</h5>
-              <p>We analyse your website's structure, internal architecture & other key</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 py-3">
-            <div class="features">
-              <div class="header mb-3">
-                <span class="mai-business"></span>
-              </div>
-              <h5>OnSite SEO</h5>
-              <p>We analyse your website's structure, internal architecture & other key</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 py-3">
-            <div class="features">
-              <div class="header mb-3">
-                <span class="mai-business"></span>
-              </div>
-              <h5>OnSite SEO</h5>
-              <p>We analyse your website's structure, internal architecture & other key</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 py-3">
-            <div class="features">
-              <div class="header mb-3">
-                <span class="mai-business"></span>
-              </div>
-              <h5>OnSite SEO</h5>
-              <p>We analyse your website's structure, internal architecture & other key</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 py-3">
-            <div class="features">
-              <div class="header mb-3">
-                <span class="mai-business"></span>
-              </div>
-              <h5>OnSite SEO</h5>
-              <p>We analyse your website's structure, internal architecture & other key</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 py-3">
-            <div class="features">
-              <div class="header mb-3">
-                <span class="mai-business"></span>
-              </div>
-              <h5>OnSite SEO</h5>
-              <p>We analyse your website's structure, internal architecture & other key</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 col-xl-3 py-3">
-            <div class="features">
-              <div class="header mb-3">
-                <span class="mai-business"></span>
-              </div>
-              <h5>OnSite SEO</h5>
-              <p>We analyse your website's structure, internal architecture & other key</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div> <!-- .container -->
-  </div> <!-- .page-section -->
+  
 
   <?php
       include_once('include/footer.php');

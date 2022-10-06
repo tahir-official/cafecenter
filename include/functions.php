@@ -98,6 +98,17 @@ class Functions
         return $result = json_decode($response);
     
     }
+    function services_list($service_id){
+        $url=SSOAPI.'get_services';
+        $data=array(
+             'api_key' => API_KEY,
+             'service_id' => $service_id
+        );
+        $method='POST';
+        $response=$this->curl_call($url,$data,$method);
+        return $result = json_decode($response);
+    
+    }
     function redirect($location){ 
           echo '<script>window.location.href="'.$location.'"</script>';
           die(); 

@@ -210,8 +210,7 @@ text-align: center;
         <li><a href="wallet.php"><span class="mai-wallet-outline" ></span> Wallet Management <span class="notification_count" id="notification_count"><?=$portal_detail->CURRENCY.' '.$user_data->wallet?></span></a> </li>
         <li><a href="recharge.php"><span class="mai-card-outline"></span> Recharge Management</a></li>
         <li><a href="consumer-management.php"><span class="mai-people-circle-outline"></span> Consumer Management</a></li>
-        <!-- <li><a href=""><span class="mai-logo-blogger"></span> Blog</a></li>
-        <li><a href=""><span class="mai-book-outline"></span> Template Management</a></li> -->
+        <!--<li><a href=""><span class="mai-book-outline"></span> Template Management</a></li> -->
         <?php    
         }
         ?>

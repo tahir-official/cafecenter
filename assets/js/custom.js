@@ -960,6 +960,9 @@ function detailPopupUser(user_id) {
 function showAlert() {
   alert ("Coming Soon!");
 }
+function showServiceAlert() {
+  alert ("Please login as retailer and use this service!");
+}
 
 
   

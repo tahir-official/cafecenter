@@ -11,8 +11,8 @@
           <h5>Company</h5>
           <ul class="footer-menu">
             <li><a href="about.php">About Us</a></li>
-            <!-- <li><a href="service.php">Services</a></li>
-            <li><a href="blog.php">Blog</a></li> -->
+            <li><a href="service.php">Services</a></li>
+            <!--<li><a href="blog.php">Blog</a></li> -->
             <li><a href="contact.php">Contact</a></li>
             <li><a href="terms_of_service.php">Terms of Service</a></li>
             <li><a href="privacy_policy.php">Privacy Policy</a></li>
