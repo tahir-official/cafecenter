@@ -326,6 +326,8 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'otp_verify')
 					$_SESSION['user_id'] =$manager_id= $result->user_id;
 					$_SESSION['user_type'] = $result->user_type;
 					$_SESSION['user_email'] = $result->user_email;
+					$_SESSION['contact_number'] = $result->user_contact_number;
+					
 					$_SESSION['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
 					$output['status']=1;
 					$get_main_portal_detail=$commonFunction->get_main_portal_detail();
@@ -1186,6 +1188,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 			$qualification_message=$qualification_list->message;
 			$qualification_data=$qualification_list->data;
 
+			$qualification_option='';
 			if($qualification_status == 0){
 				$qualification_option='<option value="">'.$qualification_message.'</option>';
 				$qualification_disbale='disabled';
@@ -1203,6 +1206,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 			$interest_message=$interest_list->message;
 			$interest_data=$interest_list->data;
 
+			$interest_with_option='';
 			if($interest_status == 0){
 				$interest_with_option='<option value="">'.$qualification_message.'</option>';
 				$interest_with_disbale='disabled';
@@ -1351,7 +1355,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 					$qualification_status=$qualification_list->status;
 					$qualification_message=$qualification_list->message;
 					$qualification_data=$qualification_list->data;
-
+					$qualification_option='';
 					if($qualification_status == 0){
 						$qualification_option='<option value="">'.$qualification_message.'</option>';
 						$qualification_disbale='disabled';
@@ -1372,7 +1376,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 					$interest_status=$interest_list->status;
 					$interest_message=$interest_list->message;
 					$interest_data=$interest_list->data;
-
+					$interest_with_option='';
 					if($interest_status == 0){
 						$interest_with_option='<option value="">'.$qualification_message.'</option>';
 						$interest_with_disbale='disabled';
