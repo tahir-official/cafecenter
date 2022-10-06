@@ -510,60 +510,109 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'edit_users')
 				$user_type=$_SESSION['user_type'];
 				$email=$_SESSION['user_email'];
 				$contact_number=$_SESSION['contact_number'];
+				$qualification_status='ok';
+				$interest_with_status='ok';
+				if($user_type==4){
+					if(!empty($_POST['qualification'])){
+						$qualification = implode(',', $_POST['qualification']);
+						$qualification_status='ok';
+					}else{
+						$qualification_status='notok';
+					}
+	
+					if(!empty($_POST['interest_with'])){
+						$interest_with = implode(',', $_POST['interest_with']);
+						$interest_with_status='ok';
+					}else{
+						$interest_with_status='notok';
+					}
+				}
 			}else if($_POST['page']=='manager_page'){
 				$row_id=$_POST['row_id'];
 				$user_type=$_POST['user_type'];
 				$email=$_POST['email'];
 				$contact_number=$_POST['contact_number'];
-			}
-
-
-			$url=SSOAPI.'edit_user';
-			$data=array(
-				'row_id' => $row_id,
-				'user_type' => $user_type,
-				'fname' => $_POST['fname'],
-				'lname' => $_POST['lname'],
-				'email' => $email,
-				'contact_number' => $contact_number,
-				'address' => $_POST['address'],
-				'state' => $_POST['state'],
-				'district' => $_POST['district'],
-				'city' => $_POST['city'],
-				'zipcode' => $_POST['zipcode'],
-				'gender' => $_POST['gender'],
-				'dob' => $_POST['dob'],
-				'image_status'=> $image_status,
-				'document'=> $document,
-				'api_key' => API_KEY
-			);
-			if($user_type==3){
-				$data2=array("shopname"=>$_POST['shopname']);
-				$data=array_merge($data,$data2);
-		  }
-			$method='POST';
-			$response=$commonFunction->curl_call($url,$data,$method);
-            $result = json_decode($response);
-			if($result->status != 0){
-				if($_POST['page']=='edit_user'){
-					$alert_msg='Your profile updated Successfully';
-					$output['manager_name']=ucfirst($_POST['fname']).' '.ucfirst($_POST['lname']);
-				}else if($_POST['page']=='manager_page'){
-					$alert_msg=$result->message;
-					$output['fetchTableurl']= SSOAPI.'get_user_table_list';  
-                    $output['user_type']=   $_POST['user_type'];
-					$output['portal']=   'manager'; 
-					$output['show_by']=   $_SESSION['manager_id'];
+				if(!empty($_POST['qualification'])){
+					$qualification = implode(',', $_POST['qualification']);
+					$qualification_status='ok';
+				}else{
+					$qualification_status='notok';
 				}
-				$output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$alert_msg.' !!</div>';
-				$output['status']=1;
-				
 
-			}else{
-				//error message
-		    $output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
-		    $output['status']=0;
+				if(!empty($_POST['interest_with'])){
+					$interest_with = implode(',', $_POST['interest_with']);
+					$interest_with_status='ok';
+				}else{
+					$interest_with_status='notok';
+				}
 			}
+
+			if($qualification_status=='ok'){
+				if($interest_with_status=='ok'){
+					$url=SSOAPI.'edit_user';
+					$data=array(
+						'row_id' => $row_id,
+						'user_type' => $user_type,
+						'fname' => $_POST['fname'],
+						'lname' => $_POST['lname'],
+						'email' => $email,
+						'contact_number' => $contact_number,
+						'address' => $_POST['address'],
+						'state' => $_POST['state'],
+						'district' => $_POST['district'],
+						'city' => $_POST['city'],
+						'zipcode' => $_POST['zipcode'],
+						'gender' => $_POST['gender'],
+						'dob' => $_POST['dob'],
+						'image_status'=> $image_status,
+						'document'=> $document,
+						'api_key' => API_KEY
+					);
+					if($user_type==3){
+						$data2=array("shopname"=>$_POST['shopname']);
+						$data=array_merge($data,$data2);
+					}else if($user_type==4){
+						$data2=array("qualification"=>$qualification,"interest_with"=>$interest_with);
+						$data=array_merge($data,$data2);
+					}
+					$method='POST';
+					$response=$commonFunction->curl_call($url,$data,$method);
+					$result = json_decode($response);
+					if($result->status != 0){
+						if($_POST['page']=='edit_user'){
+							$alert_msg='Your profile updated Successfully';
+							$output['manager_name']=ucfirst($_POST['fname']).' '.ucfirst($_POST['lname']);
+						}else if($_POST['page']=='manager_page'){
+							$alert_msg=$result->message;
+							$output['fetchTableurl']= SSOAPI.'get_user_table_list';  
+							$output['user_type']=   $_POST['user_type'];
+							$output['portal']=   'main'; 
+							$output['show_by']=   $_SESSION['user_id'];
+						}
+						$output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$alert_msg.' !!</div>';
+						$output['status']=1;
+						
+		
+					}else{
+					//error message
+					$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
+					$output['status']=0;
+					}
+
+
+				}else{
+					//error message
+					$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Please select at least one Interest !!</div>';
+					$output['status']=0;
+				}
+
+			}
+			else{
+				//error message
+			    $output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Please select at least one qualification !!</div>';
+			    $output['status']=0;
+			}
+			
 
 	}else{
 			//error message
@@ -1183,6 +1232,18 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 				}
 			}
 
+			$consumer_plan_html='<div class="row">
+					<div class="form-group col-md-12">
+							<label for="consumer_plan">Select Consumer Plan</label>
+							<select '.$consumer_plan_disbale.' id="consumer_plan" name="consumer_plan" class="form-control" >
+									
+									'.$consumer_plan_option.'
+								
+							</select>
+					</div>
+					
+			</div>';
+
 			$action='add_user';            
 			
 	}else{
@@ -1204,7 +1265,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 												</button>
 											</div>';
 			}else{
-				   $action='edit_users';
+				    $action='edit_users';
 					$result_alert='';
 					$response_result=$result->data;
 					$fname=$response_result->fname;
@@ -1212,7 +1273,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 					$email=$response_result->email;
 					$contact_number=$response_result->contact_number;
 					$address=$response_result->address;
-					$shopname=$response_result->shopname;
+					
 
 					
 					$state_list=$commonFunction->state_list();
@@ -1284,6 +1345,51 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 					$dob=$response_result->dob;
 					$download_link='<a href="'.$response_result->document.'" target="_blank">Download</a>';
 
+					$consumer_plan_html='';
+
+					$qualification_list=$commonFunction->qualification_list(0);
+					$qualification_status=$qualification_list->status;
+					$qualification_message=$qualification_list->message;
+					$qualification_data=$qualification_list->data;
+
+					if($qualification_status == 0){
+						$qualification_option='<option value="">'.$qualification_message.'</option>';
+						$qualification_disbale='disabled';
+					}else{
+						$qualification_disbale='';
+						$user_qualifications=explode (",", $response_result->qualification);
+						foreach($qualification_data  as $qualification){
+							    $qualification_selected='';
+							    if(in_array($qualification->term_id, $user_qualifications)){ 
+									$qualification_selected= 'selected'; 
+								}
+								
+								$qualification_option.= '<option '.$qualification_selected.' value="'.$qualification->term_id.'">'.$qualification->name.'</option>';
+						}
+					}
+
+					$interest_list=$commonFunction->interest_list(0);
+					$interest_status=$interest_list->status;
+					$interest_message=$interest_list->message;
+					$interest_data=$interest_list->data;
+
+					if($interest_status == 0){
+						$interest_with_option='<option value="">'.$qualification_message.'</option>';
+						$interest_with_disbale='disabled';
+					}else{
+						$interest_with_disbale='';
+						$user_intrest_withs=explode (",", $response_result->additional_qualification);
+						foreach($interest_data  as $interest){
+								$interest_selected='';
+								if(in_array($interest->term_id, $user_intrest_withs)){ 
+									$interest_selected= 'selected'; 
+								}
+								$interest_with_option.= '<option '.$interest_selected.' value="'.$interest->term_id.'">'.$interest->name.'</option>';
+						}
+					}
+
+
+
 			}
 			
 	}
@@ -1300,17 +1406,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 							        <div id="popupalert">'.$result_alert.'</div>
 									<input type="hidden" name="user_type" value="'.$_POST['user_type'].'">
 									<input type="hidden" name="row_id" value="'.$_POST['row_id'].'">
-									<div class="row">
-											<div class="form-group col-md-12">
-													<label for="consumer_plan">Select Consumer Plan</label>
-													<select '.$consumer_plan_disbale.' id="consumer_plan" name="consumer_plan" class="form-control" >
-															
-															'.$consumer_plan_option.'
-														 
-													</select>
-											</div>
-											
-									</div>
+									'.$consumer_plan_html.'
 									<div class="row">
 											<div class="form-group col-md-6">
 													<label for="fname">First Name</label>
@@ -1397,7 +1493,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 
 									<div class="row">
 											<div class="form-group col-md-6">
-													<label for="state">Select Qualification</label>
+													<label for="qualification">Select Qualification</label>
 													<select '.$qualification_disbale.' id="qualification" name="qualification[]" class="form-control" multiple required>
 															
 															'.$qualification_option.'
@@ -1405,7 +1501,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 													</select>
 											</div>
 											<div class="form-group col-md-6">
-													<label for="state">Select Interest with</label>
+													<label for="interest_with">Select Interest with</label>
 													<select '.$interest_with_disbale.' id="interest_with" name="interest_with[]" class="form-control" multiple required>
 															
 															'.$interest_with_option.'
@@ -1603,12 +1699,6 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'detail_popup_user'
 								}
 								$intrest_with = substr($intrest_with, 1);
 
-                                $url_additional_qualification=SSOAPI.'get_additional_qualification_list';
-								$data_additional_qualification=array(
-										'api_key' => API_KEY
-								);
-								
-				
 								$subscription_end=date("Y-m-d", strtotime($response_result->subscription_end));
 								if(date('Y-m-d') > $subscription_end){
 									$subscription_status='<label style="color: white;cursor: pointer;" class="badge badge-danger">Need to renew</label>'; 

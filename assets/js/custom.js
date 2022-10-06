@@ -510,6 +510,12 @@ $(document).ready(function () {
       dob: {
         required: true,
       },
+      qualification: {
+        required: true,
+      },
+      interest_with: {
+        required: true,
+      },
     },
     submitHandler: function (form) {
       let formData = new FormData($("#edit_form")[0]);

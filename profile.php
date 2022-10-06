@@ -76,12 +76,19 @@
                                  <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="<?=$user_data->address?>">
                                  </div>
                               </div>
-                              <div class="form-group row">
+                              <?php
+                              if($_SESSION['user_type']==3){
+                                 ?>
+                                 <div class="form-group row">
                                  <label for="shopname" class="col-sm-2 col-form-label">Shopname</label>
-                                 <div class="col-sm-10">
-                                 <input type="text" class="form-control" id="shopname" name="shopname" placeholder="Shopname" value="<?=$user_data->shopname?>">
+                                    <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="shopname" name="shopname" placeholder="Shopname" value="<?=$user_data->shopname?>">
+                                    </div>
                                  </div>
-                              </div>
+                                 <?php
+                              }
+                              ?>
+                              
                               <div class="form-group row">
                                  <label for="state" class="col-sm-2 col-form-label">State</label>
                                  <div class="col-sm-10">
@@ -193,6 +200,79 @@
                                  <input type="file" class="form-control" id="document" name="document" accept=".jpg, .jpeg, .pdf">
                                  </div>
                               </div>
+
+                              <?php
+                              if($_SESSION['user_type']==4){
+                                 ?>
+                                 <div class="form-group row">
+                                 <label for="qualification" class="col-sm-2 col-form-label">Select Qualification</label>
+                                    <div class="col-sm-10">
+                                       <select  id="qualification" name="qualification[]" class="form-control" multiple required>
+															
+														<?php
+                                          
+                                             $qualification_list=$commonFunction->qualification_list(0);
+                                             $qualification_status=$qualification_list->status;
+                                             $qualification_message=$qualification_list->message;
+                                             $qualification_data=$qualification_list->data;
+
+                                             if($qualification_status == 0){
+                                                echo '<option value="">'.$qualification_message.'</option>';
+                                               
+                                             }else{
+                                                
+                                                $user_qualifications=explode (",", $user_data->qualification);
+                                                foreach($qualification_data  as $qualification){
+                                                      $qualification_selected='';
+                                                      if(in_array($qualification->term_id, $user_qualifications)){ 
+                                                         $qualification_selected= 'selected'; 
+                                                      }
+                                                      
+                                                      echo '<option '.$qualification_selected.' value="'.$qualification->term_id.'">'.$qualification->name.'</option>';
+                                                }
+                                             }
+
+                                              
+                                          ?>	
+														 
+													</select>
+                                    </div>
+                                 </div>
+                                 <div class="form-group row">
+                                 <label for="interest_with" class="col-sm-2 col-form-label">Select Interest with</label>
+                                    <div class="col-sm-10">
+                                       <select  id="interest_with" name="interest_with[]" class="form-control" multiple required>
+													<?php
+                                       
+                                       $interest_list=$commonFunction->interest_list(0);
+                                       $interest_status=$interest_list->status;
+                                       $interest_message=$interest_list->message;
+                                       $interest_data=$interest_list->data;
+                        
+                                       if($interest_status == 0){
+                                          echo '<option value="">'.$qualification_message.'</option>';
+                                          
+                                       }else{
+                                          
+                                          $user_intrest_withs=explode (",", $user_data->additional_qualification);
+                                          print_r($user_data);
+                                          foreach($interest_data  as $interest){
+                                                $interest_selected='';
+                                                if(in_array($interest->term_id, $user_intrest_withs)){ 
+                                                   $interest_selected= 'selected'; 
+                                                }
+                                                echo '<option '.$interest_selected.' value="'.$interest->term_id.'">'.$interest->name.'</option>';
+                                          }
+                                       }
+                                       ?>		
+															
+														 
+													</select>
+                                    </div>
+                                 </div>
+                                 <?php
+                              }
+                              ?>
                               
                               <div class="form-group row">
                                  <div class="offset-sm-2 col-sm-10">
