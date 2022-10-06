@@ -1,5 +1,8 @@
     <?php
       include_once('include/header.php');
+      if($_SESSION['user_type']==4){
+        $commonFunction->redirect('dashboard.php');
+      }
     ?>
 
     <div class="container">

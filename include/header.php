@@ -99,9 +99,18 @@ $site_url=LOCAL_URL;
             <li class="nav-item">
               <a class="nav-link" href="service.php">Services</a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="blog.php">Blog</a>
-            </li> -->
+            <?php
+            if(isset($_SESSION['is_user_logged_in'])){ 
+              if($_SESSION['user_type']==3){
+              ?>
+              <li class="nav-item">
+                <a class="nav-link" href="blog.php">Blog</a>
+              </li>
+              <?php    
+              }
+            }
+            ?>
+            
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact</a>
             </li>

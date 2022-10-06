@@ -12,7 +12,16 @@
           <ul class="footer-menu">
             <li><a href="about.php">About Us</a></li>
             <li><a href="service.php">Services</a></li>
-            <!--<li><a href="blog.php">Blog</a></li> -->
+            <?php
+            if(isset($_SESSION['is_user_logged_in'])){ 
+              if($_SESSION['user_type']==3){
+              ?>
+              <li><a href="blog.php">Blog</a></li>
+              <?php    
+              }
+            }
+            ?>
+            
             <li><a href="contact.php">Contact</a></li>
             <li><a href="terms_of_service.php">Terms of Service</a></li>
             <li><a href="privacy_policy.php">Privacy Policy</a></li>
