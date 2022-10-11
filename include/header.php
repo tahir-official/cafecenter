@@ -40,13 +40,14 @@ $site_url=LOCAL_URL;
   <link rel="stylesheet" href="assets/css/theme.css">
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="<?=$portal_detail->SITE_ICON?>">
-  <link href="assets/css/style.css" rel="stylesheet">
+  
    <!-- DataTables -->
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link href="assets/css/multiple-select.css" rel="stylesheet" type="text/css">
   
   <script src="assets/js/jquery-3.5.1.min.js"></script>
   <script src="assets/js/jquery.multiple.select.js"></script>
+  <link href="assets/css/style.css" rel="stylesheet">
   
 
   <script>

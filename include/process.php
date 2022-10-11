@@ -1879,7 +1879,68 @@ echo json_encode($output);
 }
 
 
+/*get blog list  action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'get_blogs')
+{ 
+	 //method check statement
+	 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+		
+		$url=SSOAPI.'get_blog_list';
+		$data=array(
+				'api_key' => API_KEY,
+				'blog_id' => 0,
+                'page' => 'blog',
+				'states' => $_POST['states'],
+				'keyword' => $_POST['keyword']
+		);
+		$method='POST';
+		$response=$commonFunction->curl_call($url,$data,$method);
+		$result = json_decode($response);
+		$html='<div class="row my-5">';
+		if($result->status==1){
+			foreach($result->data  as $blog_lists){
+				$html .='<div class="col-lg-4 py-3">
+							<div class="card-blog">
+							<div class="header">
+								<div class="post-thumb">
+								<img src="'.$blog_lists->blog_image.'" alt="">
+								</div>
+							</div>
+							<div class="body">
+								<h5 class="post-title"><a href="blog-details.php?id='.$blog_lists->id.'">'.$blog_lists->post_title.'</a></h5>
+								<div class="post-date">Posted on <a href="blog-details.php?id='.$blog_lists->id.'">'.$blog_lists->post_date.'</a></div>
+							</div>
+							</div>
+						</div>';
+			}
+
+		}else{
+			$html .='<div class="col-lg-12 py-3">
+						<div class="card-blog">
+						
+						<div class="body">
+							<h5 class="post-title"><a href="">No blog found !!</a></h5>
+							
+						</div>
+						</div>
+					</div>';
+		}
+		$html .='</div>';
+
+
+		$output['html'] =$html;
+	    $output['status']=1;
+
+	 }else{
+		//error message
+		$output['html'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+	    $output['status']=0;
+	  
+    }  
+echo json_encode($output);	
+}
+/*get blog list  end start*/
 
 
    

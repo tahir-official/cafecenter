@@ -4,7 +4,19 @@
         $commonFunction->redirect('dashboard.php');
       }
     ?>
-
+    <style>
+      .loader {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url('assets/img/loader.gif') 50% 50% no-repeat rgb(249,249,249);
+        opacity: .8;
+        background-size: 300px;
+      }
+    </style>
     <div class="container">
       <div class="page-banner">
         <div class="row justify-content-center align-items-center h-100">
@@ -24,158 +36,102 @@
 
   <div class="page-section">
     <div class="container">
+      
+      <form id="blogFetch" onsubmit="return get_blogs();" class="form-search-blog">
       <div class="row">
         <div class="col-sm-10">
-          <form action="#" class="form-search-blog">
+          
             <div class="input-group">
               <div class="input-group-prepend">
-                <select id="categories" class="custom-select bg-light">
-                  <option>All Categories</option>
-                  <option value="travel">Travel</option>
-                  <option value="lifestyle">LifeStyle</option>
-                  <option value="healthy">Healthy</option>
-                  <option value="food">Food</option>
+                <select id="qualification" name="qualification[]" class="custom-select bg-light" multiple>
+                  <?php
+                  
+                  $qualification_list=$commonFunction->qualification_list(0);
+                  $qualification_status=$qualification_list->status;
+                  $qualification_message=$qualification_list->message;
+                  $qualification_data=$qualification_list->data;
+                  $qualification_option='';
+                  if($qualification_status == 0){
+                    $qualification_option='<option value="">'.$qualification_message.'</option>';
+                    $qualification_disbale='disabled';
+                  }else{
+                    $qualification_disbale='';
+                    //$qualification_option='<option value="">All Qualifications</option>';
+                    foreach($qualification_data  as $qualification){
+                        
+                        $qualification_option.= '<option value="'.$qualification->term_id.'">'.$qualification->name.'</option>';
+                    }
+                  }
+                  echo $qualification_option;
+                  ?>
+                  
                 </select>
               </div>
-              <input type="text" class="form-control" placeholder="Enter keyword..">
+              <div class="input-group-prepend">
+                <select id="interest_with" name="interest_with[]" class="custom-select bg-light" multiple>
+                  <?php
+                  $interest_list=$commonFunction->interest_list(0);
+                  $interest_status=$interest_list->status;
+                  $interest_message=$interest_list->message;
+                  $interest_data=$interest_list->data;
+            
+                  $interest_with_option='';
+                  if($interest_status == 0){
+                    $interest_with_option='<option value="">'.$qualification_message.'</option>';
+                    $interest_with_disbale='disabled';
+                  }else{
+                    $interest_with_disbale='';
+                    //$interest_with_option='<option value="">All Interests</option>';
+                    foreach($interest_data  as $interest){
+                      
+                        $interest_with_option.= '<option value="'.$interest->term_id.'">'.$interest->name.'</option>';
+                    }
+                  }
+                  echo $interest_with_option;
+                  ?>
+                  
+                </select>
+              </div>
+              <div class="input-group-prepend">
+                <select id="states" name="states" class="custom-select bg-light">
+                  <?php
+                  $state_list=$commonFunction->state_list();
+                  $state_status=$state_list->status;
+                  $state_message=$state_list->message;
+                  $state_data=$state_list->data;
+            
+                  if($state_status == 0){
+                    $state_option='<option value="">'.$state_message.'</option>';
+                    $states_disbale='disabled';
+                  }else{
+                    $states_disbale='';
+                    $state_option='<option value="">All States</option>';
+                    foreach($state_data as $state){
+                        $state_option.= '<option value="'.$state->state_id.'">'.$state->state_title.'</option>';
+                    }
+                  }
+                  echo $state_option;
+                  ?>
+                  
+                </select>
+              </div>
+              <input name="keyword" type="text" class="form-control" placeholder="Enter keyword..">
             </div>
-          </form>
+          
         </div>
         <div class="col-sm-2 text-sm-right">
-          <button class="btn btn-secondary">Filter <span class="mai-filter"></span></button>
+          <button type="submit" class="btn btn-secondary" id="searchBtn">Filter <span class="mai-filter"></span></button>
+          
         </div>
+        </div>
+        </form>
+      
+      <div id="blog_list">
+          
       </div>
+      <div class="loader"></div>
 
-      <div class="row my-5">
-        <div class="col-lg-4 py-3">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-thumb">
-                <img src="assets/img/blog/blog-1.jpg" alt="">
-              </div>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.php">Source of Content Inspiration</a></h5>
-              <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-lg-4 py-3">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-thumb">
-                <img src="assets/img/blog/blog-2.jpg" alt="">
-              </div>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.php">Source of Content Inspiration</a></h5>
-              <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 py-3">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-thumb">
-                <img src="assets/img/blog/blog-3.jpg" alt="">
-              </div>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.php">Source of Content Inspiration</a></h5>
-              <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 py-3">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-thumb">
-                <img src="assets/img/blog/blog-4.jpg" alt="">
-              </div>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.php">Source of Content Inspiration</a></h5>
-              <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-lg-4 py-3">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-thumb">
-                <img src="assets/img/blog/blog-5.jpg" alt="">
-              </div>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.php">Source of Content Inspiration</a></h5>
-              <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 py-3">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-thumb">
-                <img src="assets/img/blog/blog-6.jpg" alt="">
-              </div>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.php">Source of Content Inspiration</a></h5>
-              <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 py-3">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-thumb">
-                <img src="assets/img/blog/blog-1.jpg" alt="">
-              </div>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.php">Source of Content Inspiration</a></h5>
-              <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-lg-4 py-3">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-thumb">
-                <img src="assets/img/blog/blog-2.jpg" alt="">
-              </div>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.php">Source of Content Inspiration</a></h5>
-              <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 py-3">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-thumb">
-                <img src="assets/img/blog/blog-3.jpg" alt="">
-              </div>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.php">Source of Content Inspiration</a></h5>
-              <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <nav aria-label="Page Navigation">
+      <!-- <nav aria-label="Page Navigation">
         <ul class="pagination justify-content-center">
           <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -189,7 +145,7 @@
             <a class="page-link" href="#">Next</a>
           </li>
         </ul>
-      </nav>
+      </nav> -->
 
     </div>
   </div>
@@ -197,3 +153,9 @@
   <?php
       include_once('include/footer.php');
   ?>
+<script>
+jQuery(document).ready(function() {
+  get_blogs();
+});
+</script>
+  

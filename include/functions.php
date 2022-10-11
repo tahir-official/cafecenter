@@ -109,6 +109,18 @@ class Functions
         return $result = json_decode($response);
     
     }
+    function blog_list($blog_id,$page=NULL){
+        $url=SSOAPI.'get_blog_list';
+        $data=array(
+             'api_key' => API_KEY,
+             'blog_id' => $blog_id,
+             'page' => $page
+        );
+        $method='POST';
+        $response=$this->curl_call($url,$data,$method);
+        return $result = json_decode($response);
+    
+    }
     function redirect($location){ 
           echo '<script>window.location.href="'.$location.'"</script>';
           die(); 

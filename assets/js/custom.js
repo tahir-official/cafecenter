@@ -862,6 +862,7 @@ $(document).ready(function () {
 $(function() { 
   $("#qualification").multipleSelect({
     placeholder: 'Select Qualification',
+    
   });
   $("#interest_with").multipleSelect({
     placeholder: 'Select Interest with',
@@ -963,6 +964,36 @@ function showAlert() {
 function showServiceAlert() {
   alert ("Please login as retailer and use this service!");
 }
+
+/*load blog list script start*/
+function get_blogs(){
+  var form=jQuery("#blogFetch").serialize();
+  jQuery.ajax({
+    type:'POST',
+    url: baseUrl + "include/process.php?action=get_blogs",
+    data:form,
+    dataType:'JSON',
+    beforeSend:function(){
+      jQuery(".loader").fadeIn("slow");
+      jQuery("#blog_list").html('');
+      jQuery("#searchBtn").html('Filter..');
+    },
+   
+  })
+  .fail(function (response) {
+    alert("Try again later.");
+  })
+  .done(function (response) {
+    jQuery(".loader").fadeOut("slow");
+    jQuery("#blog_list").html(response.html);
+    jQuery("#searchBtn").html('Filter <span class="mai-filter"></span>');
+  })
+  .always(function () {
+    jQuery(".loader").fadeOut("slow");
+    jQuery("#searchBtn").html('Filter <span class="mai-filter"></span>');
+  });
+  return false;
+  }
 
 
   
