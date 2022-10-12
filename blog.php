@@ -38,12 +38,20 @@
     <div class="container">
       
       <form id="blogFetch" onsubmit="return get_blogs();" class="form-search-blog">
+      <?php
+      if(isset($_REQUEST['paged'])){
+        $page=$_REQUEST['paged'];
+        echo '<input id="paged" type="hidden" name="paged" value="'.$page.'">';
+      }else{
+        echo '<input id="paged" type="hidden" name="paged" value="">';
+      }
+      ?>
       <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           
             <div class="input-group">
               <div class="input-group-prepend">
-                <select id="qualification" name="qualification[]" class="custom-select bg-light" multiple>
+                <select id="qualification_blog"  name="qualification[]" class="custom-select bg-light" multiple>
                   <?php
                   
                   $qualification_list=$commonFunction->qualification_list(0);
@@ -68,7 +76,7 @@
                 </select>
               </div>
               <div class="input-group-prepend">
-                <select id="interest_with" name="interest_with[]" class="custom-select bg-light" multiple>
+                <select id="interest_with_blog" name="interest_with[]"  class="custom-select bg-light" multiple>
                   <?php
                   $interest_list=$commonFunction->interest_list(0);
                   $interest_status=$interest_list->status;
@@ -93,7 +101,7 @@
                 </select>
               </div>
               <div class="input-group-prepend">
-                <select id="states" name="states" class="custom-select bg-light">
+                <select id="states" name="states" onchange="return remove_page();" class="custom-select bg-light">
                   <?php
                   $state_list=$commonFunction->state_list();
                   $state_status=$state_list->status;
@@ -115,12 +123,13 @@
                   
                 </select>
               </div>
-              <input name="keyword" type="text" class="form-control" placeholder="Enter keyword..">
+              <input name="keyword" id="keyword" type="text" class="form-control" placeholder="Enter keyword..">
             </div>
           
         </div>
-        <div class="col-sm-2 text-sm-right">
-          <button type="submit" class="btn btn-secondary" id="searchBtn">Filter <span class="mai-filter"></span></button>
+        <div class="col-sm-3 text-sm-right">
+          <button type="submit" class="btn btn-primary" id="searchBtn">Filter <span class="mai-filter"></span></button>
+          <button type="button" class="btn btn-secondary" onclick="return resetFilterFrom();">Reset <span class="mai-power"></span></button>
           
         </div>
         </div>
@@ -131,21 +140,10 @@
       </div>
       <div class="loader"></div>
 
-      <!-- <nav aria-label="Page Navigation">
-        <ul class="pagination justify-content-center">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item active" aria-current="page">
-            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav> -->
+      <nav aria-label="Page Navigation" id="pagination">
+        
+      </nav>
+      <!-- <button type="button" onclick="abc('<?php echo $site_url.'blog.php?paged=2' ?>');">click</button> -->
 
     </div>
   </div>
@@ -156,6 +154,10 @@
 <script>
 jQuery(document).ready(function() {
   get_blogs();
+  
+});
+$("#keyword").keyup(function(){
+  remove_page()
 });
 </script>
   

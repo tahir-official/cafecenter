@@ -25,6 +25,7 @@
 	border-radius: 4px;
 	background-color: #f6f5fc;
 	height: 47px;
+	width: 150px !important;
 
 }
 
@@ -46,8 +47,8 @@
 	display: block;
 	padding-left: 8px;
 	height: 37px;
-    padding-top: 6px;
-    color: #5c6269 !important;
+    padding-top: 10px;
+    color: #495057 !important;
 }
 
 .ms-choice > span.placeholder {

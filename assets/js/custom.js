@@ -869,6 +869,29 @@ $(function() {
   });
 });
 
+$(function() { 
+  $("#qualification_blog").multipleSelect({
+    placeholder: 'All Qualification',
+    onOpen: function () {
+    remove_page()  
+    return false;
+      
+    },
+    width: 150,
+    
+    
+  });
+  $("#interest_with_blog").multipleSelect({
+    placeholder: 'All Interest',
+    onOpen: function () {
+      remove_page()  
+      return false;
+        
+    },
+    width: 150,
+  });
+});
+
 
 /*change user status start*/
 function changeUserStatus(user_id, status, user_type) {
@@ -976,6 +999,7 @@ function get_blogs(){
     beforeSend:function(){
       jQuery(".loader").fadeIn("slow");
       jQuery("#blog_list").html('');
+      jQuery("#pagination").html('');
       jQuery("#searchBtn").html('Filter..');
     },
    
@@ -986,6 +1010,7 @@ function get_blogs(){
   .done(function (response) {
     jQuery(".loader").fadeOut("slow");
     jQuery("#blog_list").html(response.html);
+    jQuery("#pagination").html(response.pagination);
     jQuery("#searchBtn").html('Filter <span class="mai-filter"></span>');
   })
   .always(function () {
@@ -995,5 +1020,26 @@ function get_blogs(){
   return false;
   }
 
+/*reset filter form start*/
+function resetFilterFrom() {
+  $("#blogFetch")[0].reset();
+  $.getScript(baseUrl + "assets/js/custom.js");
+  window.history.pushState("object or string", "Title", baseUrl+'blog.php');
+  $('#paged').val(1);
+  get_blogs();
+  return false;
+}
+/*reset filter form end*/
 
+function change_url(url,page){
+  window.history.pushState("object or string", "Title", url);
+  $('#paged').val(page);
+  get_blogs();
+  return false;
+  }
+  
+  function remove_page(){
+    window.history.pushState("object or string", "Title", baseUrl+'blog.php');
+    $('#paged').val(1);
+  }
   

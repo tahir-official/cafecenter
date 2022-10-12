@@ -1884,7 +1884,27 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'get_blogs')
 { 
 	 //method check statement
 	 if($_SERVER["REQUEST_METHOD"] == "POST"){
+		if(isset($_POST['qualification'])){
+			if(!empty($_POST['qualification'])){
+				$qualification = implode(',', $_POST['qualification']);
+				
+			}else{
+				$qualification ='';
+			}
+		}else{
+			    $qualification ='';
+		}
 
+		if(isset($_POST['interest_with'])){
+			if(!empty($_POST['interest_with'])){
+				$interest_with = implode(',', $_POST['interest_with']);
+				
+			}else{
+				$interest_with ='';
+			}
+		}else{
+			    $interest_with ='';
+		}
 		
 		$url=SSOAPI.'get_blog_list';
 		$data=array(
@@ -1892,8 +1912,12 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'get_blogs')
 				'blog_id' => 0,
                 'page' => 'blog',
 				'states' => $_POST['states'],
-				'keyword' => $_POST['keyword']
+				'keyword' => $_POST['keyword'],
+				'qualification' => $qualification,
+				'interest_with' => $interest_with,
+				'paged' => $_POST['paged'],
 		);
+		
 		$method='POST';
 		$response=$commonFunction->curl_call($url,$data,$method);
 		$result = json_decode($response);
@@ -1914,6 +1938,64 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'get_blogs')
 							</div>
 						</div>';
 			}
+			$pages_list='';
+			if($result->max_pages > 0){
+				for ($i=1; $i <= $result->max_pages ; $i++) { 
+					$active='';
+					$aria_current='';
+					$sr_only='';
+					$previous_disable_true='';
+					$previous_disable='';
+					$previous_link='#';
+					$next_disable='';
+					$next_link='#';
+					if($_POST['paged']!=''){
+						if($i==$_POST['paged']){
+							$active='active';
+							$aria_current='aria-current="page"';
+							$sr_only='<span class="sr-only">(current)</span>';
+						}
+						if($_POST['paged']==1){
+							$previous_disable_true='aria-disabled="true"';
+						    $previous_disable='disabled';
+							$next_link="return change_url('blog.php?paged=".(1+1)."','".(1+1)."')";
+							//$next_link='blog.php?paged='.(1+1);
+						}else{
+							//$previous_link='blog.php?paged='.$_POST['paged']-1;
+							$previous_link="return change_url('blog.php?paged=".($_POST['paged']-1)."','".($_POST['paged']-1)."')";
+							if($_POST['paged']==$i){
+								$next_disable='disabled';
+							}else{
+								//$next_link='blog.php?paged='.($_POST['paged']+1);
+								$next_link="return change_url('blog.php?paged=".($_POST['paged']+1)."','".($_POST['paged']+1)."')";
+							}
+							
+						}
+				    }else{
+						if($i==1){
+							$active='active';
+							$aria_current='aria-current="page"';
+							$sr_only='<span class="sr-only">(current)</span>';
+						}
+						$previous_disable_true='aria-disabled="true"';
+						$previous_disable='disabled';
+						//$next_link='blog.php?paged='.(1+1);
+						$next_link="return change_url('blog.php?paged=".(1+1)."','".(1+1)."')";
+					}
+					
+					$click="return change_url('blog.php?paged=".$i."','".$i."')";
+					$pages_list .='<li class="page-item '.$active.'" '.$aria_current.'><a class="page-link" href="javascript:void(0)" onClick="'.$click.'">'.$i.' '.$sr_only.'</a></li>';
+				}
+			}
+			$pagination='<ul class="pagination justify-content-center">
+							<li class="page-item '.$previous_disable.'">
+							<a class="page-link" href="javascript:void(0)" onClick="'.$previous_link.'" tabindex="-1" '.$previous_disable_true.'>Previous</a>
+							</li>
+							'.$pages_list.'
+							<li class="page-item '.$next_disable.'">
+							<a class="page-link" href="javascript:void(0)" onClick="'.$next_link.'">Next</a>
+							</li>
+						</ul>';
 
 		}else{
 			$html .='<div class="col-lg-12 py-3">
@@ -1925,11 +2007,13 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'get_blogs')
 						</div>
 						</div>
 					</div>';
+		    $pagination='';			
 		}
 		$html .='</div>';
 
 
 		$output['html'] =$html;
+		$output['pagination'] =$pagination;
 	    $output['status']=1;
 
 	 }else{
