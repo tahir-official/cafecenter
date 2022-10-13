@@ -2024,7 +2024,47 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'get_blogs')
     }  
 echo json_encode($output);	
 }
-/*get blog list  end start*/
+/*get blog list  end*/
+
+/*get blog list  action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_job_form')
+{ 
+	 //method check statement
+	 if($_SERVER["REQUEST_METHOD"] == "POST"){
+		$html='<h3 class="mb-5">Compose Notification</h3>
+		<form action="#" class="">
+		  
+		  <div class="form-group">
+			<label for="interest_with">Select Users</label><br>
+			<select  id="users_list" name="users_list[]" class="form-control" multiple required>
+			<option value="7">8th</option>
+			<option value="8">10th</option>
+			<option value="9">12th</option>
+			<option value="10">Graduation</option>
+			<option value="11">Post Graduation</option> 						
+							</select>
+			
+		  </div>
+
+		  <div class="form-group">
+			<label for="message">Notification</label>
+			<textarea name="msg" id="message" cols="30" rows="4" class="form-control"></textarea>
+		  </div>
+		  <div class="form-group">
+			<input type="submit" value="Post Comment" class="btn btn-primary">
+		  </div>
+
+		</form>';
+		$output['html'] =$html;
+	    $output['status']=1;
+	 }else{
+		//error message
+		$output['html'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+	    $output['status']=0;
+	  
+    }  
+echo json_encode($output);	
+}
 
 
    

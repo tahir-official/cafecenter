@@ -1,0 +1,71 @@
+[13-Oct-2022 05:25:56 Asia/Kolkata] PHP Warning:  Undefined array key "user_type" in C:\xampp\htdocs\php\cafecenter\blog-details.php on line 3
+[13-Oct-2022 05:25:56 Asia/Kolkata] PHP Stack trace:
+[13-Oct-2022 05:25:56 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[13-Oct-2022 05:26:26 Asia/Kolkata] PHP Warning:  Undefined array key "user_type" in C:\xampp\htdocs\php\cafecenter\blog-details.php on line 3
+[13-Oct-2022 05:26:26 Asia/Kolkata] PHP Stack trace:
+[13-Oct-2022 05:26:26 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[13-Oct-2022 05:26:51 Asia/Kolkata] PHP Warning:  Undefined array key "user_type" in C:\xampp\htdocs\php\cafecenter\blog-details.php on line 3
+[13-Oct-2022 05:26:51 Asia/Kolkata] PHP Stack trace:
+[13-Oct-2022 05:26:51 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[13-Oct-2022 05:26:51 Asia/Kolkata] PHP Warning:  Undefined array key "user_type" in C:\xampp\htdocs\php\cafecenter\blog-details.php on line 5
+[13-Oct-2022 05:26:51 Asia/Kolkata] PHP Stack trace:
+[13-Oct-2022 05:26:51 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[13-Oct-2022 05:26:53 Asia/Kolkata] PHP Warning:  Undefined array key "user_type" in C:\xampp\htdocs\php\cafecenter\blog-details.php on line 3
+[13-Oct-2022 05:26:53 Asia/Kolkata] PHP Stack trace:
+[13-Oct-2022 05:26:53 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[13-Oct-2022 05:26:53 Asia/Kolkata] PHP Warning:  Undefined array key "user_type" in C:\xampp\htdocs\php\cafecenter\blog-details.php on line 5
+[13-Oct-2022 05:26:53 Asia/Kolkata] PHP Stack trace:
+[13-Oct-2022 05:26:53 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[13-Oct-2022 05:27:44 Asia/Kolkata] PHP Warning:  Undefined array key "user_type" in C:\xampp\htdocs\php\cafecenter\blog.php on line 3
+[13-Oct-2022 05:27:44 Asia/Kolkata] PHP Stack trace:
+[13-Oct-2022 05:27:44 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog.php:0
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Warning:  Attempt to read property "data" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 9
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   2. include_once() C:\xampp\htdocs\php\cafecenter\blog-details.php:2
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Warning:  Attempt to read property "user_type" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 10
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   2. include_once() C:\xampp\htdocs\php\cafecenter\blog-details.php:2
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Warning:  Attempt to read property "fname" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 122
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   2. include_once() C:\xampp\htdocs\php\cafecenter\blog-details.php:2
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\php\cafecenter\include\header.php on line 122
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   2. include_once() C:\xampp\htdocs\php\cafecenter\blog-details.php:2
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   3. ucfirst($string = NULL) C:\xampp\htdocs\php\cafecenter\include\header.php:122
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Warning:  Attempt to read property "lname" on null in C:\xampp\htdocs\php\cafecenter\include\header.php on line 122
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   2. include_once() C:\xampp\htdocs\php\cafecenter\blog-details.php:2
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\php\cafecenter\include\header.php on line 122
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   2. include_once() C:\xampp\htdocs\php\cafecenter\blog-details.php:2
+[14-Oct-2022 01:07:12 Asia/Kolkata] PHP   3. ucfirst($string = NULL) C:\xampp\htdocs\php\cafecenter\include\header.php:122
+[14-Oct-2022 01:07:17 Asia/Kolkata] PHP Warning:  Attempt to read property "subscription_status" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 19
+[14-Oct-2022 01:07:17 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:17 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:17 Asia/Kolkata] PHP   2. include() C:\xampp\htdocs\php\cafecenter\blog-details.php:3
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP Warning:  Attempt to read property "fname" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP   2. include() C:\xampp\htdocs\php\cafecenter\blog-details.php:3
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP Warning:  Attempt to read property "lname" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 57
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP   2. include() C:\xampp\htdocs\php\cafecenter\blog-details.php:3
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP Warning:  Attempt to read property "email" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 58
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP   2. include() C:\xampp\htdocs\php\cafecenter\blog-details.php:3
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP Warning:  Attempt to read property "contact_number" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 59
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP   2. include() C:\xampp\htdocs\php\cafecenter\blog-details.php:3
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP Warning:  Attempt to read property "address" on null in C:\xampp\htdocs\php\cafecenter\include\redirectcondtion.php on line 62
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP Stack trace:
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\blog-details.php:0
+[14-Oct-2022 01:07:18 Asia/Kolkata] PHP   2. include() C:\xampp\htdocs\php\cafecenter\blog-details.php:3

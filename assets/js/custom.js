@@ -890,6 +890,16 @@ $(function() {
     },
     width: 150,
   });
+
+  $("#users_list").multipleSelect({
+    placeholder: 'All Interest',
+    // onOpen: function () {
+    //   remove_page()  
+    //   return false;
+        
+    // },
+    width: 400,
+  });
 });
 
 
@@ -1041,5 +1051,37 @@ function change_url(url,page){
   function remove_page(){
     window.history.pushState("object or string", "Title", baseUrl+'blog.php');
     $('#paged').val(1);
+  }
+
+
+  /*load job form script start*/
+function load_job_form(blog_id){
+  
+  jQuery.ajax({
+    type:'POST',
+    url: baseUrl + "include/process.php?action=load_job_form",
+    data:{blog_id:blog_id},
+    dataType:'JSON',
+    beforeSend:function(){
+
+      jQuery("#job_form_div").html('Please wait....');
+      jQuery("#loadBtn").html('Send Job Notification <span class="mai-arrow-forward-circle"></span>');
+      
+    },
+   
+  })
+  .fail(function (response) {
+    alert("Try again later.");
+  })
+  .done(function (response) {
+    $.getScript(baseUrl + "assets/js/custom.js");
+    jQuery("#job_form_div").html(response.html);
+    jQuery("#job_form_div").focus();
+    jQuery("#loadBtn").html('Send Job Notification <span class="mai-notifications-circle"></span>');
+  })
+  .always(function () {
+    jQuery("#loadBtn").html('Send Job Notification <span class="mai-notifications-circle"></span>');
+  });
+  return false;
   }
   
