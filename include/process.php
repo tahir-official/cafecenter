@@ -2031,32 +2031,60 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_job_form')
 { 
 	 //method check statement
 	 if($_SERVER["REQUEST_METHOD"] == "POST"){
-		$html='<h3 class="mb-5">Compose Notification</h3>
-		<form action="#" class="">
-		  
-		  <div class="form-group">
-			<label for="interest_with">Select Users</label><br>
-			<select  id="users_list" name="users_list[]" class="form-control" multiple required>
-			<option value="7">8th</option>
-			<option value="8">10th</option>
-			<option value="9">12th</option>
-			<option value="10">Graduation</option>
-			<option value="11">Post Graduation</option> 						
-							</select>
+		$url=SSOAPI.'get_job_notification_form_detail';
+		$data=array(
+				'api_key' => API_KEY,
+				'blog_id' => $_POST['blog_id'],
+                'user_id' => $_SESSION['user_id'],
+				'portal' => 'main'
+		);
+		
+		$method='POST';
+		$response=$commonFunction->curl_call($url,$data,$method);
+		$result = json_decode($response);
+		$html='';
+		if($result->status==1){
+			$users_option='';
+			foreach($result->user_list as $user_list){
+			$users_option.= '<option  value="'.$user_list->id.'">'.$user_list->fullname.'</option>';
+			}
+			$extra_text_btn='';
+			if($result->send_type==1){
+				$extra_text_btn='<span id="rscount"></span>';
+			}
+			$html='<h3 class="mb-5">Compose Notification</h3>
 			
-		  </div>
-
-		  <div class="form-group">
-			<label for="message">Notification</label>
-			<textarea name="msg" id="message" cols="30" rows="4" class="form-control"></textarea>
-		  </div>
-		  <div class="form-group">
-			<input type="submit" value="Post Comment" class="btn btn-primary">
-		  </div>
-
-		</form>';
-		$output['html'] =$html;
-	    $output['status']=1;
+			<form id="sendJobNotification" onsubmit="return send_notification();">
+			  <input type="hidden" name="blog_id" value="'.$_POST['blog_id'].'" >
+			  <input type="hidden" name="send_type" value="'.$result->send_type.'" >
+			  
+			  <div class="form-group">
+				<label for="users_list">Select Users</label><br>
+				<select  id="users_list" name="users_list[]" class="form-control" multiple>
+				'.$users_option.'
+				 						
+				</select>
+				
+			  </div>
+	
+			  <div class="form-group">
+				<label for="message">Notification</label>
+				<textarea name="msg" id="message" cols="30" rows="4" class="form-control" readonly>'.$result->blog_message.'</textarea>
+			  </div>
+			  <div class="form-group">
+				<button id="sendBtn" type="submit"  class="btn btn-primary">Send Notification</button>
+				'.$extra_text_btn.'
+			  </div>
+	
+			</form>';
+			$output['html'] =$html;
+	        $output['status']=1;
+		}else{
+			$output['html'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
+	        $output['status']=0;
+		}
+		
+		
 	 }else{
 		//error message
 		$output['html'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
@@ -2065,6 +2093,55 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_job_form')
     }  
 echo json_encode($output);	
 }
+
+/*send job notification action start*/
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'send_job_notification')
+{ 
+	//method check statement
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+		if(!empty($_POST['users_list'])){
+			$users_list = implode(',', $_POST['users_list']);
+			$url=SSOAPI.'send_job_notification';
+			$data=array(
+					'api_key' => API_KEY,
+					'user_id' => $_SESSION['user_id'],
+					'blog_id' => $_POST['blog_id'],
+					'send_type' => $_POST['send_type'],
+					'users_list' => $users_list,
+					'portal' => 'main'
+			);
+			
+			$method='POST';
+			$response=$commonFunction->curl_call($url,$data,$method);
+			$result = json_decode($response);
+			if($result->status==1){
+
+				$output['status']=1;
+
+			}else{
+				$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+	            $output['status']=0;
+			}
+			
+		}else{
+			
+			//error message
+		    $output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Please select at least one user for send a notification !!</div>';
+	        $output['status']=0;
+		}
+		
+		
+	}
+	else{
+		//error message
+		$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+	    $output['status']=0;
+	  
+    } 
+	echo json_encode($output);	
+}
+
 
 
    

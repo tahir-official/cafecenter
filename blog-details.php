@@ -100,11 +100,20 @@
             </div>
             <div class="post-content">
               <?=$blog_data->post_content?>
-              <button id="loadBtn" type="button" onclick="return load_job_form(<?=$blog_data->id?>)" class="btn btn-primary">Send Job Notification <span class="mai-notifications-circle"></span></button>
+              <?php
+              
+              if($blog_data->send_message=='yes'){
+                ?>
+
+                  <button id="loadBtn" type="button" onclick="return load_job_form(<?=$blog_data->id?>)" class="btn btn-primary">Send Job Notification <span class="mai-notifications-circle"></span></button>
+                <?php
+              }
+              ?>
+              
               </div>
             </div>
          
-
+          <div id="alert_div"></div>
           <div class="comment-form-wrap" id="job_form_div">
             
           </div>

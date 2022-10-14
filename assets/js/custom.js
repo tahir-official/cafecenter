@@ -892,7 +892,7 @@ $(function() {
   });
 
   $("#users_list").multipleSelect({
-    placeholder: 'All Interest',
+    placeholder: 'All Users',
     // onOpen: function () {
     //   remove_page()  
     //   return false;
@@ -1081,6 +1081,40 @@ function load_job_form(blog_id){
   })
   .always(function () {
     jQuery("#loadBtn").html('Send Job Notification <span class="mai-notifications-circle"></span>');
+  });
+  return false;
+  }
+
+/*send notification script start*/
+function send_notification(){
+  var form=jQuery("#sendJobNotification").serialize();
+  jQuery.ajax({
+    type:'POST',
+    url: baseUrl + "include/process.php?action=send_job_notification",
+    data:form,
+    dataType:'JSON',
+    beforeSend:function(){
+      jQuery("#alert_div").html('');
+      jQuery("#sendBtn").prop("disabled", true);
+      jQuery("#sendBtn").html('Sending..');
+    },
+   
+  })
+  .fail(function (response) {
+    alert("Try again later.");
+  })
+  .done(function (response) {
+      jQuery("#alert_div").html(response.message);
+      jQuery("#sendBtn").prop("disabled", false);
+      jQuery("#sendBtn").html('Send Notification');
+      if(response.status==1){
+        jQuery("#job_form_div").html('');
+      }
+  })
+  .always(function () {
+    
+    jQuery("#sendBtn").prop("disabled", false);
+    jQuery("#sendBtn").html('Send Notification');
   });
   return false;
   }
