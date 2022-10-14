@@ -2050,7 +2050,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_job_form')
 			}
 			$extra_text_btn='';
 			if($result->send_type==1){
-				$extra_text_btn='<span id="rscount"></span>';
+				$extra_text_btn='<span id="rscount" style="color: crimson;"></span>';
 			}
 			$html='<h3 class="mb-5">Compose Notification</h3>
 			
@@ -2072,7 +2072,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_job_form')
 				<textarea name="msg" id="message" cols="30" rows="4" class="form-control" readonly>'.$result->blog_message.'</textarea>
 			  </div>
 			  <div class="form-group">
-				<button id="sendBtn" type="submit"  class="btn btn-primary">Send Notification</button>
+				<button id="sendBtn" type="submit"  class="btn btn-primary">Send Notification</button><br>
 				'.$extra_text_btn.'
 			  </div>
 	
@@ -2116,11 +2116,11 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'send_job_notificat
 			$response=$commonFunction->curl_call($url,$data,$method);
 			$result = json_decode($response);
 			if($result->status==1){
-
+				$output['message'] ='<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Success!</strong> '.$result->message.' !!</div>';
 				$output['status']=1;
 
 			}else{
-				$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Something Went Wrong !!</div>';
+				$output['message'] ='<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> '.$result->message.' !!</div>';
 	            $output['status']=0;
 			}
 			

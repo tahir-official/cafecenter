@@ -1,0 +1,6 @@
+[15-Oct-2022 02:50:56 Asia/Kolkata] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\php\cafecenter\include\process.php on line 2118
+[15-Oct-2022 02:50:56 Asia/Kolkata] PHP Stack trace:
+[15-Oct-2022 02:50:56 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[15-Oct-2022 02:50:56 Asia/Kolkata] PHP Warning:  Attempt to read property "message" on null in C:\xampp\htdocs\php\cafecenter\include\process.php on line 2123
+[15-Oct-2022 02:50:56 Asia/Kolkata] PHP Stack trace:
+[15-Oct-2022 02:50:56 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0

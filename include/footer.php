@@ -71,6 +71,9 @@
 
 <script type="text/javascript">
       let baseUrl = '<?=$site_url;?>';
+      let currency = '<?=$portal_detail->CURRENCY;?>';
+      let sms_charge = '<?=$portal_detail->SMS_CHARGE;?>';
+      
 </script>
 <script src="assets/js/custom.js"></script>
 

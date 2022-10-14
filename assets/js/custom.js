@@ -893,11 +893,19 @@ $(function() {
 
   $("#users_list").multipleSelect({
     placeholder: 'All Users',
-    // onOpen: function () {
-    //   remove_page()  
-    //   return false;
-        
-    // },
+    onClick: function (view) {
+    
+    var count = $('#users_list option:selected').length;
+    var user_text='user';
+    if(count > 1){
+      var user_text='users';
+    }
+    jQuery("#alert_div").html('');
+    var totalamount= sms_charge * count;
+    $("#rscount").html('We charge '+currency+sms_charge+' per SMS.You have selected '+count+' '+user_text+',So we will charge '+currency+totalamount+' from your wallet for this process.');
+    return false;
+      
+    },
     width: 400,
   });
 });
@@ -1063,7 +1071,7 @@ function load_job_form(blog_id){
     data:{blog_id:blog_id},
     dataType:'JSON',
     beforeSend:function(){
-
+      jQuery("#alert_div").html('');
       jQuery("#job_form_div").html('Please wait....');
       jQuery("#loadBtn").html('Send Job Notification <span class="mai-arrow-forward-circle"></span>');
       
