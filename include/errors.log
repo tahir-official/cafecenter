@@ -4,3 +4,75 @@
 [15-Oct-2022 02:50:56 Asia/Kolkata] PHP Warning:  Attempt to read property "message" on null in C:\xampp\htdocs\php\cafecenter\include\process.php on line 2123
 [15-Oct-2022 02:50:56 Asia/Kolkata] PHP Stack trace:
 [15-Oct-2022 02:50:56 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Warning:  Undefined array key "states" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1914
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Warning:  Undefined array key "keyword" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1915
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1918
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:47 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Warning:  Undefined array key "states" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1914
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Warning:  Undefined array key "keyword" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1915
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1918
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:45:56 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Warning:  Undefined array key "states" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1914
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Warning:  Undefined array key "keyword" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1915
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1918
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:07 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:24 Asia/Kolkata] PHP Warning:  Undefined array key "states" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1914
+[17-Oct-2022 01:46:24 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:24 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:24 Asia/Kolkata] PHP Warning:  Undefined array key "keyword" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1915
+[17-Oct-2022 01:46:24 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:24 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:24 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1918
+[17-Oct-2022 01:46:24 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:24 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:25 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:46:25 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:25 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:25 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:46:25 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:25 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0
+[17-Oct-2022 01:46:25 Asia/Kolkata] PHP Warning:  Undefined array key "paged" in C:\xampp\htdocs\php\cafecenter\include\process.php on line 1952
+[17-Oct-2022 01:46:25 Asia/Kolkata] PHP Stack trace:
+[17-Oct-2022 01:46:25 Asia/Kolkata] PHP   1. {main}() C:\xampp\htdocs\php\cafecenter\include\process.php:0

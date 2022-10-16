@@ -1147,6 +1147,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 	$portal_detail=$get_main_portal_detail->data;
 
 	if($_POST['row_id']==0){
+		    $readonly='';
 			$popup_title='Add '.$user_title;
 			$fname='';
 			$lname='';
@@ -1252,6 +1253,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 			
 	}else{
 			$popup_title='Edit '.$user_title;
+			$readonly='readonly';
 			
 			$url=SSOAPI.'get_user_detail';
 			$data=array(
@@ -1425,11 +1427,11 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 									<div class="row">
 											<div class="form-group col-md-6">
 													<label for="email">Email Address</label>
-													<input type="email" class="mat-input form-control" id="email" name="email" value="'.$email.'">
+													<input '.$readonly.' type="email" class="mat-input form-control" id="email" name="email" value="'.$email.'">
 											</div>
 											<div class="form-group col-md-6">
 													<label for="contact_number">Mobile No.</label>
-													<input type="Text" class="form-control" id="contact_number" name="contact_number" maxlength="10" value="'.$contact_number.'">
+													<input '.$readonly.' type="Text" class="form-control" id="contact_number" name="contact_number" maxlength="10" value="'.$contact_number.'">
 											</div>
 
 									</div>

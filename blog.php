@@ -35,9 +35,9 @@
     </div>
   </header>
 
-  <div class="page-section">
-    <div class="container">
-      
+<div class="page-section">
+  <div class="container">
+    <div id="pagelayout_area">  
       <form id="blogFetch" onsubmit="return get_blogs();" class="form-search-blog">
       <?php
       if(isset($_REQUEST['paged'])){
@@ -148,6 +148,7 @@
 
     </div>
   </div>
+</div>
 
   <?php
       include_once('include/footer.php');
