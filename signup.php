@@ -114,7 +114,7 @@
                            </div>
                            <div class="col-sm-6">
                               <div class="form-group">
-                                 <input type="text" class="form-control" placeholder="Zipcode" name="zipcode" id="zipcode">
+                                 <input type="text" class="form-control" maxlength="6" placeholder="Zipcode" name="zipcode" id="zipcode">
                               </div>
                            </div>
                         </div>

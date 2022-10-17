@@ -1233,7 +1233,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 				$consumer_plan_option='<option value="">Select Plan</option>';
 				foreach($consumer_plan_data  as $consumer_plan){
 						
-						$consumer_plan_option.= '<option value="'.$consumer_plan->id.'">'.$consumer_plan->post_title.' for '.$consumer_plan->plan_days.' Days only in '.$portal_detail->CURRENCY.$consumer_plan->plan_amount.', Retailer Commission '.$portal_detail->CURRENCY.$consumer_plan->retailer_commissions.'</option>';
+						$consumer_plan_option.= '<option value="'.$consumer_plan->id.'">'.$consumer_plan->post_title.' for '.$consumer_plan->plan_days.' Days only in '.$portal_detail->CURRENCY.$consumer_plan->plan_amount.'</option>';
 				}
 			}
 
@@ -1469,7 +1469,7 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'load_users_popup')
 											</div>
 											<div class="form-group col-md-6">
 													<label for="zipcode">Zipcode</label>
-													<input id="zipcode" name="zipcode" class="form-control" type="text" value="'.$zipcode.'">
+													<input id="zipcode" name="zipcode" maxlength="6" class="form-control" type="text" value="'.$zipcode.'">
 											</div>
 
 									</div>
